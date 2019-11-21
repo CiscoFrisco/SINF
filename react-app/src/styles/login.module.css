@@ -1,0 +1,26 @@
+.login {
+    background-color: #2f2f2f;
+    width: 50%;
+    height:25%;
+    padding:5%;
+}
+
+h1 {
+  font-family: 'Cairo', sans-serif;
+  font-size: xx-large;
+  color: #2f2f2f;
+}
+
+h3 {
+  font-family: 'Cairo', sans-serif;
+  color:white;
+}
+
+.submit {
+  float: right;
+}
+
+.logo {
+  width: 20%;
+}
+  
