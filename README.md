@@ -8,3 +8,7 @@ Needs [Node.js](https://nodejs.org/en/download/)
 
 ## Run
 ```set DEBUG=myapp:* & npm start```
+
+## WebPage
+
+Access http://localhost:3000/
