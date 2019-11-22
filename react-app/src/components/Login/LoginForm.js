@@ -4,9 +4,9 @@ import Button from 'react-bootstrap/Button'
 import loginStyles from "../../styles/login.module.css";
   
 const LoginForm = ({ username, password, setUsername, setPassword, onSubmit }) => (
-    <div className={loginStyles.login}>
+    <div className={loginStyles.form}>
         <h3 className={loginStyles.h3}>Login</h3>
-        <Form onSubmit={onSubmit}>
+        <Form onSubmit={onSubmit} >
             <Form.Group controlId="formBasicUsername">
                 <Form.Control type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
             </Form.Group>
