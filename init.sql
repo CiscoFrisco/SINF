@@ -2,6 +2,6 @@ DROP TABLE IF EXISTS employee;
 
 CREATE TABLE employee (
   id SERIAL PRIMARY KEY,
-  email VARCHAR(255),
+  email VARCHAR(255) UNIQUE,
   password VARCHAR(255)
 );
