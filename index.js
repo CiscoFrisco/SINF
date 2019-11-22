@@ -46,8 +46,8 @@ app.use(limiter)
 const indexRouter = require('./routes/index');
 const employeesRouter = require('./routes/employees');
 
-app.use('/', indexRouter);
-app.use('/employees', employeesRouter);
+app.use('/api/', indexRouter);
+app.use('/api/employees', employeesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
