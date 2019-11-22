@@ -13,6 +13,22 @@ const Login = () => {
 
     const onSubmit = e => {
         e.preventDefault();
+        fetch("http://localhost:3002/api/employees/login", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: username,
+                password: password,
+            })
+        })
+        .then(res => res.json())
+        .then((data) => {
+            console.log(data);
+          })
+        .catch(console.log)
     }
 
     return (
