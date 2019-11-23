@@ -1,0 +1,61 @@
+.home{
+    height: 83vh;
+}
+
+.seven{
+    width: 14.285714285714285714285714285714%;
+    *width: 14.285714285714285714285714285714%;
+}
+
+.category {
+    color:black;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+.link {
+    color:red;
+    position: absolute;
+    top:80%;
+}
+
+/* .category:hover{
+    cursor: pointer;
+    color:white;
+    filter: grayscale(100%);
+} */
+
+.img{
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-color: #2f2f2f;
+}
+
+.employees {
+    background-image: url("../assets/categories/employees.png");
+}
+
+.inventory {
+    background-image: url("../assets/categories/inventory.png");
+}
+
+.warehouse{
+    background-image: url("../assets/categories/warehouse.png");
+}
+
+.requests {
+    background-image: url("../assets/categories/requests.png");
+}
+
+.incoming{
+    background-image: url("../assets/categories/incoming.png");
+}
+
+.orders{
+    background-image: url("../assets/categories/orders.png");
+}
+
+.waves{
+    background-image: url("../assets/categories/waves.png");
+}
+

@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-
-import logo from "../assets/logo_login.png"
+import logo from "../assets/login/logo_login.png"
 import loginStyles from "../styles/login.module.css"
 import LoginForm from "../components/Login/LoginForm";
 
