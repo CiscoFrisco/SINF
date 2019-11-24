@@ -1,39 +1,36 @@
 .home{
-    height: 83vh;
+    height: 85vh;
 }
 
-.seven{
-    width: 14.285714285714285714285714285714%;
-    *width: 14.285714285714285714285714285714%;
+.logo{
+    position: absolute;
+    width:15%;
+    top:40%;
+    left:40%;
 }
 
 .category {
-    color:black;
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
-}
-
-.link {
-    color:red;
-    position: absolute;
-    top:80%;
-}
-
-/* .category:hover{
-    cursor: pointer;
-    color:white;
-    filter: grayscale(100%);
-} */
-
-.img{
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-color: #2f2f2f;
+    position:absolute;
+    width:20vh;
+    height:20vh;
+    border-radius: 50%;
+    border: black solid 2px;
+    /* background-color: #2f2f2f; */
 }
 
 .employees {
+    position:absolute;
+    width:20vh;
+    height:20vh;
+    border-radius: 50%;
+    border: black solid 2px;
     background-image: url("../assets/categories/employees.png");
+    background-size: cover;
+    top:50%;
+    color:white;
 }
+
+.employee
 
 .inventory {
     background-image: url("../assets/categories/inventory.png");

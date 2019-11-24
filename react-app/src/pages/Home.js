@@ -3,7 +3,9 @@ import Toolbar from '../components/Toolbar/Toolbar';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import homeStyles from '../styles/home.module.css'
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
+
 
 const Home = () => {
 
@@ -11,29 +13,49 @@ const Home = () => {
         <div>
             <Toolbar />
             <Row className={homeStyles.home}>
-                <Col className={homeStyles.img, homeStyles.seven, homeStyles.category, homeStyles.employees}>
-                    <Link to="/employees">Employees</Link>
+                <img className={homeStyles.logo} src={logo} alt="logo" />
+                <Link to="/employees">
+                    <div className={homeStyles.category, homeStyles.employees}>
+                        <h3>Employees</h3>
+                    </div>
+                </Link>
+                {/* <Col className={homeStyles.img, homeStyles.seven, homeStyles.category, homeStyles.employees}>
+                    <Link to="/employees" className="text-center">
+                        <h3>Employees</h3>
+                    </Link>
                 </Col>
                 <Col className={homeStyles.img, homeStyles.seven, homeStyles.category, homeStyles.inventory}>
-                    <Link to="/inventory">Inventory</Link>
+                    <Link to="/inventory">
+                        <h3>Inventory</h3>
+                    </Link>
                 </Col>
                 <Col className={homeStyles.img, homeStyles.seven, homeStyles.category, homeStyles.warehouse}>
-                    <Link to="/warehouse">Warehouse</Link>
+                    <Link to="/warehouse">
+                        <h3>Warehouse</h3>
+                    </Link>
                 </Col>
                 <Col className={homeStyles.img, homeStyles.seven, homeStyles.category, homeStyles.requests}>
-                    <Link to="/requests">Requests</Link>
+                    <Link to="/requests">
+                        <h3>Requests</h3>
+                    </Link>
                 </Col>
                 <Col className={homeStyles.img, homeStyles.seven, homeStyles.category, homeStyles.incoming}>
-                    <Link to="/incoming">Incoming</Link>
+                    <Link to="/incoming">
+                        <h3>Incoming</h3>
+                    </Link>
                 </Col>
                 <Col className={homeStyles.img, homeStyles.seven, homeStyles.category, homeStyles.orders}>
-                    <Link to="/orders">Orders</Link>
+                    <Link to="/orders">
+                        <h3>Orders</h3>
+                    </Link>
                 </Col>
                 <Col className={homeStyles.img, homeStyles.seven, homeStyles.category, homeStyles.waves}>
-                    <Link className="link" to="/waves">Waves</Link>
-                </Col>
+                    <Link className="link" to="/waves">
+                        <h3>Waves</h3>
+                    </Link>
+                </Col> */}
             </Row>
-        </div>
+        </div >
     )
 }
 

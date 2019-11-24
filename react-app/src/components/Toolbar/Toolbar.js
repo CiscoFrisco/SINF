@@ -14,7 +14,7 @@ const Toolbar = () => (
         <NavDropdown className={toolbarStyles.dropdown} title={<img className={toolbarStyles.user} src={user} alt="user" />} id="basic-nav-dropdown">
             <NavDropdown.Item href="#">Log Out</NavDropdown.Item>
         </NavDropdown>
-    </Navbar>
+    </Navbar> 
 )
 
 export default Toolbar;
