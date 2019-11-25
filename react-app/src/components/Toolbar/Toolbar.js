@@ -8,13 +8,16 @@ import user from '../../assets/profile_pics/default.png';
 
 const Toolbar = () => (
     <Navbar className={toolbarStyles.nav} >
-        <Navbar.Brand href="/">
+        <Navbar.Brand className={toolbarStyles.brand} href="/">
             <img className={toolbarStyles.logo} src={logo} alt="logo" />
         </Navbar.Brand>
-        <NavDropdown className={toolbarStyles.dropdown} title={<img className={toolbarStyles.user} src={user} alt="user" />} id="basic-nav-dropdown">
+        <NavDropdown components={{ DropdownIndicator: () => null }}
+                     className={toolbarStyles.dropdown} 
+                     title={<img className={toolbarStyles.user} src={user} alt="user"/>} 
+                     id="basic-nav-dropdown">
             <NavDropdown.Item href="#">Log Out</NavDropdown.Item>
         </NavDropdown>
-    </Navbar> 
+    </Navbar>
 )
 
 export default Toolbar;

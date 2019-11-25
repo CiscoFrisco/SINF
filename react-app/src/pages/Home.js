@@ -6,54 +6,49 @@ import homeStyles from '../styles/home.module.css'
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 
+var classNames = require('classnames');
 
 const Home = () => {
-
+    const categoryHovered = false;
     return (
         <div>
             <Toolbar />
-            <Row className={homeStyles.home}>
-                <img className={homeStyles.logo} src={logo} alt="logo" />
+            <Row className={homeStyles.row}>
                 <Link to="/employees">
-                    <div className={homeStyles.category, homeStyles.employees}>
-                        <h3>Employees</h3>
+                    <div className={classNames(homeStyles.category, homeStyles.employees)}>
+                        <h4 className={ homeStyles.text}>Employees</h4>
                     </div>
                 </Link>
-                {/* <Col className={homeStyles.img, homeStyles.seven, homeStyles.category, homeStyles.employees}>
-                    <Link to="/employees" className="text-center">
-                        <h3>Employees</h3>
-                    </Link>
-                </Col>
-                <Col className={homeStyles.img, homeStyles.seven, homeStyles.category, homeStyles.inventory}>
-                    <Link to="/inventory">
-                        <h3>Inventory</h3>
-                    </Link>
-                </Col>
-                <Col className={homeStyles.img, homeStyles.seven, homeStyles.category, homeStyles.warehouse}>
-                    <Link to="/warehouse">
-                        <h3>Warehouse</h3>
-                    </Link>
-                </Col>
-                <Col className={homeStyles.img, homeStyles.seven, homeStyles.category, homeStyles.requests}>
-                    <Link to="/requests">
-                        <h3>Requests</h3>
-                    </Link>
-                </Col>
-                <Col className={homeStyles.img, homeStyles.seven, homeStyles.category, homeStyles.incoming}>
-                    <Link to="/incoming">
-                        <h3>Incoming</h3>
-                    </Link>
-                </Col>
-                <Col className={homeStyles.img, homeStyles.seven, homeStyles.category, homeStyles.orders}>
-                    <Link to="/orders">
-                        <h3>Orders</h3>
-                    </Link>
-                </Col>
-                <Col className={homeStyles.img, homeStyles.seven, homeStyles.category, homeStyles.waves}>
-                    <Link className="link" to="/waves">
-                        <h3>Waves</h3>
-                    </Link>
-                </Col> */}
+                <Link to="/inventory">
+                    <div className={classNames(homeStyles.category, homeStyles.inventory)}>
+                        <h4 className={ homeStyles.text}>Inventory</h4>
+                    </div>
+                </Link>
+                <Link to="/warehouse">
+                    <div className={classNames(homeStyles.category, homeStyles.warehouse)}>
+                        <h4 className={ homeStyles.text}>Warehouse</h4>
+                    </div>
+                </Link>
+                <Link to="/requests">
+                    <div className={classNames(homeStyles.category, homeStyles.requests)}>
+                        <h4 className={ homeStyles.text}>Requests</h4>
+                    </div>
+                </Link>
+                <Link to="/incoming">
+                    <div className={classNames(homeStyles.category, homeStyles.incoming)}>
+                        <h4 className={ homeStyles.text}>Incoming</h4>
+                    </div>
+                </Link>
+                <Link to="/orders">
+                    <div className={classNames(homeStyles.category, homeStyles.orders)}>
+                        <h4 className={ homeStyles.text}>Orders</h4>
+                    </div>
+                </Link>
+                <Link to="/waves">
+                    <div className={classNames(homeStyles.category, homeStyles.waves)}>
+                        <h4 className={ homeStyles.text}>Waves</h4>
+                    </div>
+                </Link>
             </Row>
         </div >
     )

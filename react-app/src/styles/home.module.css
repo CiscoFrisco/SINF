@@ -1,36 +1,51 @@
-.home{
+.row{
     height: 85vh;
+    width:100% !important;
+    margin:0 !important;
+}
+
+.row a:hover {
+    text-decoration: none;
 }
 
 .logo{
     position: absolute;
-    width:15%;
-    top:40%;
-    left:40%;
+    width:10%;
+    top:45%;
+    left:42%;
 }
 
 .category {
-    position:absolute;
-    width:20vh;
-    height:20vh;
-    border-radius: 50%;
-    border: black solid 2px;
-    /* background-color: #2f2f2f; */
+    width:29.7vh;
+    height:93.25vh;
+    background-size: cover;
+    filter: grayscale(100%);
 }
 
-.employees {
-    position:absolute;
-    width:20vh;
-    height:20vh;
-    border-radius: 50%;
-    border: black solid 2px;
-    background-image: url("../assets/categories/employees.png");
-    background-size: cover;
-    top:50%;
+.category:hover {
+    animation: selected 1.0s forwards;
+}
+
+@keyframes selected {
+  0%   {filter:grayscale(100%)}
+  100% {filter:grayscale(0%);}
+}
+
+.text{
+    color:black;
+    position:relative;
+    top:90%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.text:hover{
     color:white;
 }
 
-.employee
+.employees {
+    background-image: url("../assets/categories/employees.png");
+}
 
 .inventory {
     background-image: url("../assets/categories/inventory.png");

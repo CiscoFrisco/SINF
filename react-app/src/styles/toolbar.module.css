@@ -1,20 +1,21 @@
 .nav{
     background-color: #2f2f2f;
-    color: white;
-    padding: .25rem 0.5rem;
+    padding:0 !important;
+    margin:0 !important;
+    display: block !important;
 }
 
 .logo{
-    width:10%;
+    position:relative;
+    width: 32px;
 }
 
 .dropdown{
-    position: fixed;
-    left:55%;
-    color: white;
+    float:right;
 }
 
 .user{
-    width:6%;
+    float:right;
+    width:32px;
     border-radius: 50%;
 }
