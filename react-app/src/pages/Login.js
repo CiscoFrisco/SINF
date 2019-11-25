@@ -23,6 +23,9 @@ const Login = () => {
             })
         })
         .then(res => res.json())
+        .then(res => {
+            this.setToken(res.token)
+        })
         .then((data) => {
             console.log(data);
           })
