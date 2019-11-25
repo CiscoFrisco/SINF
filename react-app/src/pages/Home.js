@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Toolbar from '../components/Toolbar/Toolbar';
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import homeStyles from '../styles/home.module.css'
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png";
 
 var classNames = require('classnames');
 
 const Home = () => {
-    const categoryHovered = false;
     return (
         <div>
             <Toolbar />

@@ -16,7 +16,7 @@
 }
 
 .category {
-    width:14.2857142857vw;
+    width:25vw;
     height:93.25vh;
     background-size: cover;
     filter: grayscale(100%);
@@ -43,14 +43,6 @@
     color:white;
 }
 
-.employees {
-    background-image: url("../assets/categories/employees.png");
-}
-
-.inventory {
-    background-image: url("../assets/categories/inventory.png");
-}
-
 .warehouse{
     background-image: url("../assets/categories/warehouse.png");
 }
@@ -67,7 +59,4 @@
     background-image: url("../assets/categories/orders.png");
 }
 
-.waves{
-    background-image: url("../assets/categories/waves.png");
-}
 
