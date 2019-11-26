@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
+import {useHistory} from "react-router-dom";
 import Toolbar from '../components/Toolbar/Toolbar';
 import Row from 'react-bootstrap/Row'
 import home2Styles from '../styles/home2.module.css'
 import { Link } from "react-router-dom";
+import utils from "../components/utils/utils";
+
 var classNames = require('classnames');
 
 const Home2 = () => {
+    const history = useHistory();
+    
+    if(!utils.loggedIn())
+        history.push("/login");
+
     return (
         <div>
             <Toolbar />

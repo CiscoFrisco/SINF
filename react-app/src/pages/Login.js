@@ -1,13 +1,19 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import logo from "../assets/login/logo_login.png"
 import loginStyles from "../styles/login.module.css"
 import LoginForm from "../components/Login/LoginForm";
+import utils from "../components/utils/utils";
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const history = useHistory();
+
+    if (utils.loggedIn())
+        history.push("/");
 
     const onSubmit = e => {
         e.preventDefault();
@@ -22,14 +28,13 @@ const Login = () => {
                 password: password,
             })
         })
-        .then(res => res.json())
         .then(res => {
-            this.setToken(res.token)
+            if (res.status < 400) {
+                utils.setToken(res.token);
+                history.push("/");
+            }
         })
-        .then((data) => {
-            console.log(data);
-          })
-        .catch(console.log)
+        .catch(console.log);
     }
 
     return (
