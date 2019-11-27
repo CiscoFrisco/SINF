@@ -10,6 +10,9 @@ var createError = require('http-errors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const { getPrimaveraToken } = require('./appToken');
+
+getPrimaveraToken();
 
 const app = express();
 
@@ -41,17 +44,19 @@ app.use(limiter)
 
 const indexRouter = require('./routes/index');
 const employeesRouter = require('./routes/employees');
+const warehousesRouter = require('./routes/warehouses');
 
 app.use('/api/', indexRouter);
 app.use('/api/employees', employeesRouter);
+app.use('/api/warehouses', warehousesRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -65,5 +70,6 @@ app.use(function(err, req, res, next) {
 app.listen(process.env.PORT || 3002, () => {
   console.log(`Server listening`);
 })
+
 
 module.exports = app;
