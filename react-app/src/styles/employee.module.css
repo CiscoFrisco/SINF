@@ -1,0 +1,56 @@
+.colContainer {
+    height:93.25vh;
+    background-color: white;
+    padding:0% !important;
+}
+
+.rowContainer {
+    width:100%;
+    margin:0% !important;
+}
+
+.employeeContainer {
+    box-shadow: 0px 0px 5px 0px #000000;
+}
+
+.employeeInfoContainer {
+    align-items: center;
+    padding: 0% 10% 0%;
+}
+
+.center{
+    display: flex;
+    align-items: center;
+}
+
+.userImg{
+    border-radius:50%;
+    width:90%;
+    vertical-align:middle;
+}
+
+.separator{
+    padding-top: 5%;
+}
+
+.infoTitles{
+    color:#aeaeae;
+    border-bottom: #aeaeae solid 1px;
+}
+
+.infoTitles2{
+    color:black;
+}
+
+.nopadding{
+    padding:0% !important;
+}
+
+.padding_l3{
+    padding-left:3% !important;
+}
+
+.inline{
+    display:flex;
+    justify-content:space-between;
+}

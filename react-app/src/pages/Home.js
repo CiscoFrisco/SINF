@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React  from "react";
 import {useHistory} from "react-router-dom";
 import Toolbar from '../components/Toolbar/Toolbar';
 import Row from 'react-bootstrap/Row'
 import homeStyles from '../styles/home.module.css'
 import { Link } from "react-router-dom";
 import utils from "../components/utils/utils";
-
-var classNames = require('classnames');
+import classNames from 'classnames';
 
 const Home = () => {
     const history = useHistory();

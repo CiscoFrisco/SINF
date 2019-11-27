@@ -7,6 +7,8 @@ import {
   import Home from './pages/Home';
   import Home2 from'./pages/Home2';
   import Login from './pages/Login';
+  import Employees from './pages/Employees';
+
 
   const AppRouter = () => (
     <Router>
@@ -21,7 +23,7 @@ import {
                 <Login/>
             </Route>
             <Route path="/employees">
-                <Login/>
+                <Employees/>
             </Route>
             <Route path="/inventory">
                 <Login/>
