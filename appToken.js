@@ -18,7 +18,7 @@ const getPrimaveraToken = () => {
             console.error("Could not get PrimaveraAPPToken");
             process.exit(-1);   
         }
-        process.env.PRIMAVERA_TOKEN = JSON.parse(body)["access_token"];
+        process.env.PRIMAVERA_TOKEN = "Bearer " + JSON.parse(body)["access_token"];
     });
 
 }
