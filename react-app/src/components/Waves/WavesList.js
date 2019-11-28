@@ -1,21 +1,14 @@
 import React from "react";
 import wavesListStyles from '../../styles/waves/waveslist.module.css';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import scrollStyles from '../../styles/scroll.module.css'
 import WaveItem from '../Waves/WaveItem';
 import classNames from 'classnames';
 
-const WavesList = ({waves}) => {
-
-    // if(!utils.loggedIn())
-    //     history.push("/login");
-
-    return (
-        <div className={wavesListStyles.container}>
-            {waves.map(wave => (<WaveItem id={wave}/>))}
-        </div>
-    )
-}
+const WavesList = ({ waves }) => (
+    <div className={classNames(wavesListStyles.container,scrollStyles.scroll)}>
+        {waves.map(wave => (<WaveItem id={wave} />))}
+    </div>
+)
 
 export default WavesList;
 

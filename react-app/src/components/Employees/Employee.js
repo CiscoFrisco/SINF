@@ -2,9 +2,7 @@ import React, {useState} from "react";
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import { useHistory } from "react-router-dom";
 import employeeStyles from '../../styles/employee.module.css';
-import utils from "../../components/utils/utils";
 import user from '../../assets/profile_pics/default.png';
 import { MdDelete } from 'react-icons/md';
 import WavesList from '../Waves/WavesList';
@@ -12,12 +10,9 @@ import classNames from 'classnames';
 import Modal from 'react-bootstrap/Modal';
 
 const Employee = ({ employee }) => {
+    
     const [show, setShow] = useState(false);
-    const history = useHistory();
     const waves = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
-
-    // if(!utils.loggedIn())
-    //     history.push("/login");
 
     const handleDelete = () => {
         setShow(false);
@@ -61,15 +56,14 @@ const Employee = ({ employee }) => {
                 </Modal.Header>
                 <Modal.Body>Are you sure about that?</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="danger" onClick={() => setShow(false)}>
+                    <Button variant="secondary" onClick={() => setShow(false)}>
                         Cancel
                     </Button>
-                    <Button variant="success" onClick={handleDelete}>
+                    <Button variant="danger" onClick={handleDelete}>
                         Accept
                     </Button>
                 </Modal.Footer>
             </Modal>
-
         </div >
     )
 }
