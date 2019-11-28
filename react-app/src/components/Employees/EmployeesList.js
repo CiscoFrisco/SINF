@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import EmployeeItem from './EmployeeItem';
 
+import classNames from 'classnames'
+
 const EmployeesList = ({ employees, setID }) => {
 
     return (
@@ -23,7 +25,7 @@ const EmployeesList = ({ employees, setID }) => {
                             <h4>Name</h4>
                         </Col>
                     </Row>
-                    <Col className={scrollStyles.scroll}>
+                    <Col className={classNames(scrollStyles.scroll, employeeListStyles.listSize)}>
                         {employees.map(employee => (<EmployeeItem employee={employee} setID={setID} />))}
                     </Col>
                 </Col>

@@ -17,7 +17,7 @@ const Login = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        fetch("http://localhost:3002/api/employees/login", {
+        fetch("/api/employees/login", {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
