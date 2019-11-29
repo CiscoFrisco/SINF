@@ -3,10 +3,12 @@ import {
     BrowserRouter as Router,
     Switch,
     Route
-  } from "react-router-dom";
-  import Home from './pages/Home';
-  import Home2 from'./pages/Home2';
-  import Login from './pages/Login';
+} from "react-router-dom";
+import Home from './pages/Home';
+import Home2 from './pages/Home2';
+import Login from './pages/Login';
+import Employees from './pages/Employees';
+import Inventory from './pages/Inventory';
 
   const AppRouter = () => (
     <Router>
@@ -18,32 +20,32 @@ import {
                 <Home2 />
             </Route>
             <Route path="/login">
-                <Login/>
+                <Login />
             </Route>
             <Route path="/employees">
-                <Login/>
+                <Employees />
             </Route>
             <Route path="/inventory">
-                <Login/>
+                <Inventory />
             </Route>
             <Route path="/warehouse">
-                <Login/>
+                <Login />
             </Route>
             <Route path="/requests">
-                <Login/>
+                <Login />
             </Route>
             <Route path="/incoming">
-                <Login/>
+                <Login />
             </Route>
             <Route path="/orders">
-                <Login/>
+                <Login />
             </Route>
             <Route path="/waves">
-                <Login/>
+                <Login />
             </Route>
-            
+
         </Switch>
     </Router>
-  )
+)
 
-  export default AppRouter;
+export default AppRouter;

@@ -1,0 +1,35 @@
+.container{
+    padding-top:3%;
+}
+
+.title{
+    border-bottom: black solid 1px;
+}
+
+.header{
+    color:#aeaeae;
+    margin-top:2%;
+    padding-left:4%;
+}
+
+.list {
+    overflow:auto;
+}
+
+.item {
+    background-color:#f8f8f8;
+    margin-bottom:2%;
+    padding:1%;
+}
+
+.text{
+    margin:0 !important;
+}
+
+.item:hover{
+    background-color:#b4b4b4;
+}
+
+.listSize {
+    height:70vh !important;
+}
