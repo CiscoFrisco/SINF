@@ -1,29 +1,36 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+//import { useHistory } from "react-router-dom";
 import Employee from '../components/Employees/Employee';
 import EmployeesList from '../components/Employees/EmployeesList';
 import Layout from "../components/Templates/Layout";
 
 const Employees = () => {
-    const [id, setID] = useState(12);
-    const history = useHistory();
+    const [id, setID] = useState(0);
+    const [employees, setEmployees] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    //const history = useHistory();
 
     // if(!utils.loggedIn())
     //     history.push("/login");
 
-    const employees = [{ id: 12, name: 'Josefino', birthday:'10-05-1998'}, 
-                       { id: 13, name: 'Constantino' }, 
-                       { id: 14, name: 'Constantino' }, 
-                       { id: 15, name: 'Constantino' },
-                       { id: 16, name: 'Josefino' },
-                       { id: 17, name: 'Constantino' },
-                       { id: 18, name: 'Constantino' },
-                       { id: 19, name: 'Constantino' },
-                       { id: 20, name: 'Josefino' },
-                       { id: 21, name: 'Constantino' },
-                       { id: 22, name: 'Constantino' },
-                       { id: 23, name: 'Constantino' }];
-    return (
+    useEffect(() => {
+        fetch("/api/employees", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            setEmployees(data);
+            setID(data[0]["id"]);
+            setIsLoading(false);
+        })
+        .catch(console.log);
+    },[employees, setEmployees]);
+
+    return (isLoading ? <Layout></Layout> :
         <Layout 
         list={<EmployeesList employees={employees} setID={setID} />} 
         activeItem={<Employee employee={employees.find(employee => employee.id == id)} />} 

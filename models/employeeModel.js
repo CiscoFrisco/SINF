@@ -2,8 +2,9 @@ const utils = require('../utils');
 const pool = require('../config');
 
 const getEmployees = async () => {
-    const query = `SELECT email, isManager
-      FROM employee`;
+    const query = `SELECT id, email
+      FROM employee
+      WHERE isManager = FALSE`;
 
     const res = await pool.query(query);
 
