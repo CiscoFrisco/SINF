@@ -7,7 +7,7 @@ const getWarehousesController = (req, res, next) => {
             "Content-Type": "application/json",
         },
         method: 'GET',
-        url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/materialsCore/warehouses/`,
+        url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/materialsCore/warehouses/d577175c-feeb-e911-b862-0003ff291f34`,
     };
 
     request(options, (error, response, body) => {

@@ -2,8 +2,8 @@ const utils = require('../utils');
 
 const employeeModel = require("../models/employeeModel");
 
-const getEmployeeController = (req, res, next) => {
-    const employees = employeeModel.getEmployees();
+const getEmployeeController = async (req, res, next) => {
+    const employees = await employeeModel.getEmployees();
 
     res.json(employees);
 }
