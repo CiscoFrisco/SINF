@@ -9,6 +9,7 @@ import Home2 from './pages/Home2';
 import Login from './pages/Login';
 import Employees from './pages/Employees';
 import Inventory from './pages/Inventory';
+import Incoming from './pages/Incoming';
 
   const AppRouter = () => (
     <Router>
@@ -35,7 +36,7 @@ import Inventory from './pages/Inventory';
                 <Login />
             </Route>
             <Route path="/incoming">
-                <Login />
+                <Incoming />
             </Route>
             <Route path="/orders">
                 <Login />
