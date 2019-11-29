@@ -12,3 +12,5 @@ const pool = new Pool({
 });
 
 pool.query(fs.readFileSync("init.sql","utf-8"));
+
+module.exports = pool;

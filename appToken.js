@@ -1,6 +1,6 @@
 const request = require("request");
 
-const getPrimaveraToken = () => {
+const getPrimaveraToken = (startApp) => {
     var options = {
         method: 'POST',
         url: 'https://identity.primaverabss.com/connect/token',
@@ -19,6 +19,7 @@ const getPrimaveraToken = () => {
             process.exit(-1);   
         }
         process.env.PRIMAVERA_TOKEN = "Bearer " + JSON.parse(body)["access_token"];
+        startApp();
     });
 
 }

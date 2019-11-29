@@ -1,10 +1,13 @@
 const utils = require('../utils');
-const { pool } = require('../config');
+const pool = require('../config');
 
-const getEmployees = () => {
-    return {
-        "ola": "bom dia"
-    };
+const getEmployees = async () => {
+    const query = `SELECT email, isManager
+      FROM employee`;
+
+    const res = await pool.query(query);
+
+    return res["rows"];
 }
 
 const signup = async (email, password) => {
