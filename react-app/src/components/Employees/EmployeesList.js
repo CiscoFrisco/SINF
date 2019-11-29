@@ -22,7 +22,7 @@ const EmployeesList = ({ employees, setID }) => {
                             <h4>ID</h4>
                         </Col>
                         <Col md="9">
-                            <h4>Name</h4>
+                            <h4>Email</h4>
                         </Col>
                     </Row>
                     <Col className={classNames(scrollStyles.scroll, employeeListStyles.listSize)}>

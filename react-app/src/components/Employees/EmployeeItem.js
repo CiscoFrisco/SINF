@@ -10,7 +10,7 @@ const EmployeeItem = ({ employee, setID }) =>  (
                 <h4 className={employeeItemStyles.text}>{employee.id}</h4>
             </Col>
             <Col md="9">
-                <h4 className={employeeItemStyles.text}>{employee.name}</h4>
+                <h4 className={employeeItemStyles.text}>{employee.email}</h4>
             </Col>
         </Row>
     )
