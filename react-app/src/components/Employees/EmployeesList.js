@@ -26,7 +26,7 @@ const EmployeesList = ({ employees, setID }) => {
                         </Col>
                     </Row>
                     <Col className={classNames(scrollStyles.scroll, employeeListStyles.listSize)}>
-                        {employees.map(employee => (<EmployeeItem employee={employee} setID={setID} />))}
+                        {employees.map(employee => (<EmployeeItem key={employee.id} employee={employee} setID={setID} />))}
                     </Col>
                 </Col>
             </Container>

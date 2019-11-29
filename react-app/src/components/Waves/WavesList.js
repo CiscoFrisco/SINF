@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 const WavesList = ({ waves }) => (
     <div className={classNames(wavesListStyles.container,scrollStyles.scroll)}>
-        {waves.map(wave => (<WaveItem id={wave} />))}
+        {waves.map(wave => (<WaveItem  key={wave} id={wave} />))}
     </div>
 )
 

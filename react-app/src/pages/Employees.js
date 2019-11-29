@@ -11,7 +11,7 @@ const Employees = () => {
     // if(!utils.loggedIn())
     //     history.push("/login");
 
-    const employees = [{ id: 12, name: 'Josefino' }, 
+    const employees = [{ id: 12, name: 'Josefino', birthday:'10-05-1998'}, 
                        { id: 13, name: 'Constantino' }, 
                        { id: 14, name: 'Constantino' }, 
                        { id: 15, name: 'Constantino' },

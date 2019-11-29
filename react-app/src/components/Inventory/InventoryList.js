@@ -1,5 +1,5 @@
 import React from "react";
-import employeeListStyles from '../../styles/list.module.css';
+import inventoryListStyles from '../../styles/list.module.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
@@ -8,12 +8,12 @@ import InventoryItem from './InventoryItem';
 const InventoryList = ({ inventory, setID }) => {
     return (
         <div>
-            <Container className={employeeListStyles.container}>
+            <Container className={inventoryListStyles.container}>
                 <Col >
-                    <Row className={employeeListStyles.title}>
-                        <h3>Employees</h3>
+                    <Row className={inventoryListStyles.title}>
+                        <h3>Inventory</h3>
                     </Row>
-                    <Row className={employeeListStyles.header}>
+                    <Row className={inventoryListStyles.header}>
                         <Col md="3">
                             <h4>ID</h4>
                         </Col>
@@ -21,7 +21,7 @@ const InventoryList = ({ inventory, setID }) => {
                             <h4>Name</h4>
                         </Col>
                     </Row>
-                    {inventory.map(product => (<InventoryItem product={product} setID={setID} />))}
+                    {inventory.map(product => (<InventoryItem key={product.id} product={product} setID={setID} />))}
                 </Col>
             </Container>
         </div>

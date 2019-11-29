@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
 import productStyles from '../../styles/inventory.module.css';
 import defaultImg from '../../assets/product_imgs/default.png';
-import { MdDelete } from 'react-icons/md';
-import WavesList from '../Waves/WavesList';
 import classNames from 'classnames';
-import Modal from 'react-bootstrap/Modal';
+import ProductLinkList from '../../components/Inventory/ProductLinkList';
 
 const Product = ({ product }) => {
 
-    const waves = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+    const requests = [1, 2, 3, 4, 5, 6, 7, 8,9,10];
+    const incoming = [6, 7, 8, 9, 10, 11, 12, 13];
+    const orders = [11, 12, 13, 14, 15, 16, 17, 18];
 
     return (
-        <div className={productStyles.employeeInfoContainer}>
+        <div className={productStyles.productInfoContainer}>
             <Row className={classNames(productStyles.separator, productStyles.inline)}>
                 <h3>{product.id} - {product.name}</h3>
             </Row>
@@ -35,9 +34,19 @@ const Product = ({ product }) => {
                     </Row>
                 </Col>
             </Row>
-            <Row className={classNames(productStyles.separator, productStyles.infoTitles2)}>
-                <h4>Assigned Waves</h4>
-                <WavesList waves={waves} />
+            <Row className={productStyles.separator}>
+                <Col classNames={productStyles.infoTitles2} md="4">
+                    <h4 className={productStyles.h4}>Requests</h4>
+                    <ProductLinkList list={requests} type='requests'/>
+                </Col>
+                <Col classNames={productStyles.infoTitles2} md="4">
+                    <h4 className={productStyles.h4}>Incoming</h4>
+                    <ProductLinkList list={incoming}  type='incoming'/>
+                </Col>
+                <Col classNames={productStyles.infoTitles2} md="4">
+                    <h4 className={productStyles.h4}>Orders</h4>
+                    <ProductLinkList list={orders}  type='orders'/>
+                </Col>
             </Row>
         </div >
     )
