@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import senderStyles from "../../styles/sender.module.css";
+import Button from "react-bootstrap/Button";
+import clientStyles from "../../styles/client.module.css";
 import defaultImg from "../../assets/product_imgs/default.png";
 import classNames from "classnames";
-import InventoryItemIncoming from "./InventoryItemIncoming";
-import senderListStyles from "../../styles/list.module.css";
+import clientListStyles from "../../styles/list.module.css";
 import scrollStyles from "../../styles/scroll.module.css";
+import OrderItem from "./OrderItem";
 
-const Sender = ({ sender }) => {
-  const inventoryIncoming = [
+const Client = ({ client }) => {
+  const orderItems = [
     { id: 1, name: "Black Air Forces", quantity: 10 },
     { id: 2, name: "Supreme Shovel", quantity: 69 },
     { id: 3, name: "Golos do Abou", quantity: 2 },
@@ -24,37 +25,37 @@ const Sender = ({ sender }) => {
   ];
 
   return (
-    <div className={senderStyles.senderInfoContainer}>
+    <div className={clientStyles.clientInfoContainer}>
       <Row
-        className={classNames(senderStyles.separator, senderStyles.inline)}
+        className={classNames(clientStyles.separator, clientStyles.inline)}
       >
-        <h3>Incoming Inventory - {sender.id}</h3>
+        <h3> Order - {client.id}</h3>
       </Row>
       <Row
-        className={classNames(senderStyles.separator, senderStyles.center)}
+        className={classNames(clientStyles.separator, clientStyles.center)}
       >
-        <Col className={senderStyles.nopadding} md="4">
+        <Col className={clientStyles.nopadding} md="4">
           <img
-            className={senderStyles.userImg}
+            className={clientStyles.userImg}
             src={defaultImg}
             alt="product"
           />
         </Col>
         <Col md="8">
-          <Row className={senderStyles.separator}>
+          <Row className={clientStyles.separator}>
             <Col>
-              <h4 className={senderStyles.infoTitles}>Sender</h4>
-              <p>{sender.name}</p>
+              <h4 className={clientStyles.infoTitles}>Sender</h4>
+              <p>{client.name}</p>
             </Col>
           </Row>
         </Col>
       </Row>
-      <Container className={senderListStyles.container}>
+      <Container className={clientListStyles.container}>
         <Col>
-          <Row className={senderListStyles.title}>
+          <Row className={clientListStyles.title}>
             <h4>Product List</h4>
           </Row>
-          <Row className={senderListStyles.itemheader}>
+          <Row className={clientListStyles.itemheader}>
             <Col md="2">
               <h4>ID</h4>
             </Col>
@@ -65,9 +66,9 @@ const Sender = ({ sender }) => {
               <h4>Quantity</h4>
             </Col>
           </Row>
-          <div className={classNames(scrollStyles.scroll,senderListStyles.scroll5)}>
-            {inventoryIncoming.map(item => (
-              <InventoryItemIncoming item={item} />
+          <div className={classNames(scrollStyles.scroll,clientListStyles.scroll5)}>
+            {orderItems.map(item => (
+              <OrderItem item={item} />
             ))}{" "}
           </div>
         </Col>
@@ -76,4 +77,4 @@ const Sender = ({ sender }) => {
   );
 };
 
-export default Sender;
+export default Client;

@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Employees from './pages/Employees';
 import Inventory from './pages/Inventory';
 import Incoming from './pages/Incoming';
+import Orders from './pages/Orders';
 
   const AppRouter = () => (
     <Router>
@@ -39,12 +40,11 @@ import Incoming from './pages/Incoming';
                 <Incoming />
             </Route>
             <Route path="/orders">
-                <Login />
+                <Orders />
             </Route>
             <Route path="/waves">
                 <Login />
             </Route>
-
         </Switch>
     </Router>
 )
