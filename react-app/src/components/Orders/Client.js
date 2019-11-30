@@ -66,7 +66,7 @@ const Client = ({ client }) => {
               <h4>Quantity</h4>
             </Col>
           </Row>
-          <div className={classNames(scrollStyles.scroll,clientListStyles.scroll5)}>
+          <div className={classNames(scrollStyles.scroll,clientListStyles.scroll30)}>
             {orderItems.map(item => (
               <OrderItem item={item} />
             ))}{" "}

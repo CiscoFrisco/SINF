@@ -65,7 +65,7 @@ const Sender = ({ sender }) => {
               <h4>Quantity</h4>
             </Col>
           </Row>
-          <div className={classNames(scrollStyles.scroll,senderListStyles.scroll5)}>
+          <div className={classNames(scrollStyles.scroll,senderListStyles.scroll30)}>
             {inventoryIncoming.map(item => (
               <InventoryItemIncoming item={item} />
             ))}{" "}
