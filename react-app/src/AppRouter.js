@@ -13,6 +13,7 @@ import Incoming from './pages/Incoming';
 import Orders from './pages/Orders';
 import Requests from './pages/Requests';
 import Waves from './pages/Waves';
+import Warehouse from './pages/Warehouse';
 
   const AppRouter = () => (
     <Router>
@@ -33,7 +34,7 @@ import Waves from './pages/Waves';
                 <Inventory />
             </Route>
             <Route path="/warehouse">
-                <Login />
+                <Warehouse />
             </Route>
             <Route path="/requests">
                 <Requests />
