@@ -1,0 +1,27 @@
+.container {
+    height:75vh;
+    padding:0% !important;
+    padding-left:50%;
+}
+
+.page {
+    align-items: center;
+    padding: 0% 2% 0%;
+}
+
+.title {
+    margin:2%;
+}
+
+.underline{
+    border-bottom: black solid 1px;;
+}
+
+.img{
+    width:30%;
+}
+
+.center{
+    display:flex;
+    align-items: center;
+}

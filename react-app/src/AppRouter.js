@@ -12,6 +12,7 @@ import Inventory from './pages/Inventory';
 import Incoming from './pages/Incoming';
 import Orders from './pages/Orders';
 import Requests from './pages/Requests';
+import Warehouse from './pages/Warehouse';
 
   const AppRouter = () => (
     <Router>
@@ -32,7 +33,7 @@ import Requests from './pages/Requests';
                 <Inventory />
             </Route>
             <Route path="/warehouse">
-                <Login />
+                <Warehouse />
             </Route>
             <Route path="/requests">
                 <Requests />
