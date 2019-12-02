@@ -1,0 +1,50 @@
+.wavesInfoContainer {
+  align-items: center;
+  padding: 0% 10% 0%;
+}
+
+.userImg {
+  border-radius: 50%;
+  width: 110%;
+  vertical-align: middle;
+}
+
+.separator {
+  padding-top: 5%;
+}
+
+.infoTitles {
+  color: #aeaeae;
+  border-bottom: #aeaeae solid 1px;
+  margin-bottom: 0.5em;
+}
+
+.nopadding {
+  padding: 0% !important;
+}
+
+.button {
+  margin-top: 1em;
+  margin-left: 1em;
+  width: 15%;
+  height: 40%;
+  text-align: center;
+}
+
+.text {
+  margin-top: -0.5em;
+}
+
+.title {
+  margin-top: 2em;
+  border-bottom: #aeaeae solid 1px;
+}
+
+.scroll30 {
+  height: 30vh;
+}
+
+.itemheader {
+  color: #aeaeae;
+  margin-top: 2%;
+}

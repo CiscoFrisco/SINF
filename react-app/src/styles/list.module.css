@@ -40,6 +40,17 @@
     color: white;
 }
 
+.orderWave {
+    padding:1%;
+    height:22%;
+}
+
+.orderItem
+{
+    background-color:#2c2c2c;
+    color: white;
+}
+
 .scroll30{
     height: 30vh;
 }

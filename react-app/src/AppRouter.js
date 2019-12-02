@@ -12,6 +12,7 @@ import Inventory from './pages/Inventory';
 import Incoming from './pages/Incoming';
 import Orders from './pages/Orders';
 import Requests from './pages/Requests';
+import Waves from './pages/Waves';
 
   const AppRouter = () => (
     <Router>
@@ -44,7 +45,7 @@ import Requests from './pages/Requests';
                 <Orders />
             </Route>
             <Route path="/waves">
-                <Login />
+                <Waves />
             </Route>
         </Switch>
     </Router>
