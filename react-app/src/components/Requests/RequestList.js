@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import RequestItem from './RequestItem';
 
-const OrderList = ({ requests, setID }) => {
+const RequestList = ({ requests, setID, general }) => {
     return (
         <div>
             <Container className={orderListStyles.container}>
@@ -17,13 +17,16 @@ const OrderList = ({ requests, setID }) => {
                         <Col md="1">
                             <h4>ID</h4>
                         </Col>
+                        {general && <Col md="11">
+                                        <h4>Warehouse</h4>
+                                    </Col>}
                     </Row>
-                    {requests.map(request => (<RequestItem request={request} setID={setID} />))}
+                    {requests.map(request => (<RequestItem request={request} setID={setID} general={general} />))}
                 </Col>
             </Container>
         </div>
     )
 }
 
-export default OrderList;
+export default RequestList;
 
