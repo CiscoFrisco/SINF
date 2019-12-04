@@ -14,6 +14,7 @@ import Orders from './pages/Orders';
 import Requests from './pages/Requests';
 import Waves from './pages/Waves';
 import Warehouse from './pages/Warehouse';
+import Warehouses from './pages/Warehouses';
 
   const AppRouter = () => (
     <Router>
@@ -47,6 +48,9 @@ import Warehouse from './pages/Warehouse';
             </Route>
             <Route path="/waves">
                 <Waves />
+            </Route>
+            <Route path="/warehouses">
+                <Warehouses />
             </Route>
         </Switch>
     </Router>
