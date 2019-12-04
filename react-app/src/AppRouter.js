@@ -34,11 +34,11 @@ import Warehouses from './pages/Warehouses';
             <Route path="/inventory">
                 <Inventory />
             </Route>
-            <Route path="/warehouse">
+            <Route path="/warehouse/:id">
                 <Warehouse />
             </Route>
             <Route path="/requests">
-                <Requests />
+                <Requests general={false} />
             </Route>
             <Route path="/incoming">
                 <Incoming />
@@ -51,6 +51,9 @@ import Warehouses from './pages/Warehouses';
             </Route>
             <Route path="/warehouses">
                 <Warehouses />
+            </Route>
+            <Route path="/requests_g">
+                <Requests general={true} />
             </Route>
         </Switch>
     </Router>
