@@ -40,16 +40,22 @@ import Warehouse from './pages/Warehouse';
                 <Requests general={false} />
             </Route>
             <Route path="/incoming">
-                <Incoming />
+                <Incoming general={false}/>
             </Route>
             <Route path="/orders">
-                <Orders />
+                <Orders general={false}/>
             </Route>
             <Route path="/waves">
                 <Waves />
             </Route>
             <Route path="/requests_g">
                 <Requests general={true} />
+            </Route>
+            <Route path="/incoming_g">
+                <Incoming general={true} />
+            </Route>
+            <Route path="/orders_g">
+                <Orders general={true} />
             </Route>
         </Switch>
     </Router>

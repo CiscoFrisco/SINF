@@ -1,16 +1,18 @@
 import React, {useState} from "react";
 import orderItemStyles from '../../styles/list.module.css';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import {Row, Col} from 'react-bootstrap';
 
-const OrdersItem = ({ sender, setID }) =>  (
-        <Row className={orderItemStyles.item} onClick={() => setID(sender.id)}>
+const OrdersItem = ({ client, setID, general }) =>  (
+        <Row className={orderItemStyles.item} onClick={() => setID(client.id)}>
             <Col md="3">
-                <h4 className={orderItemStyles.text}>{sender.id}</h4>
+                <h4 className={orderItemStyles.text}>{client.id}</h4>
             </Col>
-            <Col md="9">
-                <h4 className={orderItemStyles.text}>{sender.name}</h4>
+            <Col md="4">
+                <h4 className={orderItemStyles.text}>{client.name}</h4>
             </Col>
+            {general && (<Col md="5">
+                <h4 className={orderItemStyles.text}>{client.wh_name}</h4>
+            </Col>)}
         </Row>
     )
 

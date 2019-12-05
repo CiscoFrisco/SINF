@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import {Row, Col, Button, Container} from "react-bootstrap";
+import { Row, Col, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import requestStyles from "../../styles/request.module.css";
 import classNames from "classnames";
 import requestListStyles from "../../styles/list.module.css";
 import scrollStyles from "../../styles/scroll.module.css";
 import ProductItem from "./ProductItem";
+import { FaCheck } from 'react-icons/fa';
+
 
 const Request = ({ request, general }) => {
     const productItems = [
@@ -26,7 +28,7 @@ const Request = ({ request, general }) => {
             <Row className={classNames(requestStyles.separator, requestStyles.inline)}>
                 <h3> Request - {request.id}</h3>
                 <Link to={`${'/warehouse/' + request.wh_id}`}>
-                    <Button variant="dark">Go to Warehosue</Button>
+                    <Button variant="dark">Go to Warehouse</Button>
                 </Link>
             </Row>
             <Container className={requestListStyles.container}>
@@ -45,11 +47,26 @@ const Request = ({ request, general }) => {
                             <h4>Quantity</h4>
                         </Col>
                     </Row>
-                    <div className={classNames(scrollStyles.scroll, requestListStyles.scroll60)}>
-                        {productItems.map(item => (
-                            <ProductItem item={item} />
-                        ))}{" "}
-                    </div>
+                    {general ?
+                        (<div className={classNames(scrollStyles.scroll, requestListStyles.scroll30)}>
+                            {productItems.map(item => (
+                                <ProductItem item={item} />
+                            ))}{" "}
+                        </div>)
+                        :
+                        (<div className={classNames(scrollStyles.scroll, requestListStyles.scroll60)}>
+                            {productItems.map(item => (
+                                <ProductItem item={item} />
+                            ))}{" "}
+                        </div>)
+                    }
+
+                    {general && (<Row className={requestStyles.padding_t}>
+                        <Col md={{offset:7}}>
+                            <Button variant="primary"> <FaCheck /> Satisfy Request</Button>
+                        </Col>
+                    </Row>)
+                    }
                 </Col>
             </Container>
         </div>

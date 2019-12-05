@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { Col, Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import senderStyles from "../../styles/sender.module.css";
 import defaultImg from "../../assets/product_imgs/default.png";
@@ -8,8 +8,9 @@ import classNames from "classnames";
 import InventoryItemIncoming from "./InventoryItemIncoming";
 import senderListStyles from "../../styles/list.module.css";
 import scrollStyles from "../../styles/scroll.module.css";
+import { Link } from "react-router-dom";
 
-const Sender = ({ sender }) => {
+const Sender = ({ sender, general }) => {
   const inventoryIncoming = [
     { id: 1, name: "Black Air Forces", quantity: 10 },
     { id: 2, name: "Supreme Shovel", quantity: 69 },
@@ -29,6 +30,9 @@ const Sender = ({ sender }) => {
         className={classNames(senderStyles.separator, senderStyles.inline)}
       >
         <h3>Incoming Inventory - {sender.id}</h3>
+        {general && (<Link to={`${'/warehouse/' + sender.wh_id}`}>
+          <Button variant="dark">Go to Warehouse</Button>
+        </Link>)}
       </Row>
       <Row
         className={classNames(senderStyles.separator, senderStyles.center)}
@@ -46,6 +50,10 @@ const Sender = ({ sender }) => {
               <h4 className={senderStyles.infoTitles}>Sender</h4>
               <p>{sender.name}</p>
             </Col>
+            {general && (<Col>
+              <h4 className={senderStyles.infoTitles}>Warehouse</h4>
+              <p>{sender.wh_name}</p>
+            </Col>)}
           </Row>
         </Col>
       </Row>
@@ -65,7 +73,7 @@ const Sender = ({ sender }) => {
               <h4>Quantity</h4>
             </Col>
           </Row>
-          <div className={classNames(scrollStyles.scroll,senderListStyles.scroll30)}>
+          <div className={classNames(scrollStyles.scroll, senderListStyles.scroll30)}>
             {inventoryIncoming.map(item => (
               <InventoryItemIncoming item={item} />
             ))}{" "}

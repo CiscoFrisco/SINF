@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import IncomingItem from './IncomingItem';
 
-const IncomingList = ({ incoming, setID }) => {
+const IncomingList = ({ incoming, setID, general }) => {
     return (
         <div>
             <Container className={employeeListStyles.container}>
@@ -17,11 +17,14 @@ const IncomingList = ({ incoming, setID }) => {
                         <Col md="3">
                             <h4>ID</h4>
                         </Col>
-                        <Col md="9">
+                        <Col md="4">
                             <h4>Sender</h4>
                         </Col>
+                        {general && (<Col md="5">
+                            <h4>Warehouse</h4>
+                        </Col>)}
                     </Row>
-                    {incoming.map(sender => (<IncomingItem sender={sender} setID={setID} />))}
+                    {incoming.map(sender => (<IncomingItem sender={sender} setID={setID} general={general}/>))}
                 </Col>
             </Container>
         </div>

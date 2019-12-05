@@ -3,9 +3,9 @@ import orderListStyles from '../../styles/list.module.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import OrderItem from './OrdersItem';
+import OrdersItem from './OrdersItem';
 
-const OrderList = ({ orders, setID }) => {
+const OrderList = ({ orders, setID, general }) => {
     return (
         <div>
             <Container className={orderListStyles.container}>
@@ -17,11 +17,14 @@ const OrderList = ({ orders, setID }) => {
                         <Col md="3">
                             <h4>ID</h4>
                         </Col>
-                        <Col md="9">
+                        <Col md="4">
                             <h4>Client</h4>
                         </Col>
+                        {general && (<Col md="5">
+                            <h4>Warehouse</h4>
+                        </Col>)}
                     </Row>
-                    {orders.map(sender => (<OrderItem sender={sender} setID={setID} />))}
+                    {orders.map(client => (<OrdersItem client={client} setID={setID} general={general} />))}
                 </Col>
             </Container>
         </div>

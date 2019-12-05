@@ -9,8 +9,9 @@ import classNames from "classnames";
 import clientListStyles from "../../styles/list.module.css";
 import scrollStyles from "../../styles/scroll.module.css";
 import OrderItem from "./OrderItem";
+import { Link } from "react-router-dom";
 
-const Client = ({ client }) => {
+const Client = ({ client, general }) => {
   const orderItems = [
     { id: 1, name: "Black Air Forces", quantity: 10 },
     { id: 2, name: "Supreme Shovel", quantity: 69 },
@@ -30,6 +31,9 @@ const Client = ({ client }) => {
         className={classNames(clientStyles.separator, clientStyles.inline)}
       >
         <h3> Order - {client.id}</h3>
+        {general && (<Link to={`${'/warehouse/' + client.wh_id}`}>
+          <Button variant="dark">Go to Warehouse</Button>
+        </Link>)}
       </Row>
       <Row
         className={classNames(clientStyles.separator, clientStyles.center)}
@@ -47,6 +51,10 @@ const Client = ({ client }) => {
               <h4 className={clientStyles.infoTitles}>Sender</h4>
               <p>{client.name}</p>
             </Col>
+            {general && (<Col>
+              <h4 className={clientStyles.infoTitles}>Warehouse</h4>
+              <p>{client.wh_name}</p>
+            </Col>)}
           </Row>
         </Col>
       </Row>
