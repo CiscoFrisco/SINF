@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Employee from '../components/Employees/Employee';
 import EmployeesList from '../components/Employees/EmployeesList';
 import Layout from "../components/Templates/Layout";
+import Toolbar from "../components/Toolbar/Toolbar";
+import styles from '../styles/list.module.css';
 
 const Employees = () => {
     const [id, setID] = useState(0);
@@ -28,10 +30,19 @@ const Employees = () => {
     },[employees, setEmployees]);
 
     return (isLoading ? <Layout></Layout> :
-        <Layout 
-        list={<EmployeesList employees={employees} setID={setID} />} 
-        activeItem={<Employee employee={employees.find(employee => employee.id == id)} />} 
-        />
+        (
+            employees.length > 0  ?
+            (
+            <Layout 
+            list={<EmployeesList employees={employees} setID={setID} />} 
+            activeItem={<Employee employee={employees.find(employee => employee.id == id)} />} 
+            />) : (
+                <div>
+                    <Toolbar />
+                    <h1 className={styles.empty}>There are no employees</h1>
+                </div>                
+            )
+        )
     )
 }
 

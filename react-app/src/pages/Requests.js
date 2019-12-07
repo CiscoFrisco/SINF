@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import Layout from "../components/Templates/Layout";
 import RequestsList from "../components/Requests/RequestsList";
 import Sender from "../components/Requests/Sender";
+import Toolbar from "../components/Toolbar/Toolbar";
+import styles from '../styles/list.module.css';
 
 const Requests = () => {
     const [id, setID] = useState(1);
@@ -29,10 +31,17 @@ const Requests = () => {
     },[requests, setRequests]);
 
     return (isLoading ? <Layout></Layout> :
+        ( requests.length > 0 ? (
         <Layout 
         list={<RequestsList requests={requests} setID={setID}/>} 
         activeItem={<Sender sender={requests.find(requests => requests.id == id)}/>} 
-        />
+        />) : (
+            <div>
+                <Toolbar />
+                <h1 className={styles.empty}>There are no requests</h1>
+            </div>
+        )
+        )
     )
 }
 

@@ -9,7 +9,6 @@
 .header{
     color:#aeaeae;
     margin-top:2%;
-    padding-left:4%;
 }
 
 .header2{
@@ -73,4 +72,10 @@
 
 .linkContainer {
     height:35vh;
+}
+
+.empty {
+    color:#aeaeae;
+    text-align: center;
+    margin-top: 18%;
 }
