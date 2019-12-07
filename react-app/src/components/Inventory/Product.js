@@ -17,7 +17,7 @@ const Product = ({ product }) => {
             <Row className={classNames(productStyles.separator, productStyles.inline)}>
                 <h3>{product.id} - {product.name}</h3>
             </Row>
-            <Row className={classNames(productStyles.separator, productStyles.center)}>
+            <Row className={productStyles.center}>
                 <Col className={productStyles.nopadding} md="4">
                     <img className={productStyles.userImg} src={defaultImg} alt="product" />
                 </Col>

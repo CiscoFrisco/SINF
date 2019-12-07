@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import { FaUserAlt } from 'react-icons/fa';
 import defaultImg from "../../../assets/profile_pics/default.png";
 
 const Wave = ({ wave }) => {
@@ -23,13 +24,13 @@ const Wave = ({ wave }) => {
     <div className={wavesStyles.wavesInfoContainer}>
       <div className={wavesStyles.size}>
       <Row className={wavesStyles.separator}>
-        <h3>Incoming Inventory - {wave.id}</h3>
+        <h3>Wave - {wave.id}</h3>
       </Row>
-      <Row className={wavesStyles.separator}>
+      <Row>
         <Row className={wavesStyles.separator}>
           <h4 className={wavesStyles.infoTitles}>Employee Assigned</h4>
         </Row>
-        <Row>
+        <Row >
           <Col className={wavesStyles.nopadding} md="1">
             <img
               className={wavesStyles.userImg}
@@ -37,9 +38,9 @@ const Wave = ({ wave }) => {
               alt="product"
             />
           </Col>
-          <Button variant="dark" className={wavesStyles.button}>
-            <p className={wavesStyles.text}>{wave.employee_id}</p>
-          </Button>
+          <Col className={wavesStyles.inline} >
+            In Young Jang
+          </Col>
         </Row>       
       </Row>
           <Row className={wavesStyles.title}>

@@ -9,7 +9,6 @@ import classNames from 'classnames';
 
 const Warehouse = () => {
     const history = useHistory();
-    const {id} = useParams();
     // if(!utils.loggedIn())
     //     history.push("/login");
 

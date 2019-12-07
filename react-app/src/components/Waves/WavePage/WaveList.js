@@ -11,7 +11,7 @@ const WaveList = ({ wave, setID }) => {
             <Container className={employeeListStyles.container}>
                 <Col >
                     <Row className={employeeListStyles.title}>
-                        <h3>Incoming Inventory</h3>
+                        <h3>Waves</h3>
                     </Row>
                     <Row className={employeeListStyles.header}>
                         <Col md="3">

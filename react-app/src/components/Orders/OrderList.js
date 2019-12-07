@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import OrdersItem from './OrdersItem';
 
-const OrderList = ({ orders, setID, general }) => {
+const OrderList = ({ orders, setID }) => {
     return (
         <div>
             <Container className={orderListStyles.container}>
@@ -20,11 +20,8 @@ const OrderList = ({ orders, setID, general }) => {
                         <Col md="4">
                             <h4>Client</h4>
                         </Col>
-                        {general && (<Col md="5">
-                            <h4>Warehouse</h4>
-                        </Col>)}
                     </Row>
-                    {orders.map(client => (<OrdersItem client={client} setID={setID} general={general} />))}
+                    {orders.map(client => (<OrdersItem client={client} setID={setID} />))}
                 </Col>
             </Container>
         </div>

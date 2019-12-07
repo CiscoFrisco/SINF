@@ -5,13 +5,12 @@ import Container from "react-bootstrap/Container";
 import senderStyles from "../../styles/sender.module.css";
 import defaultImg from "../../assets/product_imgs/default.png";
 import classNames from "classnames";
-import InventoryItemIncoming from "./InventoryItemIncoming";
+import RequestItem from "./RequestItem";
 import senderListStyles from "../../styles/list.module.css";
 import scrollStyles from "../../styles/scroll.module.css";
-import { Link } from "react-router-dom";
 
-const Sender = ({ sender, general }) => {
-  const inventoryIncoming = [
+const Sender = ({ sender }) => {
+  const requestItems = [
     { id: 1, name: "Black Air Forces", quantity: 10 },
     { id: 2, name: "Supreme Shovel", quantity: 69 },
     { id: 3, name: "Golos do Abou", quantity: 2 },
@@ -29,13 +28,10 @@ const Sender = ({ sender, general }) => {
       <Row
         className={classNames(senderStyles.separator, senderStyles.inline)}
       >
-        <h3>Incoming Inventory - {sender.id}</h3>
-        {general && (<Link to={`${'/warehouse/' + sender.wh_id}`}>
-          <Button variant="dark">Go to Warehouse</Button>
-        </Link>)}
+        <h3>Request - {sender.id}</h3>
       </Row>
       <Row
-        className={classNames(senderStyles.separator, senderStyles.center)}
+        className={senderStyles.center}
       >
         <Col className={senderStyles.nopadding} md="4">
           <img
@@ -50,10 +46,12 @@ const Sender = ({ sender, general }) => {
               <h4 className={senderStyles.infoTitles}>Sender</h4>
               <p>{sender.name}</p>
             </Col>
-            {general && (<Col>
-              <h4 className={senderStyles.infoTitles}>Warehouse</h4>
-              <p>{sender.wh_name}</p>
-            </Col>)}
+          </Row>
+          <Row className={senderStyles.separator}>
+            <Col>
+              <h4 className={senderStyles.infoTitles}>Due Date</h4>
+              <p>{sender.date}</p>
+            </Col>
           </Row>
         </Col>
       </Row>
@@ -74,8 +72,8 @@ const Sender = ({ sender, general }) => {
             </Col>
           </Row>
           <div className={classNames(scrollStyles.scroll, senderListStyles.scroll30)}>
-            {inventoryIncoming.map(item => (
-              <InventoryItemIncoming item={item} />
+            {requestItems.map(item => (
+              <RequestItem item={item} />
             ))}{" "}
           </div>
         </Col>

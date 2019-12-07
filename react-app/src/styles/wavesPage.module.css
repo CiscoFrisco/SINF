@@ -48,3 +48,10 @@
   color: #aeaeae;
   margin-top: 2%;
 }
+
+.inline {
+  margin-left:2%;
+  margin-top:2%;
+  display:flex;
+  justify-content:space-between;
+}
