@@ -61,13 +61,13 @@ const getStock = (req, res, next) => {
             res.status(response.statusCode).send(error);
         }
 
-        const deliveries = JSON.parse(body);
+        let deliveries = JSON.parse(body);
         const stock = [];
 
         deliveries.forEach((delivery) => delivery.productList.forEach((product) => {
             let found = false;
             stock.forEach((stockProduct) => {
-                if(stockProduct.id === product.id) {
+                if(stockProduct.id === product.id) { //Needs to strip SALE- and PURCHASE-
                     stockProduct.quantity += product.quantity;
                     found = true;
                 }
@@ -76,8 +76,35 @@ const getStock = (req, res, next) => {
             if(!found)
                 stock.push(product);
         }));
-        
-        res.status(response.statusCode).send(JSON.stringify(stock));
+
+        options = {
+            method: 'GET',
+            url: `${req.protocol}://${req.get('host')}/api/sales/delivered`,
+        };
+
+        request(options, (error, response, body) => {
+            if(error) {
+                res.status(response.statusCode).send(error);
+            }
+    
+            deliveries = JSON.parse(body);
+    
+            deliveries.forEach((delivery) => delivery.productList.forEach((product) => {
+                product.quantity *= -1;
+                let found = false;
+                stock.forEach((stockProduct) => {
+                    if(stockProduct.id === product.id) { //Needs to strip SALE- and PURCHASE-
+                        stockProduct.quantity += product.quantity;
+                        found = true;
+                    }
+                });
+    
+                if(!found)
+                    stock.push(product);
+            }));
+
+            res.status(response.statusCode).send(JSON.stringify(stock));
+        });
     });
 }
 

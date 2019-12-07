@@ -1,7 +1,7 @@
 const request = require("request");
 let incomingDeliveries = [];
 
-const getSales = (req, res, next) => {
+const getOrders = (req, res, next) => {
     var options = {
         method: 'GET',
         url: `${req.protocol}://${req.get('host')}/api/stock/delivery`,
@@ -51,4 +51,46 @@ const getSales = (req, res, next) => {
     });
 }
 
-module.exports = { getSales }
+const getDelivered = (req, res, next) => {
+    var options = {
+        headers: {
+            Authorization: process.env.PRIMAVERA_TOKEN,
+            "Content-Type": "application/json",
+        },
+        method: 'GET',
+        url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/shipping/deliveries/`,
+    };
+
+    request(options, (error, response, body) => {
+        if(error) {
+            res.status(response.statusCode).send(error);
+        }
+
+        let deliveries = [];
+
+        JSON.parse(body).forEach((element) => {
+            if (!element.isDeleted && !element.naturalKey.includes("SYS")) {
+                const delivery = {
+                    id: element.naturalKey,
+                    name: element.logisticsPartyName,
+                    date: element.loadingDateTime,
+                    productList: [],
+                };
+
+                element.documentLines.forEach((line) => {
+                    delivery.productList.push({
+                        id: line.item,
+                        name: line.description,
+                        quantity: line.quantity,
+                    });
+                })
+
+                deliveries.push(delivery);
+            }
+        });
+        
+        res.status(response.statusCode).send(JSON.stringify(deliveries));
+    });
+}
+
+module.exports = { getOrders, getDelivered }
