@@ -5,7 +5,7 @@
 
 .userImg {
   border-radius: 50%;
-  width: 110%;
+  width: 100%;
   vertical-align: middle;
 }
 
@@ -21,6 +21,10 @@
 
 .nopadding {
   padding: 0% !important;
+}
+
+.padding_top{
+  padding-top:5% !important;
 }
 
 .button {
@@ -54,4 +58,9 @@
   margin-top:2%;
   display:flex;
   justify-content:space-between;
+}
+
+.center{
+  display: flex;
+  align-items: center;
 }
