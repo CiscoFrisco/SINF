@@ -6,10 +6,10 @@ import Col from 'react-bootstrap/Col';
 
 const EmployeeItem = ({ employee, setID }) =>  (
         <Row className={employeeItemStyles.item} onClick={() => setID(employee.id)}>
-            <Col md="3">
+            <Col md="4">
                 <h4 className={employeeItemStyles.text}>{employee.id}</h4>
             </Col>
-            <Col md="9">
+            <Col md="8">
                 <h4 className={employeeItemStyles.text}>{employee.email}</h4>
             </Col>
         </Row>

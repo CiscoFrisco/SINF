@@ -14,10 +14,10 @@ const InventoryList = ({ inventory, setID }) => {
                         <h3>Inventory</h3>
                     </Row>
                     <Row className={inventoryListStyles.header}>
-                        <Col md="3">
+                        <Col md="4">
                             <h4>ID</h4>
                         </Col>
-                        <Col md="9">
+                        <Col md="8">
                             <h4>Name</h4>
                         </Col>
                     </Row>

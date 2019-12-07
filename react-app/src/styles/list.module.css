@@ -44,10 +44,21 @@
     height:22%;
 }
 
-.orderItem
+.orderItemChecked
 {
+    margin-left:0.5em;
     background-color:#2c2c2c;
     color: white;
+    border-radius: 5px;
+}
+
+.orderItemNotChecked
+{
+    margin-left:0.6em;
+    color:#2c2c2c;
+    background-color: #f8f8f8;
+    border: solid 1px #aeaeae;
+    border-radius: 5px;
 }
 
 .scroll30{
@@ -60,6 +71,11 @@
 
 .text{
     margin:0 !important;
+}
+
+
+.waveText{
+    margin-top: 0.4em;
 }
 
 .item:hover{
@@ -79,3 +95,11 @@
     text-align: center;
     margin-top: 18%;
 }
+
+.checkbox {
+margin-top: -0.5em;
+  height: 150%;
+  width: 120%;
+}
+
+  

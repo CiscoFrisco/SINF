@@ -18,10 +18,10 @@ const EmployeesList = ({ employees, setID }) => {
                         <h3>Employees</h3>
                     </Row>
                     <Row className={employeeListStyles.header}>
-                        <Col md="3">
+                        <Col md="4">
                             <h4>ID</h4>
                         </Col>
-                        <Col md="9">
+                        <Col md="8">
                             <h4>Email</h4>
                         </Col>
                     </Row>

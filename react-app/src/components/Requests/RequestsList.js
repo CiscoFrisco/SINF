@@ -14,10 +14,10 @@ const RequestsList = ({ requests, setID }) => {
                         <h3>Requests</h3>
                     </Row>
                     <Row className={requestsListStyles.header}>
-                        <Col md="3">
+                        <Col md="4">
                             <h4>ID</h4>
                         </Col>
-                        <Col md="4">
+                        <Col md="8">
                             <h4>Sender</h4>
                         </Col>
                     </Row>

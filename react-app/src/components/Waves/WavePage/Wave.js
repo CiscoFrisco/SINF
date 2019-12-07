@@ -47,20 +47,19 @@ const Wave = ({ wave }) => {
             <h4>Product List</h4>
           </Row>
           <Row className={wavesStyles.itemheader}>
-            <Col md="1" >
-              <h4>ID</h4>
-            </Col>
-            <Col md="5">
-              <h4>Product Name</h4>
-            </Col>
-            <Col md="2" style={{marginLeft: '1em'}}>
-              <h4>Quantity</h4>
-            </Col>
-            <Col md="1">
-              <h4>{ }</h4>
-            </Col>
-            <Col md="1">
-              <h4>Order</h4>
+            <Col md="10" style={{display:"flex"}}>
+              <Col md="2" style={{marginLeft: '0.5em'}} >
+                <h5>ID</h5>
+              </Col>
+              <Col md="5">
+                <h5>Product Name</h5>
+              </Col>
+              <Col md="3" style={{marginLeft: '0.2em'}}>
+                <h5>Quantity</h5>
+              </Col>
+              <Col md="1" style={{marginLeft: '0.5em'}}>
+                <h5>Order</h5>
+              </Col>
             </Col>
           </Row>
           <div className={classNames(scrollStyles.scroll,wavesStyles.scroll30)}>
