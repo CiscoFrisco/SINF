@@ -6,7 +6,6 @@ import {
     Redirect
 } from "react-router-dom";
 import Home from './pages/Home';
-import Home2 from './pages/Home2';
 import Login from './pages/Login';
 import Employees from './pages/Employees';
 import Inventory from './pages/Inventory';
@@ -23,9 +22,6 @@ const AppRouter = () => (
         <Switch>
             {/* <PrivateRoute exact path="/">
                 <Home />
-            </PrivateRoute>
-            <PrivateRoute exact path="/2">
-                <Home2 />
             </PrivateRoute>
             <Route path="/login">
                 <Login />
@@ -52,9 +48,6 @@ const AppRouter = () => (
 
             <Route exact path="/">
                 <Home />
-            </Route>
-            <Route exact path="/2">
-                <Home2 />
             </Route>
             <Route path="/login">
                 <Login />
