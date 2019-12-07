@@ -10,8 +10,8 @@ import classNames from 'classnames';
 const Home = () => {
     const history = useHistory();
     
-    if(!utils.loggedIn())
-        history.push("/login");
+    // if(!utils.loggedIn())
+    //     history.push("/login");
 
     return (
         <div>
@@ -35,11 +35,6 @@ const Home = () => {
                 <Link to="/requests">
                     <div className={classNames(homeStyles.category, homeStyles.requests)}>
                         <h4 className={ homeStyles.text}>Requests</h4>
-                    </div>
-                </Link>
-                <Link to="/incoming">
-                    <div className={classNames(homeStyles.category, homeStyles.incoming)}>
-                        <h4 className={ homeStyles.text}>Incoming</h4>
                     </div>
                 </Link>
                 <Link to="/orders">

@@ -15,8 +15,8 @@
 }
 
 .category {
-    width:14.2857142857vw;
-    height:93.25vh;
+    width:16.666666666vw;
+    height:90.4vh;
     background-size: cover;
     filter: grayscale(100%);
 }
@@ -56,10 +56,6 @@
 
 .requests {
     background-image: url("../assets/categories/requests.png");
-}
-
-.incoming{
-    background-image: url("../assets/categories/incoming.png");
 }
 
 .orders{

@@ -1,31 +1,44 @@
 import React from "react";
-import {useHistory} from "react-router-dom";
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useHistory } from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Nav from "react-bootstrap/Nav";
 import logo from "../../assets/logo.png";
-import toolbarStyles from '../../styles/toolbar.module.css';
-import user from '../../assets/profile_pics/default.png';
+import toolbarStyles from "../../styles/toolbar.module.css";
+import user from "../../assets/profile_pics/default.png";
 import utils from "../utils/utils";
 
 const Toolbar = () => {
-    const history = useHistory();
+  const history = useHistory();
 
-    const handleLogout = history => () => {
-        utils.logout();
-        history.push('/login');
-    }
+  const handleLogout = history => () => {
+    utils.logout();
+    history.push("/login");
+  };
 
-    return (<Navbar className={toolbarStyles.nav} >
-        <Navbar.Brand className={toolbarStyles.brand} href="/">
-            <img className={toolbarStyles.logo} src={logo} alt="logo" />
-        </Navbar.Brand>
-        <NavDropdown components={{ DropdownIndicator: () => null }}
-                     className={toolbarStyles.dropdown} 
-                     title={<img className={toolbarStyles.user} src={user} alt="user"/>} 
-                     id="basic-nav-dropdown">
-            <NavDropdown.Item onClick={handleLogout(history)}>Log Out</NavDropdown.Item>
-        </NavDropdown>
-    </Navbar>)
-}
+  return (
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar.Brand className={toolbarStyles.brand} href="/">
+        <img className={toolbarStyles.logo} src={logo} alt="logo" />
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link href="/employees">Employees</Nav.Link>
+          <Nav.Link href="/inventory">Inventory</Nav.Link>
+          <Nav.Link href="/warehouse">Warehouse</Nav.Link>
+          <Nav.Link href="/requests">Requests</Nav.Link>
+          <Nav.Link href="/orders">Orders</Nav.Link>
+          <Nav.Link href="/waves">Waves</Nav.Link>
+        </Nav>
+        <Nav>
+          <Nav.Link onClick={handleLogout(history)}>
+            Logout
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  );
+};
 
 export default Toolbar;

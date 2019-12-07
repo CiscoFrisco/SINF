@@ -11,8 +11,8 @@ var classNames = require('classnames');
 const Home2 = () => {
     const history = useHistory();
     
-    if(!utils.loggedIn())
-        history.push("/login");
+    // if(!utils.loggedIn())
+    //     history.push("/login");
 
     return (
         <div>
@@ -26,11 +26,6 @@ const Home2 = () => {
                 <Link to="/requests">
                     <div className={classNames(home2Styles.category, home2Styles.requests)}>
                         <h4 className={ home2Styles.text}>Requests</h4>
-                    </div>
-                </Link>
-                <Link to="/incoming">
-                    <div className={classNames(home2Styles.category, home2Styles.incoming)}>
-                        <h4 className={ home2Styles.text}>Incoming</h4>
                     </div>
                 </Link>
                 <Link to="/orders">

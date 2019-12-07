@@ -9,12 +9,10 @@ import Home2 from './pages/Home2';
 import Login from './pages/Login';
 import Employees from './pages/Employees';
 import Inventory from './pages/Inventory';
-import Incoming from './pages/Incoming';
-import Orders from './pages/Orders';
 import Requests from './pages/Requests';
+import Orders from './pages/Orders';
 import Waves from './pages/Waves';
 import Warehouse from './pages/Warehouse';
-import Warehouses from './pages/Warehouses';
 
   const AppRouter = () => (
     <Router>
@@ -34,32 +32,17 @@ import Warehouses from './pages/Warehouses';
             <Route path="/inventory">
                 <Inventory />
             </Route>
-            <Route path="/warehouse/:id">
+            <Route path="/warehouse">
                 <Warehouse />
             </Route>
             <Route path="/requests">
-                <Requests general={false} />
-            </Route>
-            <Route path="/incoming">
-                <Incoming general={false}/>
+                <Requests />
             </Route>
             <Route path="/orders">
-                <Orders general={false}/>
+                <Orders />
             </Route>
             <Route path="/waves">
                 <Waves />
-            </Route>
-            <Route path="/warehouses">
-                <Warehouses />
-            </Route>
-            <Route path="/requests_g">
-                <Requests general={true} />
-            </Route>
-            <Route path="/incoming_g">
-                <Incoming general={true} />
-            </Route>
-            <Route path="/orders_g">
-                <Orders general={true} />
             </Route>
         </Switch>
     </Router>

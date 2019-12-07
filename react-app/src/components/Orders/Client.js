@@ -11,7 +11,7 @@ import scrollStyles from "../../styles/scroll.module.css";
 import OrderItem from "./OrderItem";
 import { Link } from "react-router-dom";
 
-const Client = ({ client, general }) => {
+const Client = ({ client }) => {
   const orderItems = [
     { id: 1, name: "Black Air Forces", quantity: 10 },
     { id: 2, name: "Supreme Shovel", quantity: 69 },
@@ -31,12 +31,9 @@ const Client = ({ client, general }) => {
         className={classNames(clientStyles.separator, clientStyles.inline)}
       >
         <h3> Order - {client.id}</h3>
-        {general && (<Link to={`${'/warehouse/' + client.wh_id}`}>
-          <Button variant="dark">Go to Warehouse</Button>
-        </Link>)}
       </Row>
       <Row
-        className={classNames(clientStyles.separator, clientStyles.center)}
+        className={clientStyles.center}
       >
         <Col className={clientStyles.nopadding} md="4">
           <img
@@ -51,10 +48,6 @@ const Client = ({ client, general }) => {
               <h4 className={clientStyles.infoTitles}>Sender</h4>
               <p>{client.name}</p>
             </Col>
-            {general && (<Col>
-              <h4 className={clientStyles.infoTitles}>Warehouse</h4>
-              <p>{client.wh_name}</p>
-            </Col>)}
           </Row>
         </Col>
       </Row>

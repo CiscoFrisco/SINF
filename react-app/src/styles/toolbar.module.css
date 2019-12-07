@@ -19,3 +19,8 @@
     width:32px;
     border-radius: 50%;
 }
+
+.item {
+    float:left;
+    margin-right:2em;
+}
