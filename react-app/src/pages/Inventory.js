@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import Layout from "../components/Templates/Layout";
 import InventoryList from "../components/Inventory/InventoryList";
 import Product from "../components/Inventory/Product";
+import Toolbar from "../components/Toolbar/Toolbar";
+import styles from '../styles/list.module.css';
 
 const Inventory = () => {
     const [id, setID] = useState(1);
@@ -10,10 +12,16 @@ const Inventory = () => {
 
     const inventory = [{ id: 1, name: 'iPhoneX' }, { id: 2, name: 'SoundCore Liberty Air' }];
     return (
+        inventory.length > 0  ? (
         <Layout 
         list={<InventoryList inventory={inventory} setID={setID} />} 
         activeItem={<Product product={inventory.find(product => product.id == id)} />} 
-        />
+        />) : (
+            <div>
+                <Toolbar />
+                <h1 className={styles.empty}>Inventory is empty</h1>
+            </div>            
+        )
     )
 }
 

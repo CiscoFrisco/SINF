@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import Layout from "../components/Templates/Layout";
 import OrderList from "../components/Orders/OrderList";
 import Client from "../components/Orders/Client";
+import Toolbar from "../components/Toolbar/Toolbar";
+import styles from '../styles/list.module.css';
 
 const Orders = () => {
     const [id, setID] = useState(1);
@@ -29,10 +31,19 @@ const Orders = () => {
     },[orders, setOrders]);
 
     return (isLoading ? <Layout></Layout> :
-        <Layout 
-        list={<OrderList orders={orders} setID={setID} />} 
-        activeItem={<Client client={orders.find(order => order.id == id)} />} 
-        />
+    (
+        orders.length > 0 ? 
+        (
+            <Layout 
+            list={<OrderList orders={orders} setID={setID} />} 
+            activeItem={<Client client={orders.find(order => order.id == id)} />} />)
+                : (
+                <div>
+                    <Toolbar />
+                    <h1 className={styles.empty}>There are no orders</h1>
+                </div>
+            )
+        )
     )
 }
 
