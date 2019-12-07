@@ -23,14 +23,20 @@ const Product = ({ product }) => {
                 </Col>
                 <Col md="8">
                     <Row className={productStyles.separator}>
-                        <Col>
+                        <Col md="6">
                             <h4 className={productStyles.infoTitles}>Serial Number</h4>
                             <p>{product.serialNumber}</p>
                         </Col>
+                        <Col md="6">
+                            <h4 className={productStyles.infoTitles} >Stock Available</h4>
+                            <p style={{textAlign: 'center'}}>{product.quantity}</p>
+                        </Col>
                     </Row>
                     <Row className={classNames(productStyles.separator, productStyles.padding_l3)}>
-                        <h4 className={productStyles.infoTitles}> Warehouse Location</h4>
-                        <p>{product.location}</p>
+                        <Col >
+                            <h4 className={productStyles.infoTitles}>Warehouse Location</h4>
+                            <p>{product.location}</p>
+                        </Col>
                     </Row>
                 </Col>
             </Row>

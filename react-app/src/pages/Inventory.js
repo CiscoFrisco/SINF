@@ -10,7 +10,7 @@ const Inventory = () => {
     const [id, setID] = useState(1);
     const history = useHistory();
 
-    const inventory = [{ id: 1, name: 'iPhoneX' }, { id: 2, name: 'SoundCore Liberty Air' }];
+    const inventory = [{ id: 1, name: 'iPhoneX', quantity: 3 }, { id: 2, name: 'SoundCore Liberty Air', quantity: 5 }];
     return (
         inventory.length > 0  ? (
         <Layout 

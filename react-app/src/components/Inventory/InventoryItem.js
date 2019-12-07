@@ -6,11 +6,14 @@ import Col from 'react-bootstrap/Col';
 
 const InventoryItem = ({ product, setID }) =>  (
         <Row className={inventoryItemStyles.item} onClick={() => setID(product.id)}>
-            <Col md="4">
+            <Col md="3">
                 <h4 className={inventoryItemStyles.text}>{product.id}</h4>
             </Col>
             <Col md="8">
                 <h4 className={inventoryItemStyles.text}>{product.name}</h4>
+            </Col>
+            <Col md="1">
+                <h4 className={inventoryItemStyles.text}>{product.quantity}</h4>
             </Col>
         </Row>
     )

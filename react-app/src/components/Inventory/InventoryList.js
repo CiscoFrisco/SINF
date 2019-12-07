@@ -14,11 +14,14 @@ const InventoryList = ({ inventory, setID }) => {
                         <h3>Inventory</h3>
                     </Row>
                     <Row className={inventoryListStyles.header}>
-                        <Col md="4">
+                        <Col md="3">
                             <h4>ID</h4>
                         </Col>
-                        <Col md="8">
+                        <Col md="5">
                             <h4>Name</h4>
+                        </Col>
+                        <Col md="4">
+                            <h4 style={{float: 'right'}}>Stock Available</h4>
                         </Col>
                     </Row>
                     {inventory.map(product => (<InventoryItem key={product.id} product={product} setID={setID} />))}
