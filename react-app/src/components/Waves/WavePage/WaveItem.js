@@ -6,10 +6,10 @@ import Col from 'react-bootstrap/Col';
 
 const WaveItem = ({ wave, setID }) =>  (
         <Row className={inventoryItemStyles.item} onClick={() => setID(wave.id)}>
-            <Col md="3">
+            <Col md="4">
                 <h4 className={inventoryItemStyles.text}>{wave.id}</h4>
             </Col>
-            <Col md="9">
+            <Col md="8">
                 <h4 className={inventoryItemStyles.text}>{wave.employee_id}</h4>
             </Col>
         </Row>

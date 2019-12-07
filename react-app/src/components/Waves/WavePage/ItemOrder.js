@@ -3,24 +3,35 @@ import inventoryItemStyles from "../../../styles/list.module.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const InventoryItemIncoming = ({ item }) => (
+const ItemOrder = ({ item }) => {
+  const [check, setCheck] = useState(false);
+  return(
   <Row className={inventoryItemStyles.orderWave}>
-    <Col md="1" className={inventoryItemStyles.orderItem}>
-      <h5 className={inventoryItemStyles.text}>{item.id}</h5>
+    <Col md="10" style={{display:"flex"}} className= {check ? inventoryItemStyles.orderItemChecked : inventoryItemStyles.orderItemNotChecked}>
+      <Col md="2" >
+        <h6 className={inventoryItemStyles.waveText}>{item.id}</h6>
+      </Col>
+      <Col md="6" >
+        <h6 className={inventoryItemStyles.waveText}>{item.name}</h6>
+      </Col>
+      <Col md="3" >
+        <h6 className={inventoryItemStyles.waveText}>{item.quantity}</h6>
+      </Col>
+      <Col md="1" >
+        <h6 className={inventoryItemStyles.waveText}>{item.order}</h6>
+      </Col>
     </Col>
-    <Col md="6" className={inventoryItemStyles.orderItem}>
-      <h5 className={inventoryItemStyles.text}>{item.name}</h5>
-    </Col>
-    <Col md="2" className={inventoryItemStyles.orderItem}>
-      <h5 className={inventoryItemStyles.text}>{item.quantity}</h5>
-    </Col>
-    <Col md="1">
-      <h4>{ }</h4>
-    </Col>
-    <Col md="1" className={inventoryItemStyles.orderItem}>
-      <h5 className={inventoryItemStyles.text}>{item.order}</h5>
-    </Col>
-  </Row>
-);
 
-export default InventoryItemIncoming;
+      <Col md="1">
+        <input
+            className={inventoryItemStyles.checkbox}
+            name="hasProduct"
+            type="checkbox"
+            onChange= {() => setCheck(!check)} />
+      </Col>
+      
+  </Row>
+  )
+  };
+
+export default ItemOrder;

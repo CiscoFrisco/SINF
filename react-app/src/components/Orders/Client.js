@@ -32,8 +32,14 @@ const Client = ({ client }) => {
         <Col md="8">
           <Row className={clientStyles.separator}>
             <Col>
-              <h4 className={clientStyles.infoTitles}>Sender</h4>
+              <h4 className={clientStyles.infoTitles}>Client</h4>
               <p>{client.name}</p>
+            </Col>
+          </Row>
+          <Row className={clientStyles.separator}>
+            <Col>
+              <h4 className={clientStyles.infoTitles}>Date</h4>
+              <p>{client.date}</p>
             </Col>
           </Row>
         </Col>

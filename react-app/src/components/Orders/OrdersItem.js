@@ -4,10 +4,10 @@ import {Row, Col} from 'react-bootstrap';
 
 const OrdersItem = ({ client, setID }) =>  (
         <Row className={orderItemStyles.item} onClick={() => setID(client.id)}>
-            <Col md="3">
+            <Col md="4">
                 <h4 className={orderItemStyles.text}>{client.id}</h4>
             </Col>
-            <Col md="4">
+            <Col md="8">
                 <h4 className={orderItemStyles.text}>{client.name}</h4>
             </Col>
         </Row>
