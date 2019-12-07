@@ -8,8 +8,6 @@ const Warehouse = () => {
     const [id, setID] = useState(1);
     const history = useHistory();
 
-    // if(!utils.loggedIn())
-    //     history.push("/login");
     const section = [{ id: 1}, { id: 2}];
     return (
         <Layout 

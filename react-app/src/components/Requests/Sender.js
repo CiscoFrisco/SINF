@@ -10,18 +10,7 @@ import senderListStyles from "../../styles/list.module.css";
 import scrollStyles from "../../styles/scroll.module.css";
 
 const Sender = ({ sender }) => {
-  const requestItems = [
-    { id: 1, name: "Black Air Forces", quantity: 10 },
-    { id: 2, name: "Supreme Shovel", quantity: 69 },
-    { id: 3, name: "Golos do Abou", quantity: 2 },
-    { id: 4, name: "Pernas do André Gomes", quantity: 1 },
-    { id: 5, name: "Champions do Benfica", quantity: 0 },
-    { id: 6, name: "Golos do Abou", quantity: 2 },
-    { id: 7, name: "Golos do Abou", quantity: 2 },
-    { id: 8, name: "Golos do Abou", quantity: 2 },
-    { id: 9, name: "Golos do Abou", quantity: 2 },
-    { id: 10, name: "Golos do Abou", quantity: 2 }
-  ];
+  const requestItems = sender.productList;
 
   return (
     <div className={senderStyles.senderInfoContainer}>
@@ -44,7 +33,7 @@ const Sender = ({ sender }) => {
           <Row className={senderStyles.separator}>
             <Col>
               <h4 className={senderStyles.infoTitles}>Sender</h4>
-              <p>{sender.name}</p>
+              <p>{sender.sender}</p>
             </Col>
           </Row>
           <Row className={senderStyles.separator}>
