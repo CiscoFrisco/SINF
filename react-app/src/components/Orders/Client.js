@@ -12,19 +12,6 @@ import OrderItem from "./OrderItem";
 import { Link } from "react-router-dom";
 
 const Client = ({ client }) => {
-  const orderItems = [
-    { id: 1, name: "Black Air Forces", quantity: 10 },
-    { id: 2, name: "Supreme Shovel", quantity: 69 },
-    { id: 3, name: "Golos do Abou", quantity: 2 },
-    { id: 4, name: "Pernas do André Gomes", quantity: 1 },
-    { id: 5, name: "Champions do Benfica", quantity: 0 },
-    { id: 6, name: "Golos do Abou", quantity: 2 },
-    { id: 7, name: "Golos do Abou", quantity: 2 },
-    { id: 8, name: "Golos do Abou", quantity: 2 },
-    { id: 9, name: "Golos do Abou", quantity: 2 },
-    { id: 10, name: "Golos do Abou", quantity: 2 }
-  ];
-
   return (
     <div className={clientStyles.clientInfoContainer}>
       <Row
@@ -68,7 +55,7 @@ const Client = ({ client }) => {
             </Col>
           </Row>
           <div className={classNames(scrollStyles.scroll,clientListStyles.scroll30)}>
-            {orderItems.map(item => (
+            {client.productList.map(item => (
               <OrderItem item={item} />
             ))}{" "}
           </div>

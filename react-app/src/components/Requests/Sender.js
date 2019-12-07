@@ -33,7 +33,7 @@ const Sender = ({ sender }) => {
           <Row className={senderStyles.separator}>
             <Col>
               <h4 className={senderStyles.infoTitles}>Sender</h4>
-              <p>{sender.sender}</p>
+              <p>{sender.name}</p>
             </Col>
           </Row>
           <Row className={senderStyles.separator}>
