@@ -29,7 +29,7 @@ const Employee = ({ employee }) => {
                     <img className={employeeStyles.userImg} src={user} alt="user" />
                 </Col>
                 <Col md="8">
-                    <Row className={employeeStyles.separator}>
+                    <Row>
                         <Col>
                             <h4 className={employeeStyles.infoTitles}>Birthday</h4>
                             <p>{employee.birthday}</p>
@@ -45,7 +45,7 @@ const Employee = ({ employee }) => {
                     </Row>
                 </Col>
             </Row>
-            <Row className={classNames(employeeStyles.separator, employeeStyles.infoTitles2)}>
+            <Row className={classNames(employeeStyles.separator2, employeeStyles.infoTitles2)}>
                 <h4>Assigned Waves</h4>
                 <WavesList waves={waves} />
             </Row>

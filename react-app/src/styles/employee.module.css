@@ -10,12 +10,16 @@
 
 .userImg{
     border-radius:50%;
-    width:90%;
+    width:60%;
     vertical-align:middle;
 }
 
 .separator{
     padding-top: 5%;
+}
+
+.separator2{
+    padding-top: 10%;
 }
 
 .infoTitles{
