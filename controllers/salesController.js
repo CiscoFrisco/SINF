@@ -1,7 +1,7 @@
 const request = require("request");
 let incomingDeliveries = [];
 
-const getDeliveries = (req, res, next) => {
+const getSales = (req, res, next) => {
     var options = {
         method: 'GET',
         url: `${req.protocol}://${req.get('host')}/api/stock/delivery`,
@@ -49,10 +49,6 @@ const getDeliveries = (req, res, next) => {
             res.status(response.statusCode).send(JSON.stringify(orders));
         });
     });
-}
-
-const getSales = (req, res, next) => {
-    getDeliveries(req, res, next);
 }
 
 module.exports = { getSales }

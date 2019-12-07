@@ -50,4 +50,35 @@ const getDelivery = (req, res, next) => {
     });
 }
 
-module.exports = { getIncoming, getDelivery }
+const getStock = (req, res, next) => {
+    var options = {
+        method: 'GET',
+        url: `${req.protocol}://${req.get('host')}/api/purchases/delivered`,
+    };
+
+    request(options, (error, response, body) => {
+        if(error) {
+            res.status(response.statusCode).send(error);
+        }
+
+        const deliveries = JSON.parse(body);
+        const stock = [];
+
+        deliveries.forEach((delivery) => delivery.productList.forEach((product) => {
+            let found = false;
+            stock.forEach((stockProduct) => {
+                if(stockProduct.id === product.id) {
+                    stockProduct.quantity += product.quantity;
+                    found = true;
+                }
+            });
+
+            if(!found)
+                stock.push(product);
+        }));
+        
+        res.status(response.statusCode).send(JSON.stringify(stock));
+    });
+}
+
+module.exports = { getIncoming, getDelivery, getStock }
