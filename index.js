@@ -34,12 +34,12 @@ const startApp = () => {
   
   app.use(cors(origin))
   
-  const limiter = rateLimit({
-    windowMs: 1 * 60 * 1000, // 1 minute
-    max: 60, // 5 requests,
-  })
+  // const limiter = rateLimit({
+  //   windowMs: 1 * 60 * 1000, // 1 minute
+  //   max: 60, // 5 requests,
+  // })
   
-  app.use(limiter)
+  // app.use(limiter)
   
   const indexRouter = require('./routes/index');
   const employeesRouter = require('./routes/employees');
