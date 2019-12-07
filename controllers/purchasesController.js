@@ -1,45 +1,59 @@
 const request = require("request");
+let incomingOrders = [];
 
-const getRequests = (req, res, next) => {
+const getIncoming = (req, res, next) => {
     var options = {
-        headers: {
-            Authorization: process.env.PRIMAVERA_TOKEN,
-            "Content-Type": "application/json",
-        },
         method: 'GET',
-        url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/purchases/orders`,
+        url: `${req.protocol}://${req.get('host')}/api/stock/incoming`,
     };
 
     request(options, (error, response, body) => {
-        if(error) {
-            res.status(response.statusCode).send(error);
-        }
+        incomingOrders = JSON.parse(body);
 
-        const orders = [];
+        options = {
+            headers: {
+                Authorization: process.env.PRIMAVERA_TOKEN,
+                "Content-Type": "application/json",
+            },
+            method: 'GET',
+            url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/purchases/orders`,
+        };
 
-        JSON.parse(body).forEach((element) => {
-            if(!element.isDeleted && !element.naturalKey.includes("SYS")) {
-                const order = {
-                    id: element.naturalKey,
-                    name: element.sellerSupplierPartyName,
-                    date: element.unloadingDateTime,
-                    productList: [],
-                };
-
-                element.documentLines.forEach((line) => {
-                    order.productList.push({
-                        id: line.purchasesItem,
-                        name: line.description,
-                        quantity: line.quantity,
-                    });
-                })
-
-                orders.push(order);
+        request(options, (error, response, body) => {
+            if (error) {
+                res.status(response.statusCode).send(error);
             }
+
+            const orders = [];
+
+            JSON.parse(body).forEach((element) => {
+                if (!element.isDeleted && !element.naturalKey.includes("SYS") && incomingOrders.includes(element.naturalKey)) {
+                    const order = {
+                        id: element.naturalKey,
+                        name: element.sellerSupplierPartyName,
+                        date: element.unloadingDateTime,
+                        productList: [],
+                    };
+
+                    element.documentLines.forEach((line) => {
+                        order.productList.push({
+                            id: line.purchasesItem,
+                            name: line.description,
+                            quantity: line.quantity,
+                        });
+                    })
+
+                    orders.push(order);
+                }
+            });
+
+            res.status(response.statusCode).send(JSON.stringify(orders));
         });
-        
-        res.status(response.statusCode).send(JSON.stringify(orders));
     });
+}
+
+const getRequests = (req, res, next) => {
+    getIncoming(req, res, next);
 }
 
 module.exports = { getRequests }
