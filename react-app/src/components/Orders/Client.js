@@ -50,13 +50,13 @@ const Client = ({ client }) => {
             <h4>Product List</h4>
           </Row>
           <Row className={clientListStyles.itemheader}>
-            <Col md="2">
+            <Col md="2" style={{marginLeft: '1em'}}>
               <h4>ID</h4>
             </Col>
-            <Col md="7">
+            <Col md="5" style={{marginLeft: '2em'}}>
               <h4>Product Name</h4>
             </Col>
-            <Col md="3">
+            <Col md="2" style={{marginLeft: '2em'}}>
               <h4>Quantity</h4>
             </Col>
           </Row>

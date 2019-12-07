@@ -5,10 +5,10 @@ import Col from "react-bootstrap/Col";
 
 const RequestItem = ({ item }) => (
   <Row className={requestsItemStyles.senderItem}>
-    <Col md="2">
+    <Col md="3">
       <h5 className={requestsItemStyles.text}>{item.id}</h5>
     </Col>
-    <Col md="8">
+    <Col md="7">
       <h5 className={requestsItemStyles.text}>{item.name}</h5>
     </Col>
     <Col md="2">
