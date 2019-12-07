@@ -9,7 +9,7 @@ const RequestsItem = ({ sender, setID }) => (
             <h4 className={requestsItemStyles.text}>{sender.id}</h4>
         </Col>
         <Col md="4">
-            <h4 className={requestsItemStyles.text}>{sender.sender}</h4>
+            <h4 className={requestsItemStyles.text}>{sender.name}</h4>
         </Col>
     </Row>
 )

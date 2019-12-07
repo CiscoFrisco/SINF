@@ -45,11 +45,13 @@ const startApp = () => {
   const employeesRouter = require('./routes/employees');
   const warehousesRouter = require('./routes/warehouses');
   const purchasesRouter = require('./routes/purchases');
+  const salesRouter = require('./routes/sales');
   
   app.use('/api/', indexRouter);
   app.use('/api/employees', employeesRouter);
   app.use('/api/warehouses', warehousesRouter);
   app.use('/api/purchases', purchasesRouter);
+  app.use('/api/sales', salesRouter);
   
   // catch 404 and forward to error handler
   app.use(function (req, res, next) {

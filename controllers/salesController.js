@@ -1,13 +1,13 @@
 const request = require("request");
 
-const getRequests = (req, res, next) => {
+const getSales = (req, res, next) => {
     var options = {
         headers: {
             Authorization: process.env.PRIMAVERA_TOKEN,
             "Content-Type": "application/json",
         },
         method: 'GET',
-        url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/purchases/orders`,
+        url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/sales/orders`,
     };
 
     request(options, (error, response, body) => {
@@ -21,14 +21,14 @@ const getRequests = (req, res, next) => {
             if(!element.isDeleted && !element.naturalKey.includes("SYS")) {
                 const order = {
                     id: element.naturalKey,
-                    name: element.sellerSupplierPartyName,
-                    date: element.unloadingDateTime,
+                    name: element.buyerCustomerPartyName,
+                    date: element.documentLines[0].deliveryDate,
                     productList: [],
                 };
 
                 element.documentLines.forEach((line) => {
                     order.productList.push({
-                        id: line.purchasesItem,
+                        id: line.salesItem,
                         name: line.description,
                         quantity: line.quantity,
                     });
@@ -42,4 +42,4 @@ const getRequests = (req, res, next) => {
     });
 }
 
-module.exports = { getRequests }
+module.exports = { getSales }
