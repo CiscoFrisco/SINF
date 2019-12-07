@@ -9,8 +9,6 @@ import classNames from 'classnames';
 
 const Warehouse = () => {
     const history = useHistory();
-    // if(!utils.loggedIn())
-    //     history.push("/login");
 
     return (
         <div>

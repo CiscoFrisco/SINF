@@ -8,9 +8,6 @@ const Waves = () => {
     const [id, setID] = useState(1);
     const history = useHistory();
 
-    // if(!utils.loggedIn())
-    //     history.push("/login");
-
     const waves = [{ id: 1, employee_id: '002' }, { id: 2, employee_id: '005999' }];
     return (
         <Layout 

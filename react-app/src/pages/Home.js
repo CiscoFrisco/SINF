@@ -9,9 +9,6 @@ import classNames from 'classnames';
 
 const Home = () => {
     const history = useHistory();
-    
-    // if(!utils.loggedIn())
-    //     history.push("/login");
 
     return (
         <div>

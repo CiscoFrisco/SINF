@@ -8,9 +8,6 @@ const Requests = () => {
     const [id, setID] = useState(1);
     const history = useHistory();
 
-    // if(!utils.loggedIn())
-    //     history.push("/login");
-
     const requests = [{ id: 1, name: 'Nike, Inc', date:'07-12-2019'}, { id: 2, name: 'Supreme', date:'17-02-2019'}];
     return (
         <Layout 

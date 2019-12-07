@@ -8,9 +8,6 @@ const Inventory = () => {
     const [id, setID] = useState(1);
     const history = useHistory();
 
-    // if(!utils.loggedIn())
-    //     history.push("/login");
-
     const inventory = [{ id: 1, name: 'iPhoneX' }, { id: 2, name: 'SoundCore Liberty Air' }];
     return (
         <Layout 
