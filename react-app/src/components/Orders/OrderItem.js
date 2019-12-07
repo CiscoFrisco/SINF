@@ -4,11 +4,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 const OrderItem = ({ item }) => (
-  <Row className={clientItemStyles.senderItem}>
-    <Col md="2">
+  <Row  md="12" className={clientItemStyles.senderItem}>
+    <Col md="3">
       <h5 className={clientItemStyles.text}>{item.id}</h5>
     </Col>
-    <Col md="8">
+    <Col md="7">
       <h5 className={clientItemStyles.text}>{item.name}</h5>
     </Col>
     <Col md="2">

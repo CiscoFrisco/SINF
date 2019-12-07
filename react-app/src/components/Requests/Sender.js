@@ -38,7 +38,7 @@ const Sender = ({ sender }) => {
           </Row>
           <Row className={senderStyles.separator}>
             <Col>
-              <h4 className={senderStyles.infoTitles}>Due Date</h4>
+              <h4 className={senderStyles.infoTitles}>Date</h4>
               <p>{sender.date}</p>
             </Col>
           </Row>
@@ -50,13 +50,13 @@ const Sender = ({ sender }) => {
             <h4>Product List</h4>
           </Row>
           <Row className={senderListStyles.itemheader}>
-            <Col md="2">
+            <Col md="2" style={{marginLeft: '1em'}}>
               <h4>ID</h4>
             </Col>
-            <Col md="7">
+            <Col md="5" style={{marginLeft: '2.4em'}}>
               <h4>Product Name</h4>
             </Col>
-            <Col md="3">
+            <Col md="3" style={{marginLeft: '1em'}}>
               <h4>Quantity</h4>
             </Col>
           </Row>
