@@ -14,7 +14,9 @@ import Requests from './pages/Requests';
 import Orders from './pages/Orders';
 import Waves from './pages/Waves';
 import Warehouse from './pages/Warehouse';
+import Error from "./pages/Error";
 import utils from "./components/utils/utils";
+
 
 const AppRouter = () => (
     <Router>
@@ -74,6 +76,9 @@ const AppRouter = () => (
             </Route>
             <Route path="/waves">
                 <Waves />
+            </Route>
+            <Route exact path='*'>
+                <Error />
             </Route>
         </Switch>
     </Router>
