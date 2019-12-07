@@ -8,9 +8,6 @@ const Orders = () => {
     const [id, setID] = useState(1);
     const history = useHistory();
 
-    // if(!utils.loggedIn())
-    //     history.push("/login");
-
     const orders = [{ id: 1, name: 'SportZone', wh_name:'Las Bitches', wh_id:1 }, { id: 2, name: 'Massimo Dutti', wh_name: 'New Nibbas', wh_id:2 }];
     return (
         <Layout 

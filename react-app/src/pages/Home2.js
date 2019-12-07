@@ -10,9 +10,6 @@ var classNames = require('classnames');
 
 const Home2 = () => {
     const history = useHistory();
-    
-    // if(!utils.loggedIn())
-    //     history.push("/login");
 
     return (
         <div>

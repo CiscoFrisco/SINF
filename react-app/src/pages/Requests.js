@@ -28,10 +28,6 @@ const Requests = () => {
         .catch(console.log);
     },[requests, setRequests]);
 
-    // if(!utils.loggedIn())
-    //     history.push("/login");
-
-    //const requests = [{ id: 1, name: 'Nike, Inc', date:'07-12-2019'}, { id: 2, name: 'Supreme', date:'17-02-2019'}];
     return (isLoading ? <Layout></Layout> :
         <Layout 
         list={<RequestsList requests={requests} setID={setID}/>} 

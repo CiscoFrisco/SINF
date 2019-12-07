@@ -10,9 +10,6 @@ const Employees = () => {
     const [isLoading, setIsLoading] = useState(true);
     //const history = useHistory();
 
-    // if(!utils.loggedIn())
-    //     history.push("/login");
-
     useEffect(() => {
         fetch("/api/employees", {
             method: 'GET',
