@@ -52,8 +52,12 @@ const getDelivery = (req, res, next) => {
 
 const getStock = (req, res, next) => {
     var options = {
+        headers: {
+            Authorization: process.env.PRIMAVERA_TOKEN,
+            "Content-Type": "application/json",
+        },
         method: 'GET',
-        url: `${req.protocol}://${req.get('host')}/api/purchases/delivered`,
+        url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/materialscore/materialsitems`,
     };
 
     request(options, (error, response, body) => {
@@ -61,50 +65,17 @@ const getStock = (req, res, next) => {
             res.status(response.statusCode).send(error);
         }
 
-        let deliveries = JSON.parse(body);
-        const stock = [];
+        let stock = [];
 
-        deliveries.forEach((delivery) => delivery.productList.forEach((product) => {
-            let found = false;
-            stock.forEach((stockProduct) => {
-                if(stockProduct.id === product.id) { //Needs to strip SALE- and PURCHASE-
-                    stockProduct.quantity += product.quantity;
-                    found = true;
-                }
+        JSON.parse(body).forEach((element) => {
+            stock.push({
+                id: element.itemKey,
+                name: element.description,
+                quantity: element.materialsItemWarehouses[0].stockBalance, 
             });
-
-            if(!found)
-                stock.push(product);
-        }));
-
-        options = {
-            method: 'GET',
-            url: `${req.protocol}://${req.get('host')}/api/sales/delivered`,
-        };
-
-        request(options, (error, response, body) => {
-            if(error) {
-                res.status(response.statusCode).send(error);
-            }
-    
-            deliveries = JSON.parse(body);
-    
-            deliveries.forEach((delivery) => delivery.productList.forEach((product) => {
-                product.quantity *= -1;
-                let found = false;
-                stock.forEach((stockProduct) => {
-                    if(stockProduct.id === product.id) { //Needs to strip SALE- and PURCHASE-
-                        stockProduct.quantity += product.quantity;
-                        found = true;
-                    }
-                });
-    
-                if(!found)
-                    stock.push(product);
-            }));
-
-            res.status(response.statusCode).send(JSON.stringify(stock));
         });
+        
+        res.status(response.statusCode).send(JSON.stringify(stock));
     });
 }
 
