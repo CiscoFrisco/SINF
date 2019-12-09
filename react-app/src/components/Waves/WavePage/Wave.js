@@ -53,7 +53,7 @@ const Wave = ({ wave }) => {
             <p>{wave.emp_name}</p>
           </Col>
           <Col>
-            <Button variant="dark" disabled={disabled}> Submit</Button>
+            <Button variant="dark" disabled={disabled}> Complete</Button>
           </Col>
         </Row>
         <Row className={classNames(wavesStyles.title, wavesStyles.padding_top)}>
