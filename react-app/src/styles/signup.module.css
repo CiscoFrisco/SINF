@@ -1,0 +1,55 @@
+.form {
+    background-color: #2f2f2f;
+    position:absolute;
+    left:30%;
+    top:27%;
+    width: 40%;
+    height:47%;
+    padding:3%;
+    border-radius: 0.15em;
+    border: white solid 1px;
+}
+
+.h1 {
+  /* font-size: xx-large; */
+  font-weight: bolder;
+  color: #2f2f2f;
+}
+
+.h3 {
+  color:white;
+  padding-bottom:5%;
+  border-bottom: white solid 1px;
+}
+
+
+.submit {
+  float: right;
+  margin-top: -1.5em;
+}
+
+.logo {
+  width: 60%;
+  position:absolute;
+  top:35%;
+  left:20%;
+}
+
+.signup {
+  filter: grayscale(100%);
+  background-image: url("../assets/login/login.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-color: #2f2f2f;
+}
+
+.row{
+  height: 100vh;
+  width:101.1vw;
+}
+
+.icon {
+    margin-top: -4em;
+    margin-left: 13em;
+}
+

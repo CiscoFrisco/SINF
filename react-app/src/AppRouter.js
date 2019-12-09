@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Home from './pages/Home';
 import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 import Employees from './pages/Employees';
 import Inventory from './pages/Inventory';
 import Requests from './pages/Requests';
@@ -51,6 +52,9 @@ const AppRouter = () => (
             </Route>
             <Route path="/login">
                 <Login />
+            </Route>
+            <Route path="/signup">
+                <SignUp />
             </Route>
             <Route path="/employees">
                 <Employees />
