@@ -8,6 +8,9 @@ const WarehouseSection = ({ section, setID }) => (
         <Col>
             <h4 className={sectionStyles.text}>{section.id}</h4>
         </Col>
+        <Col>
+            <h4 className={sectionStyles.text}>{section.warehouse}</h4>
+        </Col>
     </Row>
 )
 
