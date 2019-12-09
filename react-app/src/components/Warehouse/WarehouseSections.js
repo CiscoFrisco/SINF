@@ -17,6 +17,9 @@ const WarehouseSections = ({ section, setID }) => {
                         <Col>
                             <h4>ID</h4>
                         </Col>
+                        <Col>
+                            <h4>Description</h4>
+                        </Col>
                     </Row>
                     {section.map(section => (<WarehouseSection section={section} setID={setID}/>))}
                 </Col>
