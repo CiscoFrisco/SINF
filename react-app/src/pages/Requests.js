@@ -28,7 +28,7 @@ const Requests = () => {
             setIsLoading(false);
         })
         .catch(console.log);
-    },[requests, setRequests]);
+    },[]);
 
     return (isLoading ? <Layout></Layout> :
         ( requests.length > 0 ? (

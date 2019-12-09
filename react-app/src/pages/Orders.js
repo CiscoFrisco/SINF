@@ -28,7 +28,7 @@ const Orders = () => {
             setIsLoading(false);
         })
         .catch(console.log);
-    },[orders, setOrders]);
+    },[]);
 
     return (isLoading ? <Layout></Layout> :
     (

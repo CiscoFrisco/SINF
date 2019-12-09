@@ -27,7 +27,7 @@ const Employees = () => {
             setIsLoading(false);
         })
         .catch(console.log);
-    },[employees, setEmployees]);
+    },[]);
 
     return (isLoading ? <Layout></Layout> :
         (

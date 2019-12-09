@@ -9,8 +9,11 @@ const WaveItem = ({ wave, setID }) =>  (
             <Col md="4">
                 <h4 className={inventoryItemStyles.text}>{wave.id}</h4>
             </Col>
-            <Col md="8">
+            <Col md="5">
                 <h4 className={inventoryItemStyles.text}>{wave.employee_id}</h4>
+            </Col>
+            <Col md="3">
+                <h4 className={inventoryItemStyles.text}>{wave.type}</h4>
             </Col>
         </Row>
     )

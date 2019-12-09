@@ -3,11 +3,10 @@ import inventoryItemStyles from "../../../styles/list.module.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const ItemOrder = ({ item }) => {
-  const [check, setCheck] = useState(false);
+const ItemOrder = ({ item, setChecked}) => {
   return(
   <Row className={inventoryItemStyles.orderWave}>
-    <Col md="10" style={{display:"flex"}} className= {check ? inventoryItemStyles.orderItemChecked : inventoryItemStyles.orderItemNotChecked}>
+    <Col md="10" style={{display:"flex"}} className= {item.checked ? inventoryItemStyles.orderItemChecked : inventoryItemStyles.orderItemNotChecked}>
       <Col md="2" >
         <h6 className={inventoryItemStyles.waveText}>{item.id}</h6>
       </Col>
@@ -27,7 +26,8 @@ const ItemOrder = ({ item }) => {
             className={inventoryItemStyles.checkbox}
             name="hasProduct"
             type="checkbox"
-            onChange= {() => setCheck(!check)} />
+            checked={item.checked}
+            onChange= {() => setChecked(item.id)} />
       </Col>
       
   </Row>
