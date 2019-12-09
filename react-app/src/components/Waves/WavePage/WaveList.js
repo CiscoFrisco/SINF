@@ -14,11 +14,14 @@ const WaveList = ({ wave, setID }) => {
                         <h3>Waves</h3>
                     </Row>
                     <Row className={employeeListStyles.header}>
-                        <Col md="4">
+                        <Col md="3">
                             <h4>ID</h4>
                         </Col>
-                        <Col md="8">
+                        <Col md="6">
                             <h4>Employee ID</h4>
+                        </Col>
+                        <Col md="3">
+                            <h4>Type</h4>
                         </Col>
                     </Row>
                     {wave.map(wave => (<WaveItem wave={wave} setID={setID} />))}

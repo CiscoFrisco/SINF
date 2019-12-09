@@ -8,8 +8,7 @@ import ProductLinkList from '../../components/Inventory/ProductLinkList';
 
 const Product = ({ product }) => {
 
-    const requests = [1, 2, 3, 4, 5, 6, 7, 8,9,10];
-    const incoming = [6, 7, 8, 9, 10, 11, 12, 13];
+    const requests = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12,13,14];
     const orders = [11, 12, 13, 14, 15, 16, 17, 18];
 
     return (
@@ -41,15 +40,11 @@ const Product = ({ product }) => {
                 </Col>
             </Row>
             <Row className={productStyles.separator}>
-                <Col classNames={productStyles.infoTitles2} md="4">
+                <Col classNames={productStyles.infoTitles2} md="6">
                     <h4 className={productStyles.h4}>Requests</h4>
                     <ProductLinkList list={requests} type='requests'/>
                 </Col>
-                <Col classNames={productStyles.infoTitles2} md="4">
-                    <h4 className={productStyles.h4}>Incoming</h4>
-                    <ProductLinkList list={incoming}  type='incoming'/>
-                </Col>
-                <Col classNames={productStyles.infoTitles2} md="4">
+                <Col classNames={productStyles.infoTitles2} md="6">
                     <h4 className={productStyles.h4}>Orders</h4>
                     <ProductLinkList list={orders}  type='orders'/>
                 </Col>

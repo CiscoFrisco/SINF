@@ -8,6 +8,7 @@ import {
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Employees from './pages/Employees';
+import EmployeePage from './pages/EmployeePage';
 import Inventory from './pages/Inventory';
 import Requests from './pages/Requests';
 import Orders from './pages/Orders';
@@ -28,6 +29,9 @@ const AppRouter = () => (
             </Route>
             <PrivateRoute path="/employees">
                 <Employees />
+            </PrivateRoute>
+            <PrivateRoute path="/employee">
+                <Employee />
             </PrivateRoute>
             <PrivateRoute path="/inventory">
                 <Inventory />
@@ -55,6 +59,9 @@ const AppRouter = () => (
             <Route path="/employees">
                 <Employees />
             </Route>
+            <Route path="/employee">
+                <EmployeePage />
+            </Route>
             <Route path="/inventory">
                 <Inventory />
             </Route>
@@ -73,6 +80,7 @@ const AppRouter = () => (
             <Route exact path='*'>
                 <Error />
             </Route>
+
         </Switch>
     </Router>
 )

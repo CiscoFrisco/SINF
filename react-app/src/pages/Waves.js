@@ -10,7 +10,7 @@ const Waves = () => {
     const [id, setID] = useState(1);
     const history = useHistory();
 
-    const waves = [{id:1 , employee_id:2}, {id:2, employee_id:4}];
+    const waves = [{id:1 , employee_id:2, type:'Request'}, {id:2, employee_id:4, type:'Order'}];
     return (
         waves.length > 0  ?( 
         <Layout 

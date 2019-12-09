@@ -28,7 +28,7 @@ const Inventory = () => {
             setIsLoading(false);
         })
         .catch(console.log);
-    },[stock, setStock]);
+    },[]);
 
     //const inventory = [{ id: 1, name: 'iPhoneX' }, { id: 2, name: 'SoundCore Liberty Air' }];
     return (isLoading ? <Layout></Layout> :
