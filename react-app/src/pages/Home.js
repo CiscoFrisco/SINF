@@ -14,32 +14,32 @@ const Home = () => {
         <div>
             <Toolbar />
             <Row className={homeStyles.row}>
-                <Link to="/employees">
+                <Link to="/employees/1">
                     <div className={classNames(homeStyles.category, homeStyles.employees)}>
                         <h4 className={ homeStyles.text}>Employees</h4>
                     </div>
                 </Link>
-                <Link to="/inventory">
+                <Link to="/inventory/1">
                     <div className={classNames(homeStyles.category, homeStyles.inventory)}>
                         <h4 className={ homeStyles.text}>Inventory</h4>
                     </div>
                 </Link>
-                <Link to="/warehouse">
+                <Link to="/warehouse/1">
                     <div className={classNames(homeStyles.category, homeStyles.warehouse)}>
                         <h4 className={ homeStyles.text}>Warehouse</h4>
                     </div>
                 </Link>
-                <Link to="/requests">
+                <Link to="/requests/1">
                     <div className={classNames(homeStyles.category, homeStyles.requests)}>
                         <h4 className={ homeStyles.text}>Requests</h4>
                     </div>
                 </Link>
-                <Link to="/orders">
+                <Link to="/orders/1">
                     <div className={classNames(homeStyles.category, homeStyles.orders)}>
                         <h4 className={ homeStyles.text}>Orders</h4>
                     </div>
                 </Link>
-                <Link to="/waves">
+                <Link to="/waves/1">
                     <div className={classNames(homeStyles.category, homeStyles.waves)}>
                         <h4 className={ homeStyles.text}>Waves</h4>
                     </div>

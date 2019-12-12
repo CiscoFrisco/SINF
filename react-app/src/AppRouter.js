@@ -81,7 +81,7 @@ const AppRouter = () => (
             <Route path="/orders/:url_id">
                 <Orders />
             </Route>
-            <Route path="/waves">
+            <Route path="/waves/:url_id">
                 <Waves />
             </Route>
             <Route exact path='*'>
