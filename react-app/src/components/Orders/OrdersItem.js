@@ -6,7 +6,6 @@ import { Row, Col, Button, Form, Modal } from 'react-bootstrap';
 const OrdersItem = ({ client, setID }) => {
     const [employees, setEmployees] = useState([]);
     const [show, setShow] = useState(null);
-    const selectedEmployee = null;
     const history = useHistory();
     let selectedEmployee = null;
 
