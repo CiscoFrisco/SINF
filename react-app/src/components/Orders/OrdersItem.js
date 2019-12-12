@@ -6,8 +6,8 @@ import { Row, Col, Button, Form, Modal } from 'react-bootstrap';
 const OrdersItem = ({ client, setID }) => {
     const [employees, setEmployees] = useState([]);
     const [show, setShow] = useState(null);
-    const selectedEmployee = null;
     const history = useHistory();
+    let selectedEmployee = null;
 
     useEffect(() => {
         fetch("/api/employees", {
@@ -20,6 +20,7 @@ const OrdersItem = ({ client, setID }) => {
             .then(response => response.json())
             .then(data => {
                 setEmployees(data);
+                selectedEmployee = data[0].email;
             })
             .catch(console.log);
     }, []);
@@ -33,8 +34,14 @@ const OrdersItem = ({ client, setID }) => {
                currDate.getFullYear() == orderDate.getFullYear();*/
     }
 
-    const createWave = (employee) => {
-        employee = 1;
+    const createWave = () => {
+        let id_employee;
+        
+        employees.forEach((employee) => {
+            if(selectedEmployee === employee.email)
+                id_employee = employee.id;
+        });
+
         fetch('/api/waves', {
             method: 'POST',
             headers: {
@@ -44,10 +51,14 @@ const OrdersItem = ({ client, setID }) => {
             body: JSON.stringify({
                 ref: client.id,
                 party: client.name,
-                id_employee: employee,
+                id_employee: id_employee,
                 waveItems: client.productList
             })
         });
+    }
+
+    const handleChange = (e) => {
+        selectedEmployee = e.target.value;
     }
 
     return (
@@ -72,7 +83,7 @@ const OrdersItem = ({ client, setID }) => {
                 <Modal.Body>
                     <Form.Group as={Col} controlId="formGridState">
                         <Form.Label>Assign Employee</Form.Label>
-                        <Form.Control as="select">
+                        <Form.Control as="select" onChange={handleChange}>
                             <option disabled>Choose...</option>
                             {employees.map(employee => (<option id={employee.id}>{employee.email}</option>))}
                         </Form.Control>

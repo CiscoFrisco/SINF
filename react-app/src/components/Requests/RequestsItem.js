@@ -9,6 +9,7 @@ const RequestsItem = ({ sender, setID }) => {
     const [employees, setEmployees] = useState([]);
     const [show, setShow] = useState(null);
     const history = useHistory();
+    let selectedEmployee = null;
 
     useEffect(() => {
         fetch("/api/employees", {
@@ -21,6 +22,7 @@ const RequestsItem = ({ sender, setID }) => {
             .then(response => response.json())
             .then(data => {
                 setEmployees(data);
+                selectedEmployee = data[0].email;
             })
             .catch(console.log);
     }, []);
@@ -35,8 +37,14 @@ const RequestsItem = ({ sender, setID }) => {
         //        currDate.getFullYear() == orderDate.getFullYear();
     }
 
-    const createWave = (employee) => {
-        employee = 1;
+    const createWave = () => {
+        let id_employee;
+        
+        employees.forEach((employee) => {
+            if(selectedEmployee === employee.email)
+                id_employee = employee.id;
+        });
+
         fetch('/api/waves', {
             method: 'POST',
             headers: {
@@ -46,10 +54,14 @@ const RequestsItem = ({ sender, setID }) => {
             body: JSON.stringify({
                 ref: sender.id,
                 party: sender.name,
-                id_employee: employee,
+                id_employee: id_employee,
                 waveItems: sender.productList
             })
         });
+    }
+
+    const handleChange = (e) => {
+        selectedEmployee = e.target.value;
     }
 
     return (
@@ -73,7 +85,7 @@ const RequestsItem = ({ sender, setID }) => {
                 <Modal.Body>
                     <Form.Group as={Col} controlId="formGridState">
                         <Form.Label>Assign Employee</Form.Label>
-                        <Form.Control as="select">
+                        <Form.Control as="select" onChange={handleChange}>
                             <option disabled>Choose...</option>                        
                             {employees.map(employee => (<option key={employee.id} id={employee.id}>{employee.email}</option>))}
                         </Form.Control>
