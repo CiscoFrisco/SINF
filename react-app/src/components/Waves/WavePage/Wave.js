@@ -10,8 +10,21 @@ const Wave = ({ wave }) => {
   const [disabled, setDisabled] = useState(true);
   const [inventory, setInventory] = useState(wave.productList);
 
-  const setChecked = id => {
-    setInventory(inventory.map(item => item.id === id ? { ...item, checked: !item.checked } : item))
+  const setChecked = (id, checked) => {
+    setInventory(inventory.map(item => item.id === id ? { ...item, completed: !item.completed } : item))
+
+    fetch('/api/waves/check', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: wave.wave_id,
+        item_id: id,
+        completed: checked
+      })
+    });
   }
 
   useEffect(() => {
