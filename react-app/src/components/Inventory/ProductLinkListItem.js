@@ -9,7 +9,10 @@ const ProductLinkListItem = ({ id, type }) => {
 
     return (
         <Link to={`${path + id}`}>
-            <Button className={linkListItemStyles.item} variant="dark"><div className={linkListItemStyles.itemText}>{id}</div></Button>
+            {type=="location" ? ( 
+            <Button variant="dark" className={linkListItemStyles.location}><div className={linkListItemStyles.itemText}>{id}</div></Button>)
+             :(
+            <Button className={linkListItemStyles.item} variant="dark"><div className={linkListItemStyles.itemText}>{id}</div></Button>)}
         </Link >
     )
 }

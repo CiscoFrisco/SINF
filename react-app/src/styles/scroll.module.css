@@ -2,6 +2,10 @@
     overflow-x: hidden;
 }
 
+.scrolly {
+    overflow-y: auto;
+  }
+
 ::-webkit-scrollbar {
     width: 10px;
   }

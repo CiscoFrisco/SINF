@@ -6,12 +6,14 @@ import defaultImg from '../../assets/product_imgs/default.png';
 import classNames from 'classnames';
 import ProductLinkList from '../../components/Inventory/ProductLinkList';
 import ProductLinkListItem from '../../components/Inventory/ProductLinkListItem';
+import listStyles from '../../styles/list.module.css';
+import scrollStyles from '../../styles/scroll.module.css'
 
 const Product = ({ product }) => {
-    console.log(product);
 
     const requests = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
     const orders = [11, 12, 13, 14, 15, 16, 17, 18];
+    const locations = [1, 5, 17, 8,1,1,1,1,1];
 
     return (
         <div className={productStyles.productInfoContainer}>
@@ -25,8 +27,8 @@ const Product = ({ product }) => {
                 </Col>
                 <Col md={{span:5 , offset:2}}>
                     <h4 className={productStyles.infoTitles}>Warehouse Location</h4>
-                    <Row>
-                        {product.location.map(location => (<ProductLinkListItem id={location} type="location"/>))}
+                    <Row className={classNames(scrollStyles.scrolly, listStyles.scrolly10)}>
+                        {locations.map(location => (<ProductLinkListItem id={location} type="location"/>))}
                     </Row>
                 </Col>
             </Row>
