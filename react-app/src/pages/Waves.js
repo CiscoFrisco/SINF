@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Layout from "../components/Templates/Layout";
 import WaveList from "../components/Waves/WavePage/WaveList";
@@ -8,14 +8,34 @@ import styles from '../styles/list.module.css';
 
 const Waves = () => {
     const [id, setID] = useState(1);
+    const [waves, setWaves] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
 
-    const waves = [{id:1 , employee_id:2, type:'Request'}, {id:2, employee_id:4, type:'Order'}];
-    return (
+    useEffect(() => {
+        fetch("/api/waves", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            setWaves(data);
+            if(isLoading)
+                setID(data[0]["wave_id"]);
+            setIsLoading(false);
+        })
+        .catch(console.log);
+    },[]);
+
+    return (isLoading ? <Layout></Layout> :
         waves.length > 0  ?( 
         <Layout 
         list={<WaveList wave={waves} setID={setID} />} 
-        activeItem={<Wave wave={waves.find(waves => waves.id == id)} />} 
+        activeItem={<Wave wave={waves.find(waves => waves.wave_id == id)} />} 
         />) : (
             <div>
                 <Toolbar />

@@ -7,15 +7,8 @@ import { Row, Col, Button } from "react-bootstrap";
 import defaultImg from "../../../assets/profile_pics/default.png";
 
 const Wave = ({ wave }) => {
-  const inventoryIncoming = [
-    { id: 1, name: "Black Air Forces", quantity: 10, order: '01', checked: false },
-    { id: 2, name: "Supreme Shovel", quantity: 69, order: '13', checked: false },
-    { id: 3, name: "Golos do Abou", quantity: 2, order: '07', checked: false },
-    { id: 4, name: "Pernas do André Gomes", quantity: 1, order: '02', checked: false },
-    { id: 5, name: "Champions do Benfica", quantity: 0, order: '08', checked: false }
-  ];
   const [disabled, setDisabled] = useState(true);
-  const [inventory, setInventory] = useState(inventoryIncoming);
+  const [inventory, setInventory] = useState(wave.productList);
 
   const setChecked = id => {
     setInventory(inventory.map(item => item.id === id ? { ...item, checked: !item.checked } : item))
@@ -38,7 +31,7 @@ const Wave = ({ wave }) => {
     <div className={wavesStyles.wavesInfoContainer}>
       <div className={wavesStyles.size}>
         <Row className={wavesStyles.separator}>
-          <h3>Wave - {wave.id}</h3>
+          <h3>Wave - {wave.wave_id}</h3>
         </Row>
         <Row className={classNames(wavesStyles.separator, wavesStyles.center)}>
           <Col className={wavesStyles.nopadding} md="2">

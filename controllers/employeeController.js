@@ -1,9 +1,20 @@
 const utils = require('../utils');
 
 const employeeModel = require("../models/employeeModel");
+const wavesModel = require("../models/wavesModel");
 
 const getEmployeeController = async (req, res, next) => {
     const employees = await employeeModel.getEmployees();
+    const waves = await wavesModel.getWaves();
+
+    employees.forEach((employee) => {
+        employee.waves = [];
+
+        waves.forEach((wave) => {
+            if(wave.id_employee === employee.id)
+                employee.waves.push(wave.wave_id);
+        })
+    });
 
     res.json(employees);
 }
