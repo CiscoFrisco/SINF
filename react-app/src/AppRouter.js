@@ -29,7 +29,7 @@ const AppRouter = () => (
                 <Login />
             </Route>
             <PrivateRoute path="/employees">
-                <Employees />
+                <EmployeePage />
             </PrivateRoute>
             <PrivateRoute path="/employee">
                 <Employee />
@@ -48,7 +48,10 @@ const AppRouter = () => (
             </PrivateRoute>
             <PrivateRoute path="/waves">
                 <Waves />
-            </PrivateRoute> */}
+            </PrivateRoute> 
+            <Route exact path='*'>
+                <Error />
+            </Route> */}
 
 
             <Route exact path="/">
@@ -84,7 +87,6 @@ const AppRouter = () => (
             <Route exact path='*'>
                 <Error />
             </Route>
-
         </Switch>
     </Router>
 )

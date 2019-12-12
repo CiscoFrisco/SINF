@@ -72,6 +72,11 @@
     height: 60vh;
 }
 
+.scrollx{
+    height: 80vh;
+}
+
+
 .text{
     margin:0 !important;
 }

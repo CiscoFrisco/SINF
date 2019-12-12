@@ -11,6 +11,8 @@ import scrollStyles from "../../styles/scroll.module.css";
 
 const Sender = ({ sender }) => {
   const requestItems = sender.productList;
+  const lang_options = { weekday:'long', year:'numeric', month:'long', day:'numeric'};
+  const date = new Date(sender.date);
 
   return (
     <div className={senderStyles.senderInfoContainer}>
@@ -39,7 +41,7 @@ const Sender = ({ sender }) => {
           <Row className={senderStyles.separator}>
             <Col>
               <h4 className={senderStyles.infoTitles}>Date</h4>
-              <p>{sender.date}</p>
+              <p>{date.toLocaleDateString("en-US", lang_options)}</p>
             </Col>
           </Row>
         </Col>

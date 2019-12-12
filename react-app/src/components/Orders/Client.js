@@ -12,6 +12,9 @@ import OrderItem from "./OrderItem";
 import { Link } from "react-router-dom";
 
 const Client = ({ client }) => {
+  const lang_options = { weekday:'long', year:'numeric', month:'long', day:'numeric'};
+  const date = new Date(client.date);
+
   return (
     <div className={clientStyles.clientInfoContainer}>
       <Row
@@ -39,7 +42,7 @@ const Client = ({ client }) => {
           <Row className={clientStyles.separator}>
             <Col>
               <h4 className={clientStyles.infoTitles}>Date</h4>
-              <p>{client.date}</p>
+              <p>{date.toLocaleDateString("en-US", lang_options)}</p>
             </Col>
           </Row>
         </Col>

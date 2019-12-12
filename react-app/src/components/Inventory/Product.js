@@ -5,10 +5,12 @@ import productStyles from '../../styles/inventory.module.css';
 import defaultImg from '../../assets/product_imgs/default.png';
 import classNames from 'classnames';
 import ProductLinkList from '../../components/Inventory/ProductLinkList';
+import ProductLinkListItem from '../../components/Inventory/ProductLinkListItem';
 
 const Product = ({ product }) => {
+    console.log(product);
 
-    const requests = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12,13,14];
+    const requests = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
     const orders = [11, 12, 13, 14, 15, 16, 17, 18];
 
     return (
@@ -16,37 +18,26 @@ const Product = ({ product }) => {
             <Row className={classNames(productStyles.separator, productStyles.inline)}>
                 <h3>{product.id} - {product.name}</h3>
             </Row>
-            <Row className={productStyles.center}>
-                <Col className={productStyles.nopadding} md="4">
-                    <img className={productStyles.userImg} src={defaultImg} alt="product" />
+            <Row className={productStyles.center, productStyles.separator}>
+                <Col md="4">
+                    <h4 className={productStyles.infoTitles} >Stock Available</h4>
+                    <p>{product.quantity}</p>
                 </Col>
-                <Col md="8">
-                    <Row className={productStyles.separator}>
-                        <Col md="6">
-                            <h4 className={productStyles.infoTitles}>Serial Number</h4>
-                            <p>{product.serialNumber}</p>
-                        </Col>
-                        <Col md="6">
-                            <h4 className={productStyles.infoTitles} >Stock Available</h4>
-                            <p style={{textAlign: 'center'}}>{product.quantity}</p>
-                        </Col>
-                    </Row>
-                    <Row className={classNames(productStyles.separator, productStyles.padding_l3)}>
-                        <Col >
-                            <h4 className={productStyles.infoTitles}>Warehouse Location</h4>
-                            <p>{product.location}</p>
-                        </Col>
+                <Col md={{span:5 , offset:2}}>
+                    <h4 className={productStyles.infoTitles}>Warehouse Location</h4>
+                    <Row>
+                        {product.location.map(location => (<ProductLinkListItem id={location} type="location"/>))}
                     </Row>
                 </Col>
             </Row>
             <Row className={productStyles.separator}>
                 <Col classNames={productStyles.infoTitles2} md="6">
                     <h4 className={productStyles.h4}>Requests</h4>
-                    <ProductLinkList list={requests} type='requests'/>
+                    <ProductLinkList list={requests} type='requests' />
                 </Col>
                 <Col classNames={productStyles.infoTitles2} md="6">
                     <h4 className={productStyles.h4}>Orders</h4>
-                    <ProductLinkList list={orders}  type='orders'/>
+                    <ProductLinkList list={orders} type='orders' />
                 </Col>
             </Row>
         </div >

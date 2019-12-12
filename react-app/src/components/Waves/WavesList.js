@@ -5,7 +5,7 @@ import WaveItem from '../Waves/WaveItem';
 import classNames from 'classnames';
 
 const WavesList = ({ waves }) => (
-    <div className={classNames(wavesListStyles.container,scrollStyles.scroll)}>
+    <div className={classNames(wavesListStyles.container,scrollStyles.scroll, wavesListStyles.scrollx)}>
         {waves.map(wave => (<WaveItem  key={wave} id={wave} />))}
     </div>
 )

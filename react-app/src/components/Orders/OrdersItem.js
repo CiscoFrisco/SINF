@@ -4,7 +4,6 @@ import { Row, Col, Button, Form } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 
 const OrdersItem = ({ client, setID }) => {
-
     const [employees, setEmployees] = useState([]);
     const [show, setShow] = useState(null);
 
@@ -23,6 +22,14 @@ const OrdersItem = ({ client, setID }) => {
             .catch(console.log);
     }, []);
 
+    const isToday = () =>{
+        const currDate = new Date();
+        const orderDate = new Date(client.date);
+
+        return currDate.getDate() == orderDate.getDate() &&
+               currDate.getMonth() == orderDate.getMonth() &&
+               currDate.getFullYear() == orderDate.getFullYear();
+    }
 
     return (
         <div>
@@ -33,9 +40,10 @@ const OrdersItem = ({ client, setID }) => {
                 <Col md="5" style={{ marginTop: '0.3em' }}>
                     <h4 className={orderItemStyles.text}>{client.name}</h4>
                 </Col>
-                <Col md="3">
+                {isToday() && (<Col md="3">
                     <Button variant="dark" onClick={() => setShow(client.id)}> Create Wave</Button>
-                </Col>
+                </Col>)}
+                
             </Row>
 
             <Modal show={show != null} onHide={() => setShow(false)}>

@@ -23,6 +23,15 @@ const RequestsItem = ({ sender, setID }) => {
             .catch(console.log);
     }, []);
 
+    const isToday = () =>{
+        const currDate = new Date();
+        const orderDate = new Date(sender.date);
+
+        return currDate.getDate() == orderDate.getDate() &&
+               currDate.getMonth() == orderDate.getMonth() &&
+               currDate.getFullYear() == orderDate.getFullYear();
+    }
+
     return (
         <div>
             <Row className={requestsItemStyles.item} onClick={() => setID(sender.id)}>
@@ -32,9 +41,9 @@ const RequestsItem = ({ sender, setID }) => {
                 <Col md="5" style={{ marginTop: '0.3em' }}>
                     <h4 className={requestsItemStyles.text}>{sender.name}</h4>
                 </Col>
-                <Col md="3">
+                {isToday() && (<Col md="3">
                     <Button variant="dark" onClick={() => setShow(sender.id)}> Create Wave</Button>
-                </Col>
+                </Col>)}
             </Row>
 
             <Modal show={show != null} onHide={() => setShow(false)}>
