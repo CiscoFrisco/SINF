@@ -32,11 +32,12 @@ CREATE TABLE IF NOT EXISTS wave (
 );
 
 CREATE TABLE IF NOT EXISTS waveItem (
-  id VARCHAR(255) PRIMARY KEY,
+  id VARCHAR(255),
   quantity INTEGER,
   wave_id INTEGER REFERENCES wave(id),
   section_id INTEGER REFERENCES section(id),
-  completed BOOLEAN DEFAULT FALSE
+  completed BOOLEAN DEFAULT FALSE,
+  PRIMARY KEY(id, wave_id)
 );
 
 INSERT INTO employee(email, password) VALUES('email@email.email', '$2a$08$PaAprgLos9T90uGnSHa8GuqjKBanidqgddCQ0tuplPt1gh5d0GZtW');

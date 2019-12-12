@@ -24,12 +24,30 @@ const RequestsItem = ({ sender, setID }) => {
     }, []);
 
     const isToday = () =>{
-        const currDate = new Date();
-        const orderDate = new Date(sender.date);
+        return true;
+        // const currDate = new Date();
+        // const orderDate = new Date(sender.date);
 
-        return currDate.getDate() == orderDate.getDate() &&
-               currDate.getMonth() == orderDate.getMonth() &&
-               currDate.getFullYear() == orderDate.getFullYear();
+        // return currDate.getDate() == orderDate.getDate() &&
+        //        currDate.getMonth() == orderDate.getMonth() &&
+        //        currDate.getFullYear() == orderDate.getFullYear();
+    }
+
+    const createWave = (employee) => {
+        employee = 1;
+        fetch('/api/waves', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ref: sender.id,
+                party: sender.name,
+                id_employee: employee,
+                waveItems: sender.productList
+            })
+        });
     }
 
     return (
@@ -63,7 +81,10 @@ const RequestsItem = ({ sender, setID }) => {
                     <Button variant="secondary" onClick={() => setShow(null)}>
                         Cancel
                 </Button>
-                    <Button variant="dark" onClick={() => setShow(null)}>
+                <Button variant="dark" onClick={() => {
+                        createWave();
+                        setShow(null);
+                    }}>
                         Create
                 </Button>
                 </Modal.Footer>
