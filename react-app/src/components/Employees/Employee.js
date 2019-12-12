@@ -5,9 +5,6 @@ import WavesList from '../Waves/WavesList';
 import classNames from 'classnames';
 
 const Employee = ({ employee }) => {
-    
-    const waves = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,18,19,20,21,22,23,24,25,26,27,28];
-
     return (
         <div className={employeeStyles.employeeInfoContainer}>
             <Row className={classNames(employeeStyles.separator, employeeStyles.inline)}>
@@ -36,7 +33,7 @@ const Employee = ({ employee }) => {
             </Row> */}
             <Row className={classNames(employeeStyles.separator, employeeStyles.infoTitles2)}>
                 <h4>Assigned Waves</h4>
-                <WavesList waves={waves} />
+                <WavesList waves={employee.waves} />
             </Row>
         </div >
     )
