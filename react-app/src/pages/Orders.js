@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Layout from "../components/Templates/Layout";
 import OrderList from "../components/Orders/OrderList";
 import Client from "../components/Orders/Client";
@@ -7,11 +7,13 @@ import Toolbar from "../components/Toolbar/Toolbar";
 import styles from '../styles/list.module.css';
 
 const Orders = () => {
-    const [id, setID] = useState(1);
+    const {url_id} = useParams();
+
+    const [id, setID] = useState(url_id);
     const [orders, setOrders] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
-
+    
     useEffect(() => {
         fetch("/api/sales/orders", {
             method: 'GET',
@@ -22,9 +24,11 @@ const Orders = () => {
         })
         .then(response => response.json())
         .then(data => {
-            setOrders(data);
-            if(isLoading)
+            if(!data.filter(order =>order.id == url_id).length > 0){
                 setID(data[0]["id"]);
+                history.push("/orders/" + data[0]["id"]);
+            }
+            setOrders(data);
             setIsLoading(false);
         })
         .catch(console.log);

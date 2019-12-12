@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Layout from "../components/Templates/Layout";
 import RequestsList from "../components/Requests/RequestsList";
 import Sender from "../components/Requests/Sender";
@@ -7,7 +7,8 @@ import Toolbar from "../components/Toolbar/Toolbar";
 import styles from '../styles/list.module.css';
 
 const Requests = () => {
-    const [id, setID] = useState(1);
+    const {url_id} = useParams();
+    const [id, setID] = useState(url_id);
     const [requests, setRequests] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
@@ -22,9 +23,11 @@ const Requests = () => {
         })
         .then(response => response.json())
         .then(data => {
-            setRequests(data);
-            if(isLoading)
+            if(!data.filter(request => request.id == url_id).length > 0){
                 setID(data[0]["id"]);
+                history.push("/requests/" + data[0]["id"]);
+            }
+            setRequests(data);
             setIsLoading(false);
         })
         .catch(console.log);

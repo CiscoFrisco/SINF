@@ -64,7 +64,7 @@ const Sender = ({ sender }) => {
           </Row>
           <div className={classNames(scrollStyles.scroll, senderListStyles.scroll30)}>
             {requestItems.map(item => (
-              <RequestItem item={item} />
+              <RequestItem key={item.id} item={item} />
             ))}{" "}
           </div>
         </Col>

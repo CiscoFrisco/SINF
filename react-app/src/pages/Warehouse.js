@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Layout from "../components/Templates/Layout";
 import WarehouseSections from "../components/Warehouse/WarehouseSections"
 import Section from "../components/Warehouse/Section";
@@ -7,12 +7,11 @@ import Toolbar from "../components/Toolbar/Toolbar";
 import styles from '../styles/list.module.css';
 
 const Warehouse = () => {
-    const [id, setID] = useState(1);
+    const {url_id} = useParams();
+    const [id, setID] = useState(url_id);
     const [sections, setSections] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
-
-    //const section = [{ id: 1}, { id: 2}];
 
     useEffect(() => {
         fetch("/api/warehouses", {
@@ -24,9 +23,13 @@ const Warehouse = () => {
         })
         .then(response => response.json())
         .then(data => {
-            setSections(data);
-            if(isLoading)
+            console.log(data);
+            console.log(url_id);
+            if(!data.filter(section => section.id == url_id).length > 0){
                 setID(data[0]["id"]);
+                history.push("/warehouse/" + data[0]["id"]);
+            }
+            setSections(data);
             setIsLoading(false);
         })
         .catch(console.log);

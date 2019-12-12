@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import requestsItemStyles from '../../styles/list.module.css';
 import { Row, Col, Button, Form } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
@@ -7,6 +8,7 @@ const RequestsItem = ({ sender, setID }) => {
 
     const [employees, setEmployees] = useState([]);
     const [show, setShow] = useState(null);
+    const history = useHistory();
 
     useEffect(() => {
         fetch("/api/employees", {
@@ -52,7 +54,7 @@ const RequestsItem = ({ sender, setID }) => {
 
     return (
         <div>
-            <Row className={requestsItemStyles.item} onClick={() => setID(sender.id)}>
+            <Row className={requestsItemStyles.item} onClick={() => { setID(sender.id); history.push("/requests/" + sender.id); }}>
                 <Col md="4" style={{ marginTop: '0.3em' }}>
                     <h4 className={requestsItemStyles.text}>{sender.id}</h4>
                 </Col>
@@ -73,7 +75,7 @@ const RequestsItem = ({ sender, setID }) => {
                         <Form.Label>Assign Employee</Form.Label>
                         <Form.Control as="select">
                             <option disabled>Choose...</option>                        
-                            {employees.map(employee => (<option  id={employee.id}>{employee.email}</option>))}
+                            {employees.map(employee => (<option key={employee.id} id={employee.id}>{employee.email}</option>))}
                         </Form.Control>
                     </Form.Group>
                 </Modal.Body>

@@ -1,11 +1,16 @@
-import React, {useState} from "react";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import employeeItemStyles from '../../styles/list.module.css';
 import classNames from 'classnames';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const EmployeeItem = ({ employee, setID }) =>  (
-        <Row className={employeeItemStyles.item} onClick={() => setID(employee.id)}>
+const EmployeeItem = ({ employee, setID }) => {
+    
+    const history = useHistory();
+
+    return (
+        <Row className={employeeItemStyles.item} onClick={() => {setID(employee.id); history.push("/employees/" + employee.id)}}>
             <Col md="4">
                 <h4 className={employeeItemStyles.text}>{employee.id}</h4>
             </Col>
@@ -13,7 +18,8 @@ const EmployeeItem = ({ employee, setID }) =>  (
                 <h4 className={employeeItemStyles.text}>{employee.email}</h4>
             </Col>
         </Row>
-    )
+    );
+ };
 
 export default EmployeeItem;
 

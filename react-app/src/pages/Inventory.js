@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Layout from "../components/Templates/Layout";
 import InventoryList from "../components/Inventory/InventoryList";
 import Product from "../components/Inventory/Product";
@@ -7,7 +7,8 @@ import Toolbar from "../components/Toolbar/Toolbar";
 import styles from '../styles/list.module.css';
 
 const Inventory = () => {
-    const [id, setID] = useState(1);
+    const { url_id } = useParams();
+    const [id, setID] = useState(url_id);
     const [stock, setStock] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
@@ -20,27 +21,29 @@ const Inventory = () => {
                 'Content-Type': 'application/json',
             },
         })
-        .then(response => response.json())
-        .then(data => {
-            setStock(data);
-            if(isLoading)
-                setID(data[0]["id"]);
-            setIsLoading(false);
-        })
-        .catch(console.log);
-    },[]);
-    
+            .then(response => response.json())
+            .then(data => {
+                if(!data.filter(product =>product.id == url_id).length > 0){
+                    setID(data[0]["id"]);
+                    history.push("/inventory/" + data[0]["id"]);
+                }
+                setStock(data);
+                setIsLoading(false);
+            })
+            .catch(console.log);
+    }, []);
+
     return (isLoading ? <Layout></Layout> :
-        stock.length > 0  ? (
-        <Layout 
-        list={<InventoryList inventory={stock} setID={setID} />} 
-        activeItem={<Product product={stock.find(product => product.id == id)} />} 
-        />) : (
-            <div>
-                <Toolbar />
-                <h1 className={styles.empty}>Inventory is empty</h1>
-            </div>            
-        )
+        stock.length > 0 ? (
+            <Layout
+                list={<InventoryList inventory={stock} setID={setID} />}
+                activeItem={<Product product={stock.find(product => product.id == id)} />}
+            />) : (
+                <div>
+                    <Toolbar />
+                    <h1 className={styles.empty}>Inventory is empty</h1>
+                </div>
+            )
     )
 }
 

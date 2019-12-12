@@ -27,7 +27,7 @@ const RequestsList = ({ requests, setID }) => {
                             <h4>Sender</h4>
                         </Col>
                     </Row>
-                    {requests.map(sender => (<RequestsItem sender={sender} setID={setID} />))}
+                    {requests.map(sender => (<RequestsItem key={sender.id} sender={sender} setID={setID} />))}
                 </Col>
             </Container>
 

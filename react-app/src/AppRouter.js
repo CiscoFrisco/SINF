@@ -63,22 +63,22 @@ const AppRouter = () => (
             <Route path="/signup">
                 <SignUp />
             </Route>
-            <Route path="/employees">
+            <Route path="/employees/:url_id">
                 <Employees />
             </Route>
             <Route path="/employee">
                 <EmployeePage />
             </Route>
-            <Route path="/inventory">
+            <Route path="/inventory/:url_id">
                 <Inventory />
             </Route>
-            <Route path="/warehouse">
+            <Route path="/warehouse/:url_id">
                 <Warehouse />
             </Route>
-            <Route path="/requests">
+            <Route path="/requests/:url_id">
                 <Requests />
             </Route>
-            <Route path="/orders">
+            <Route path="/orders/:url_id">
                 <Orders />
             </Route>
             <Route path="/waves">

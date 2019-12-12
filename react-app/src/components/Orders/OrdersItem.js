@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import orderItemStyles from '../../styles/list.module.css';
-import { Row, Col, Button, Form } from 'react-bootstrap';
-import Modal from 'react-bootstrap/Modal';
+import { Row, Col, Button, Form, Modal } from 'react-bootstrap';
 
 const OrdersItem = ({ client, setID }) => {
     const [employees, setEmployees] = useState([]);
     const [show, setShow] = useState(null);
     const selectedEmployee = null;
+    const history = useHistory();
 
     useEffect(() => {
         fetch("/api/employees", {
@@ -51,7 +52,7 @@ const OrdersItem = ({ client, setID }) => {
 
     return (
         <div>
-            <Row className={orderItemStyles.item} onClick={() => setID(client.id)}>
+            <Row className={orderItemStyles.item} onClick={() => { setID(client.id); history.push("/orders/" + client.id)}}>
                 <Col md="4" style={{ marginTop: '0.3em' }}>
                     <h4 className={orderItemStyles.text}>{client.id}</h4>
                 </Col>

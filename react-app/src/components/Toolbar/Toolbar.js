@@ -24,11 +24,11 @@ const Toolbar = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/employees">Employees</Nav.Link>
-          <Nav.Link href="/inventory">Inventory</Nav.Link>
-          <Nav.Link href="/warehouse">Warehouse</Nav.Link>
-          <Nav.Link href="/requests">Requests</Nav.Link>
-          <Nav.Link href="/orders">Orders</Nav.Link>
+          <Nav.Link href="/employees/1">Employees</Nav.Link>
+          <Nav.Link href="/inventory/1">Inventory</Nav.Link>
+          <Nav.Link href="/warehouse/1">Warehouse</Nav.Link>
+          <Nav.Link href="/requests/1">Requests</Nav.Link>
+          <Nav.Link href="/orders/1">Orders</Nav.Link>
           <Nav.Link href="/waves">Waves</Nav.Link>
         </Nav>
         <Nav>

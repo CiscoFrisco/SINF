@@ -27,7 +27,7 @@ const Product = ({ product }) => {
                 </Col>
                 <Col md={{span:5 , offset:2}}>
                     <h4 className={productStyles.infoTitles}>Warehouse Location</h4>
-                    <Row className={classNames(scrollStyles.scrolly, listStyles.scrolly10)}>
+                    <Row className={classNames(scrollStyles.scrolly, listStyles.scrolly10, listStyles.margin)}>
                         {locations.map(location => (<ProductLinkListItem id={location} type="location"/>))}
                     </Row>
                 </Col>
