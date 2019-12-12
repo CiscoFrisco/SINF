@@ -1,7 +1,10 @@
+const wavesModel = require("../models/wavesModel");
 const request = require("request");
 let incomingOrders = [];
 
-const getRequests = (req, res, next) => {
+const getRequests = async (req, res, next) => {
+    const waves = await wavesModel.getWaves();
+
     var options = {
         method: 'GET',
         url: `${req.protocol}://${req.get('host')}/api/stock/incoming`,
@@ -27,11 +30,19 @@ const getRequests = (req, res, next) => {
             const orders = [];
 
             JSON.parse(body).forEach((element) => {
+                let found = false;
+
+                waves.forEach((wave) => {
+                    if(wave.ref === element.naturalKey)
+                        found = true;
+                })
+
                 if (!element.isDeleted && !element.naturalKey.includes("SYS") && incomingOrders.includes(element.naturalKey)) {
                     const order = {
                         id: element.naturalKey,
                         name: element.sellerSupplierPartyName,
                         date: element.unloadingDateTime,
+                        wave: found,
                         productList: [],
                     };
 

@@ -44,6 +44,6 @@ INSERT INTO employee(email, password) VALUES('email@email.email', '$2a$08$PaAprg
 INSERT INTO employee(email, password) VALUES('a@a.a', '$2a$08$PaAprgLos9T90uGnSHa8GuqjKBanidqgddCQ0tuplPt1gh5d0GZtW');
 INSERT INTO section(warehouse, x, y) VALUES('ali ao lado', 10, 10);
 INSERT INTO product(id, section_id) VALUES('AAA', 1);
-INSERT INTO wave(ref, party, id_employee) VALUES('ECF.2019.1', 'Teste', 1);
+INSERT INTO wave(ref, party, id_employee) VALUES('ECF.2019.4', 'Teste', 1);
 INSERT INTO waveItem(id, quantity, wave_id) VALUES('MAD', 7, 1);
 INSERT INTO waveItem(id, quantity, wave_id) VALUES('CAD', 13, 1);

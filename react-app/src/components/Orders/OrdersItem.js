@@ -70,7 +70,7 @@ const OrdersItem = ({ client, setID }) => {
                 <Col md="5" style={{ marginTop: '0.3em' }}>
                     <h4 className={orderItemStyles.text}>{client.name}</h4>
                 </Col>
-                {isToday() && (<Col md="3">
+                {!client.wave && isToday() && (<Col md="3">
                     <Button variant="dark" onClick={() => setShow(client.id)}> Create Wave</Button>
                 </Col>)}
 

@@ -88,6 +88,7 @@ const getWaves = async () => {
             waves.push({
                 wave_id: row.wave_id,
                 id_employee: row.id_employee,
+                ref: row.ref,
                 type: row.ref.includes("ECF") ? "Request" : "Order",
                 productList: [{
                     id: row.id,

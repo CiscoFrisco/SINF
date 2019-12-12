@@ -73,7 +73,7 @@ const RequestsItem = ({ sender, setID }) => {
                 <Col md="5" style={{ marginTop: '0.3em' }}>
                     <h4 className={requestsItemStyles.text}>{sender.name}</h4>
                 </Col>
-                {isToday() && (<Col md="3">
+                {!sender.wave && isToday() && (<Col md="3">
                     <Button variant="dark" onClick={() => setShow(sender.id)}> Create Wave</Button>
                 </Col>)}
             </Row>
