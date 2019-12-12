@@ -12,8 +12,6 @@ const Warehouse = () => {
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
 
-    //const section = [{ id: 1}, { id: 2}];
-
     useEffect(() => {
         fetch("/api/warehouses", {
             method: 'GET',

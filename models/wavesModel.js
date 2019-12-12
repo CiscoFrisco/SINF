@@ -23,7 +23,7 @@ const createWave = async (wave) => {
 
     const items = [];
 
-    for(let i = 0; i < wave.waveItems.length; i++) {
+    for (let i = 0; i < wave.waveItems.length; i++) {
         const item = wave.waveItems[i];
         values = [
             item.id,
@@ -41,4 +41,47 @@ const createWave = async (wave) => {
     };
 }
 
-module.exports = { createWave }
+const getWaves = async () => {
+    const query = `SELECT *
+      FROM wave, waveItem
+      WHERE wave.id = waveItem.wave_id`;
+
+    const { rows } = await pool.query(query);
+
+    const waves = [];
+
+    rows.forEach((row) => {
+        let found = false;
+
+        waves.forEach((wave) => {
+            if(wave.wave_id === row.wave_id) {
+                found = true;
+                wave.productList.push({
+                    id: row.id,
+                    name: row.id, //Needs change
+                    quantity: row.quantity,
+                    section: row.section,
+                    completed: row.completed
+                });
+            }
+        })
+
+        if(!found)
+            waves.push({
+                wave_id: row.wave_id,
+                id_employee: row.id_employee,
+                type: row.ref.includes("ECF") ? "Request" : "Order",
+                productList: [{
+                    id: row.id,
+                    name: row.id, //Needs change
+                    quantity: row.quantity,
+                    section: row.section,
+                    completed: row.completed
+                }]
+            })
+    })
+
+    return waves;
+}
+
+module.exports = { createWave, getWaves }
