@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS wave (
 );
 
 CREATE TABLE IF NOT EXISTS waveItem (
-  id SERIAL PRIMARY KEY,
+  id VARCHAR(255) PRIMARY KEY,
   quantity INTEGER,
   wave_id INTEGER REFERENCES wave(id),
   section_id INTEGER REFERENCES section(id),
