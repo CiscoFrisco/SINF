@@ -6,6 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 const OrdersItem = ({ client, setID }) => {
     const [employees, setEmployees] = useState([]);
     const [show, setShow] = useState(null);
+    const selectedEmployee = null;
 
     useEffect(() => {
         fetch("/api/employees", {
@@ -22,13 +23,30 @@ const OrdersItem = ({ client, setID }) => {
             .catch(console.log);
     }, []);
 
-    const isToday = () =>{
-        const currDate = new Date();
+    const isToday = () => {
+        return true;/*const currDate = new Date();
         const orderDate = new Date(client.date);
 
         return currDate.getDate() == orderDate.getDate() &&
                currDate.getMonth() == orderDate.getMonth() &&
-               currDate.getFullYear() == orderDate.getFullYear();
+               currDate.getFullYear() == orderDate.getFullYear();*/
+    }
+
+    const createWave = (employee) => {
+        employee = 1;
+        fetch('/api/waves', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ref: client.id,
+                party: client.name,
+                id_employee: employee,
+                waveItems: client.productList
+            })
+        });
     }
 
     return (
@@ -43,7 +61,7 @@ const OrdersItem = ({ client, setID }) => {
                 {isToday() && (<Col md="3">
                     <Button variant="dark" onClick={() => setShow(client.id)}> Create Wave</Button>
                 </Col>)}
-                
+
             </Row>
 
             <Modal show={show != null} onHide={() => setShow(false)}>
@@ -63,7 +81,10 @@ const OrdersItem = ({ client, setID }) => {
                     <Button variant="secondary" onClick={() => setShow(null)}>
                         Cancel
                 </Button>
-                    <Button variant="dark" onClick={() => setShow(null)}>
+                    <Button variant="dark" onClick={() => {
+                        createWave();
+                        setShow(null);
+                    }}>
                         Create
                 </Button>
                 </Modal.Footer>

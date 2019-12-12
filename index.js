@@ -47,6 +47,7 @@ const startApp = () => {
   const purchasesRouter = require('./routes/purchases');
   const salesRouter = require('./routes/sales');
   const stockRouter = require('./routes/stock');
+  const wavesRouter = require('./routes/waves');
   
   app.use('/api/', indexRouter);
   app.use('/api/employees', employeesRouter);
@@ -54,6 +55,7 @@ const startApp = () => {
   app.use('/api/purchases', purchasesRouter);
   app.use('/api/sales', salesRouter);
   app.use('/api/stock', stockRouter);
+  app.use('/api/waves', wavesRouter);
   
   // catch 404 and forward to error handler
   app.use(function (req, res, next) {
