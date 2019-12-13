@@ -5,16 +5,16 @@ import RequestsItem from './RequestsItem';
 import { FaPlusCircle, FaTrash } from 'react-icons/fa';
 
 const RequestsList = ({ requests, setID }) => {
-    
     const [show, setShow] = useState(false);
     const [date, setDate] = useState(new Date());
     const [suppliers, setSuppliers] = useState([]);
     const [items, setItems] = useState([]);
     const [isLoadingSuppliers, setIsLoadingSuppliers] = useState(true);
     const [isLoadingItems, setIsLoadingItems] = useState(true);
-    const [product, setProduct] = useState('a');
-    const [quantity, setQuantity] = useState(1);
-    const [productsAdded, setProductsAdded] = useState([]);
+    const [product, setProduct] = useState('');
+    const [quantity, setQuantity] = useState(0);
+    const [id, setId] = useState(0);
+    const [productsAdded, setProductsAdded] = useState ([]);
 
     useEffect(() => {
         fetch("/api/purchases/suppliers", {
@@ -48,20 +48,25 @@ const RequestsList = ({ requests, setID }) => {
             .catch(console.log);
     }, []);
 
-    const addProduct = () => {
-        if(quantity>0 && product!='')
+
+    const addProduct = async  () => {
+        try{
+            setId(id+1);
+        }
+        finally{
+        if(quantity>0 && product!=='')
             {
-                const newProduct = {
-                    product:"fds",
-                    quantity:3};
-                setProductsAdded([...productsAdded, newProduct]);
-                //setQuantity(3);
-                //setProduct('n');
+                const newProduct = { id:id, product:product, quantity:quantity};
+                const util = productsAdded;
+                util.push(newProduct);
+                setProductsAdded(util);
             }
+        }
     }
 
-    const removeProduct = (productToRemove) => {
-        var index = productsAdded.findIndex((product)=> product.product === productToRemove.product)
+    const removeProduct = (productToRemoveId) => {
+        console.log(productsAdded);
+        var index = productsAdded.findIndex((product)=> product.id === productToRemoveId)
         if (index !== -1)
         {
             productsAdded.splice(index,1)
@@ -107,7 +112,7 @@ const RequestsList = ({ requests, setID }) => {
                             <input id="date" type="date" defaultValue={date}></input>
                         </Row>
                         <Row>
-                            <Form.Group as={Col} controlId="formGridState">
+                            <Form.Group as={Col} controlId="formGridState" style={{ padding: "7%" }}>
                                 <Form.Label>Sender</Form.Label>
                                 <Form.Control as="select">
                                     <option disabled>Choose...</option>
@@ -125,25 +130,23 @@ const RequestsList = ({ requests, setID }) => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {
-                                    productsAdded.map(item => (
-                                    <tr>
-                                        {console.log(item)}
-                                        <td key={item.product} id={item.product}>{item.product}</td>
-                                        <td key={item.quantity} id={item.quantity}>{item.quantity}</td>
-                                        <td> <Button variant="dark" onClick={removeProduct(item)}><FaTrash/></Button></td>
+                                    {productsAdded.map(item => (
+                                    <tr>                                     
+                                        <td id={item.id}>{item.product}</td>
+                                        <td id={item.id}>{item.quantity}</td>
+                                        <td> <Button variant="dark" onClick={()=>removeProduct(item.id)}><FaTrash/></Button></td>
                                     </tr>
                                     ))}
                                     <tr>
                                         <td>
                                             <Form.Group controlId="formGridState">
-                                                <Form.Control as="select" >
+                                                <Form.Control as="select" value={product} onChange={event => setProduct(event.target.value)}>
                                                     <option disabled>Choose...</option>
                                                     {items.map(item => (<option key={item} id={item}>{item}</option>))}
                                                 </Form.Control>
                                             </Form.Group>
                                         </td>
-                                        <td><input type="text" id="quantity" type="number"/></td>
+                                        <td><input className={requestsListStyles.inputQt} type="text" id="quantity" type="number" min="0" value={quantity} onChange={event => setQuantity(event.target.value)}/></td>
                                         <td><Button variant="dark" onClick={addProduct}><FaPlusCircle/></Button></td>
                                     </tr>
                                 </tbody>
