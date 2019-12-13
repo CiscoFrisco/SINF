@@ -1,8 +1,7 @@
 import React from "react";
 import employeeListStyles from '../../../styles/list.module.css';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
+import {Row, Col, Container, Table} from 'react-bootstrap/';
+
 import WaveItem from './WaveItem';
 
 const WaveList = ({ wave, setID }) => {
@@ -13,18 +12,18 @@ const WaveList = ({ wave, setID }) => {
                     <Row className={employeeListStyles.title}>
                         <h3>Waves</h3>
                     </Row>
-                    <Row className={employeeListStyles.header}>
-                        <Col md="3">
-                            <h4>ID</h4>
-                        </Col>
-                        <Col md="6">
-                            <h4>Employee ID</h4>
-                        </Col>
-                        <Col md="3">
-                            <h4>Type</h4>
-                        </Col>
-                    </Row>
-                    {wave.map(wave => (<WaveItem key={wave.wave_id} wave={wave} setID={setID} />))}
+                    <Table style={{marginTop: '5%'}}striped bordered hover>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Employee ID </th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {wave.map(wave => (<WaveItem key={wave.wave_id} wave={wave} setID={setID} />))}
+                        </tbody>
+                    </Table>
                 </Col>
             </Container>
         </div>
