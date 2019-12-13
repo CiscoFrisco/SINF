@@ -1,0 +1,32 @@
+
+import React from 'react';
+import utils from "./components/utils/utils";
+import {Route, Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
+
+const PrivateRoute = ({ children, isAdmin, adminOnly, ...rest }) => (
+        <Route
+            {...rest}
+            render={({ location }) =>
+                !utils.loggedIn() ? (
+                        <Redirect
+                            to={{
+                                pathname: "/login",
+                                state: { from: location }
+                            }}
+                        />
+                ) : ((adminOnly && isAdmin) || (!adminOnly && !isAdmin)) ? (
+                    children
+                ) :  (<Redirect
+                to={{
+                    pathname: "/unauthorized",
+                    state: { from: location }
+                }}
+            />)
+
+            }
+        />
+)
+
+export default connect(({user}) => ({isAdmin: user.role}))(PrivateRoute);
+
