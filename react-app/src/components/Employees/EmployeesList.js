@@ -15,18 +15,7 @@ const EmployeesList = ({ employees, setID }) => {
                     <Row className={employeeListStyles.title}>
                         <h3>Employees</h3>
                     </Row>
-                    {/* <Row className={employeeListStyles.header}>
-                        <Col md="4">
-                            <h4>ID</h4>
-                        </Col>
-                        <Col md="8">
-                            <h4>Email</h4>
-                        </Col>
-                    </Row>
-                    <Col className={classNames(scrollStyles.scroll, employeeListStyles.listSize)}>
-                        {employees.map(employee => (<EmployeeItem key={employee.id} employee={employee} setID={setID} />))}
-                    </Col> */}
-                    <Table style={{marginTop: '5%'}}striped bordered hover>
+                    <Table style={{marginTop: '5%'}} hover>
                         <thead>
                             <tr>
                                 <th>ID</th>
