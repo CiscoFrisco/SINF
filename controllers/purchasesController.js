@@ -114,4 +114,50 @@ const getDelivered = (req, res, next) => {
     });
 }
 
-module.exports = { getRequests, getDelivered }
+const getSuppliers = (req, res, next) => {
+    var options = {
+        headers: {
+            Authorization: process.env.PRIMAVERA_TOKEN,
+            "Content-Type": "application/json",
+        },
+        method: 'GET',
+        url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/purchases/orders
+        `,
+    };
+
+    request(options, (error, response, body) => {
+        if(error) {
+            res.status(response.statusCode).send(error);
+        }
+
+        let suppliers = [];
+
+        JSON.parse(body).forEach((element) => suppliers.push(element.sellerSupplierPartyName));
+        res.status(response.statusCode).send(JSON.stringify([...new Set(suppliers)]));
+    });
+}
+
+const getItems = (req, res, next) => {
+    var options = {
+        headers: {
+            Authorization: process.env.PRIMAVERA_TOKEN,
+            "Content-Type": "application/json",
+        },
+        method: 'GET',
+        url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/businessCore/items
+        `,
+    };
+
+    request(options, (error, response, body) => {
+        if(error) {
+            res.status(response.statusCode).send(error);
+        }
+
+        let items = [];
+
+        JSON.parse(body).forEach((element) => items.push(element.description));
+        res.status(response.statusCode).send(JSON.stringify([...new Set(items)]));
+    });
+}
+
+module.exports = { getRequests, getDelivered, getSuppliers, getItems }

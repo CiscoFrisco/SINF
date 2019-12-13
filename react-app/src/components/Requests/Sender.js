@@ -60,7 +60,7 @@ const Sender = ({ sender }) => {
             <tbody>
               {requestItems.map(item => (
                 <RequestItem key={item.id} item={item} />
-              ))}{" "}
+              ))}
             </tbody>
           </Table>
         </Col>

@@ -75,6 +75,7 @@ const getStock = (req, res, next) => {
             });
         });
         
+        console.log(stock);
         res.status(response.statusCode).send(JSON.stringify(stock));
     });
 }
