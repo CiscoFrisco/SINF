@@ -12,7 +12,7 @@ const WaveList = ({ wave, setID }) => {
                     <Row className={employeeListStyles.title}>
                         <h3>Waves</h3>
                     </Row>
-                    <Table style={{marginTop: '5%'}}striped bordered hover>
+                    <Table style={{marginTop: '5%'}} hover>
                         <thead>
                             <tr>
                                 <th>ID</th>

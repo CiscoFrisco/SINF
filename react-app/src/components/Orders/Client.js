@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
+import { Row,Col,Container,Button, Table } from "react-bootstrap/"
 import clientStyles from "../../styles/client.module.css";
 import defaultImg from "../../assets/product_imgs/default.png";
 import classNames from "classnames";
@@ -52,7 +49,7 @@ const Client = ({ client }) => {
           <Row className={clientListStyles.title}>
             <h4>Product List</h4>
           </Row>
-          <Row className={clientListStyles.itemheader}>
+          {/* <Row className={clientListStyles.itemheader}>
             <Col md="2" style={{marginLeft: '1em'}}>
               <h4>ID</h4>
             </Col>
@@ -67,7 +64,21 @@ const Client = ({ client }) => {
             {client.productList.map(item => (
               <OrderItem item={item} />
             ))}{" "}
-          </div>
+          </div> */}
+          <Table className={classNames(scrollStyles.scroll)} style={{ marginTop: '5%' }} hover>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Product Name </th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {client.productList.map(item => (
+                <OrderItem key={item.id} item={item} />
+              ))}{" "}
+            </tbody>
+          </Table>
         </Col>
       </Container>
     </div>

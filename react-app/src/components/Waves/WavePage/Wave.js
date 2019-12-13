@@ -3,7 +3,7 @@ import wavesStyles from "../../../styles/wavesPage.module.css";
 import ItemOrder from "./ItemOrder";
 import scrollStyles from "../../../styles/scroll.module.css";
 import classNames from "classnames";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button, Table } from "react-bootstrap";
 import defaultImg from "../../../assets/profile_pics/default.png";
 
 const Wave = ({ wave }) => {
@@ -65,27 +65,22 @@ const Wave = ({ wave }) => {
         <Row className={classNames(wavesStyles.title, wavesStyles.padding_top)}>
           <h4>Product List</h4>
         </Row>
-        <Row className={wavesStyles.itemheader}>
-          <Col md="10" style={{ display: "flex" }}>
-            <Col md="2" style={{ marginLeft: '0.5em' }} >
-              <h5>ID</h5>
-            </Col>
-            <Col md="5">
-              <h5>Product Name</h5>
-            </Col>
-            <Col md="3" style={{ marginLeft: '0.2em' }}>
-              <h5>Quantity</h5>
-            </Col>
-            <Col md="1" style={{ marginLeft: '0.3em' }}>
-              <h5>Section</h5>
-            </Col>
-          </Col>
-        </Row>
-        <div className={classNames(scrollStyles.scroll, wavesStyles.scroll30)}>
-          {inventory.map(item => (
-            <ItemOrder key={item.id} item={item} setChecked={setChecked} />
-          ))}{" "}
-        </div>
+        <Table className={classNames(scrollStyles.scroll)} style={{ marginTop: '5%' }}>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Product Name </th>
+                <th>Quantity</th>
+                <th>Section</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {inventory.map(item => (
+                <ItemOrder key={item.id} item={item} setChecked={setChecked}/>
+              ))}{" "}
+            </tbody>
+          </Table>
 
       </div>
     </div>
