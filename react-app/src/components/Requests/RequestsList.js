@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import requestsListStyles from '../../styles/list.module.css';
 import { Row, Col, Button, Modal, Table, Container, Form } from 'react-bootstrap';
 import RequestsItem from './RequestsItem';
-import { FaPlusCircle } from 'react-icons/fa';
+import { FaPlusCircle, FaTrash } from 'react-icons/fa';
 
 const RequestsList = ({ requests, setID }) => {
     
@@ -12,6 +12,9 @@ const RequestsList = ({ requests, setID }) => {
     const [items, setItems] = useState([]);
     const [isLoadingSuppliers, setIsLoadingSuppliers] = useState(true);
     const [isLoadingItems, setIsLoadingItems] = useState(true);
+    const [product, setProduct] = useState('a');
+    const [quantity, setQuantity] = useState(1);
+    const [productsAdded, setProductsAdded] = useState([]);
 
     useEffect(() => {
         fetch("/api/purchases/suppliers", {
@@ -45,8 +48,25 @@ const RequestsList = ({ requests, setID }) => {
             .catch(console.log);
     }, []);
 
-    const addRow = () => {
+    const addProduct = () => {
+        if(quantity>0 && product!='')
+            {
+                const newProduct = {
+                    product:"fds",
+                    quantity:3};
+                setProductsAdded([...productsAdded, newProduct]);
+                //setQuantity(3);
+                //setProduct('n');
+            }
+    }
 
+    const removeProduct = (productToRemove) => {
+        var index = productsAdded.findIndex((product)=> product.product === productToRemove.product)
+        if (index !== -1)
+        {
+            productsAdded.splice(index,1)
+            setProductsAdded([...productsAdded])
+        }
     }
 
     return (
@@ -98,19 +118,34 @@ const RequestsList = ({ requests, setID }) => {
                         <Container style={{ padding: "3%" }}>
                             <Table>
                                 <thead>
-                                    <td>Product</td>
-                                    <td>Quantity</td>
+                                    <tr>
+                                        <td>Product</td>
+                                        <td>Quantity</td>
+                                        <td></td>
+                                    </tr>
                                 </thead>
                                 <tbody>
+                                    {
+                                    productsAdded.map(item => (
                                     <tr>
-                                        <Form.Group controlId="formGridState">
-                                            <Form.Control as="select">
-                                                <option disabled>Choose...</option>
-                                                {items.map(item => (<option key={item} id={item}>{item}</option>))}
-                                            </Form.Control>
-                                        </Form.Group>
+                                        {console.log(item)}
+                                        <td key={item.product} id={item.product}>{item.product}</td>
+                                        <td key={item.quantity} id={item.quantity}>{item.quantity}</td>
+                                        <td> <Button variant="dark" onClick={removeProduct(item)}><FaTrash/></Button></td>
                                     </tr>
-                                    <tr><input type="text" id="quantity"></input></tr>
+                                    ))}
+                                    <tr>
+                                        <td>
+                                            <Form.Group controlId="formGridState">
+                                                <Form.Control as="select" >
+                                                    <option disabled>Choose...</option>
+                                                    {items.map(item => (<option key={item} id={item}>{item}</option>))}
+                                                </Form.Control>
+                                            </Form.Group>
+                                        </td>
+                                        <td><input type="text" id="quantity" type="number"/></td>
+                                        <td><Button variant="dark" onClick={addProduct}><FaPlusCircle/></Button></td>
+                                    </tr>
                                 </tbody>
                             </Table>
                         </Container>
