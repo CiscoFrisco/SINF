@@ -56,8 +56,9 @@ const loginEmployeeController = async (req, res, next) => {
         if (!utils.comparePassword(rows[0].password, req.body.password)) {
             return res.status(400).send({ 'message': 'The credentials you provided are incorrect' });
         }
+        const role = rows[0].ismanager;
         const token = utils.generateToken(rows[0].id);
-        return res.status(200).send({ token });
+        return res.status(200).send({ token, role });
     } catch (error) {
         return res.status(400).send(error);
     }

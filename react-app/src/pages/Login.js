@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {connect} from 'react-redux';
 import { useHistory } from "react-router-dom";
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -7,7 +8,9 @@ import loginStyles from "../styles/login.module.css"
 import LoginForm from "../components/Login/LoginForm";
 import utils from "../components/utils/utils";
 
-const Login = () => {
+import {setUserRole} from '../actions/userActions';
+
+const Login = ({setUserRole}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
@@ -28,11 +31,11 @@ const Login = () => {
                 password: password,
             })
         })
-        .then(res => {
-            if (res.status < 400) {
-                utils.setToken(res.token);
-                history.push("/");
-            }
+        .then(res => res.json())
+        .then(data => {
+            utils.setToken(data.token);
+            setUserRole(data.role);
+            history.push("/");
         })
         .catch(console.log);
     }
@@ -49,5 +52,5 @@ const Login = () => {
     )
 };
 
-export default Login;
+export default connect(null, {setUserRole})(Login);
 
