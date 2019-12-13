@@ -28,13 +28,13 @@ const Wave = ({ wave }) => {
   }
 
   useEffect(() => {
-    let allChecked = true;
+    let allCompleted = true;
     inventory.forEach(item => {
-      if (!item.checked)
-        allChecked = false;
+      if (!item.completed)
+      allCompleted = false;
     })
 
-    if (allChecked)
+    if (allCompleted)
       setDisabled(false);
     else
       setDisabled(true);
@@ -83,7 +83,7 @@ const Wave = ({ wave }) => {
         </Row>
         <div className={classNames(scrollStyles.scroll, wavesStyles.scroll30)}>
           {inventory.map(item => (
-            <ItemOrder item={item} setChecked={setChecked} />
+            <ItemOrder key={item.id} item={item} setChecked={setChecked} />
           ))}{" "}
         </div>
 

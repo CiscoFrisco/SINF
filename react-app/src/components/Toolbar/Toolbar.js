@@ -29,7 +29,7 @@ const Toolbar = () => {
           <Nav.Link href="/warehouse/1">Warehouse</Nav.Link>
           <Nav.Link href="/requests/1">Requests</Nav.Link>
           <Nav.Link href="/orders/1">Orders</Nav.Link>
-          <Nav.Link href="/waves">Waves</Nav.Link>
+          <Nav.Link href="/waves/1">Waves</Nav.Link>
         </Nav>
         <Nav>
           <Nav.Link onClick={handleLogout(history)}>
