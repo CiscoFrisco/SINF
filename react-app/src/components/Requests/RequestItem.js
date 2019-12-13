@@ -1,20 +1,11 @@
-import React, { useState } from "react";
-import requestsItemStyles from "../../styles/list.module.css";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import React from "react";
 
 const RequestItem = ({ item }) => (
-  <Row className={requestsItemStyles.senderItem}>
-    <Col md="3">
-      <h5 className={requestsItemStyles.text}>{item.id}</h5>
-    </Col>
-    <Col md="7">
-      <h5 className={requestsItemStyles.text}>{item.name}</h5>
-    </Col>
-    <Col md="2">
-      <h5 className={requestsItemStyles.text}>{item.quantity}</h5>
-    </Col>
-  </Row>
+  <tr >
+    <td>{item.id}</td>
+    <td>{item.name}</td>
+    <td>{item.quantity}</td>
+  </tr>
 );
 
 export default RequestItem;

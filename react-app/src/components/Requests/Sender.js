@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import Row from "react-bootstrap/Row";
-import { Col, Button } from "react-bootstrap";
-import Container from "react-bootstrap/Container";
+import { Col, Button, Container, Row, Table } from "react-bootstrap";
 import senderStyles from "../../styles/sender.module.css";
 import defaultImg from "../../assets/product_imgs/default.png";
 import classNames from "classnames";
@@ -11,7 +9,7 @@ import scrollStyles from "../../styles/scroll.module.css";
 
 const Sender = ({ sender }) => {
   const requestItems = sender.productList;
-  const lang_options = { weekday:'long', year:'numeric', month:'long', day:'numeric'};
+  const lang_options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const date = new Date(sender.date);
 
   return (
@@ -51,22 +49,20 @@ const Sender = ({ sender }) => {
           <Row className={senderListStyles.title}>
             <h4>Product List</h4>
           </Row>
-          <Row className={senderListStyles.itemheader}>
-            <Col md="2" style={{marginLeft: '1em'}}>
-              <h4>ID</h4>
-            </Col>
-            <Col md="5" style={{marginLeft: '2.4em'}}>
-              <h4>Product Name</h4>
-            </Col>
-            <Col md="3" style={{marginLeft: '1em'}}>
-              <h4>Quantity</h4>
-            </Col>
-          </Row>
-          <div className={classNames(scrollStyles.scroll, senderListStyles.scroll30)}>
-            {requestItems.map(item => (
-              <RequestItem key={item.id} item={item} />
-            ))}{" "}
-          </div>
+          <Table className={classNames(scrollStyles.scroll)} style={{ marginTop: '5%' }} hover>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Product Name </th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {requestItems.map(item => (
+                <RequestItem key={item.id} item={item} />
+              ))}{" "}
+            </tbody>
+          </Table>
         </Col>
       </Container>
     </div>
