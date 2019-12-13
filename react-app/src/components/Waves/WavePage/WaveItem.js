@@ -9,7 +9,7 @@ const WaveItem = ({ wave, setID }) => {
     const history = useHistory();
 
     return (
-        <Row className={inventoryItemStyles.item} onClick={() => { setID(wave.id); history.push("/waves/" + wave.wave_id) }}>
+        <Row className={inventoryItemStyles.item} onClick={() => {setID(wave.wave_id); history.push("/waves/" + wave.wave_id) }}>
             <Col md="4">
                 <h4 className={inventoryItemStyles.text}>{wave.wave_id}</h4>
             </Col>

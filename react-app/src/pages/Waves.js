@@ -23,7 +23,6 @@ const Waves = () => {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             if(!data.filter(wave => wave.wave_id == url_id).length > 0){
                 setID(data[0]["wave_id"]);
                 history.push("/waves/" + data[0]["wave_id"]);

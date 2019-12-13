@@ -24,7 +24,7 @@ const WaveList = ({ wave, setID }) => {
                             <h4>Type</h4>
                         </Col>
                     </Row>
-                    {wave.map(wave => (<WaveItem wave={wave} setID={setID} />))}
+                    {wave.map(wave => (<WaveItem key={wave.wave_id} wave={wave} setID={setID} />))}
                 </Col>
             </Container>
         </div>

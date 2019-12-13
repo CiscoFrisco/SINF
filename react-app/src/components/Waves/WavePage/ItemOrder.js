@@ -4,7 +4,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 const ItemOrder = ({ item, setChecked}) => {
-  console.log(item);
   return(
   <Row className={inventoryItemStyles.orderWave}>
     <Col md="10" style={{display:"flex"}} className= {item.checked ? inventoryItemStyles.orderItemChecked : inventoryItemStyles.orderItemNotChecked}>
