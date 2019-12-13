@@ -1,7 +1,5 @@
 import React from "react";
-import Row from "react-bootstrap/Row";
-import { Col } from "react-bootstrap";
-import Container from "react-bootstrap/Container";
+import { Col, Container, Row, Table } from "react-bootstrap";
 import senderStyles from "../../styles/sender.module.css";
 import classNames from "classnames";
 import SectionItem from "./SectionItem";
@@ -21,22 +19,20 @@ const Section = ({ section }) => {
           <Row className={sectionListStyles.title}>
             <h4>Product List</h4>
           </Row>
-          <Row className={sectionListStyles.itemheader}>
-            <Col md="1" style={{ marginLeft: '1em' }}>
-              <h4>ID</h4>
-            </Col>
-            <Col md="6" style={{ marginLeft: '2.2em' }}>
-              <h4>Product Name</h4>
-            </Col>
-            <Col md="3" style={{ marginLeft: '1em' }}>
-              <h4>Quantity</h4>
-            </Col>
-          </Row>
-          <div className={classNames(scrollStyles.scroll, sectionListStyles.scroll60)}>
-            {section.items.map(item => (
-              <SectionItem item={item} />
-            ))}{" "}
-          </div>
+          <Table className={classNames(scrollStyles.scroll)} style={{ marginTop: '5%' }} hover>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {section.items.map(item => (
+                <SectionItem item={item} />
+              ))}{" "}
+            </tbody>
+          </Table>
         </Col>
       </Container>
     </div>

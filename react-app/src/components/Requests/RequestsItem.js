@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import requestsItemStyles from '../../styles/list.module.css';
-import { Row, Col, Button, Form } from 'react-bootstrap';
+import { Row, Col, Button, Form, Container } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 
 const RequestsItem = ({ sender, setID }) => {
@@ -27,7 +27,7 @@ const RequestsItem = ({ sender, setID }) => {
             .catch(console.log);
     }, []);
 
-    const isToday = () =>{
+    const isToday = () => {
         return true;
         // const currDate = new Date();
         // const orderDate = new Date(sender.date);
@@ -39,9 +39,9 @@ const RequestsItem = ({ sender, setID }) => {
 
     const createWave = () => {
         let id_employee;
-        
+
         employees.forEach((employee) => {
-            if(selectedEmployee === employee.email)
+            if (selectedEmployee === employee.email)
                 id_employee = employee.id;
         });
 
@@ -65,20 +65,15 @@ const RequestsItem = ({ sender, setID }) => {
     }
 
     return (
-        <div>
-            <Row className={requestsItemStyles.item} onClick={() => { setID(sender.id); history.push("/requests/" + sender.id); }}>
-                <Col md="4" style={{ marginTop: '0.3em' }}>
-                    <h4 className={requestsItemStyles.text}>{sender.id}</h4>
-                </Col>
-                <Col md="5" style={{ marginTop: '0.3em' }}>
-                    <h4 className={requestsItemStyles.text}>{sender.name}</h4>
-                </Col>
-                {!sender.wave && isToday() && (<Col md="3">
-                    <Button variant="dark" onClick={() => setShow(sender.id)}> Create Wave</Button>
-                </Col>)}
-            </Row>
+        <tr onClick={() => { setID(sender.id); history.push("/requests/" + sender.id) }}>
+            <td>{sender.id}</td>
+            <td>{sender.name}</td>
+            {(!sender.wave && isToday()) ? (<td>
+                <Button variant="dark" onClick={() => setShow(sender.id)}> Create Wave</Button>
+            </td>) : (<td></td>)}
 
-            <Modal show={show != null} onHide={() => setShow(false)}>
+
+            <Modal show={show != null} onHide={() => setShow(null)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Create Wave for Request {show}</Modal.Title>
                 </Modal.Header>
@@ -86,7 +81,7 @@ const RequestsItem = ({ sender, setID }) => {
                     <Form.Group as={Col} controlId="formGridState">
                         <Form.Label>Assign Employee</Form.Label>
                         <Form.Control as="select" onChange={handleChange}>
-                            <option disabled>Choose...</option>                        
+                            <option disabled>Choose...</option>
                             {employees.map(employee => (<option key={employee.id} id={employee.id}>{employee.email}</option>))}
                         </Form.Control>
                     </Form.Group>
@@ -95,7 +90,7 @@ const RequestsItem = ({ sender, setID }) => {
                     <Button variant="secondary" onClick={() => setShow(null)}>
                         Cancel
                 </Button>
-                <Button variant="dark" onClick={() => {
+                    <Button variant="dark" onClick={() => {
                         createWave();
                         setShow(null);
                     }}>
@@ -103,9 +98,10 @@ const RequestsItem = ({ sender, setID }) => {
                 </Button>
                 </Modal.Footer>
             </Modal>
-        </div>
-    )
-}
+        </tr>
+
+    );
+};
 
 export default RequestsItem;
 

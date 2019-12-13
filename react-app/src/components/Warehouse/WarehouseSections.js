@@ -1,8 +1,6 @@
 import React from "react";
 import sectionsListStyles from '../../styles/list.module.css';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
+import {Row, Col, Container, Table} from 'react-bootstrap';
 import WarehouseSection from './WarehouseSection';
 
 const WarehouseSections = ({ section, setID }) => {
@@ -13,15 +11,17 @@ const WarehouseSections = ({ section, setID }) => {
                     <Row className={sectionsListStyles.title}>
                         <h3>Sections</h3>
                     </Row>
-                    <Row className={sectionsListStyles.header}>
-                        <Col>
-                            <h4>ID</h4>
-                        </Col>
-                        <Col>
-                            <h4>Description</h4>
-                        </Col>
-                    </Row>
-                    {section.map(section => (<WarehouseSection section={section} setID={setID}/>))}
+                    <Table style={{ marginTop: '5%' }} hover>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {section.map(section => (<WarehouseSection section={section} setID={setID} />))}
+                        </tbody>
+                    </Table>
                 </Col>
             </Container>
         </div>

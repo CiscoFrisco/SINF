@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import requestsListStyles from '../../styles/list.module.css';
-import {Row, Col, Button, Modal} from 'react-bootstrap';
-import Container from 'react-bootstrap/Container';
+import { Row, Col, Button, Modal, Table, Container } from 'react-bootstrap';
 import RequestsItem from './RequestsItem';
 
 const RequestsList = ({ requests, setID }) => {
@@ -19,18 +18,21 @@ const RequestsList = ({ requests, setID }) => {
                             <Button variant="dark" onClick={() => setShow(true)}>Create</Button>
                         </Col>
                     </Row>
-                    <Row className={requestsListStyles.header}>
-                        <Col md="4">
-                            <h4>ID</h4>
-                        </Col>
-                        <Col md="8">
-                            <h4>Sender</h4>
-                        </Col>
-                    </Row>
-                    {requests.map(sender => (<RequestsItem key={sender.id} sender={sender} setID={setID} />))}
+                    <Table style={{ marginTop: '5%' }} hover>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Sender</th>
+                                <th>Wave</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {requests.map(sender => (<RequestsItem key={sender.id} sender={sender} setID={setID} />))}
+                        </tbody>
+                    </Table>
+
                 </Col>
             </Container>
-
 
             <Modal show={show} onHide={() => setShow(false)}>
                 <Modal.Header closeButton>
