@@ -59,10 +59,25 @@ const checkWave = async (wave) => {
     return rows;
 }
 
+const completeWave = async (wave) => {
+    const query = `UPDATE wave
+      SET completed = true
+      WHERE id = $1
+      RETURNING *`;
+
+    const values = [
+        wave.id,
+    ];
+
+    const { rows } = await pool.query(query, values);
+
+    return rows;
+}
+
 const getWaves = async () => {
     const query = `SELECT *
       FROM wave, waveItem
-      WHERE wave.id = waveItem.wave_id`;
+      WHERE wave.id = waveItem.wave_id AND wave.completed <> true`;
 
     const { rows } = await pool.query(query);
 
@@ -103,4 +118,4 @@ const getWaves = async () => {
     return waves;
 }
 
-module.exports = { createWave, checkWave, getWaves }
+module.exports = { createWave, checkWave, completeWave, getWaves }

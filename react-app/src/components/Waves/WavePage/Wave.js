@@ -40,6 +40,19 @@ const Wave = ({ wave }) => {
       setDisabled(true);
   }, inventory)
 
+  const completeWave = () => {
+    fetch('/api/waves/completed', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: wave.wave_id,
+      })
+    });
+  }
+
   return (
     <div className={wavesStyles.wavesInfoContainer}>
       <div className={wavesStyles.size}>
@@ -59,7 +72,7 @@ const Wave = ({ wave }) => {
             <p>{wave.emp_name}</p>
           </Col>
           <Col>
-            <Button variant="dark" disabled={disabled}> Complete</Button>
+            <Button variant="dark" disabled={disabled} onClick={() => completeWave()}> Complete</Button>
           </Col>
         </Row>
         <Row className={classNames(wavesStyles.title, wavesStyles.padding_top)}>

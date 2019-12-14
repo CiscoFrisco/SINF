@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS waveItem (
 
 INSERT INTO employee(isManager, email, password) VALUES(false,'email@email.email', '$2a$08$PaAprgLos9T90uGnSHa8GuqjKBanidqgddCQ0tuplPt1gh5d0GZtW');
 INSERT INTO employee(isManager, email, password) VALUES(true, 'a@a.a', '$2a$08$PaAprgLos9T90uGnSHa8GuqjKBanidqgddCQ0tuplPt1gh5d0GZtW');
+INSERT INTO employee(isManager, email, password) VALUES(true, 'ola@ola.ola', '$2y$08$kWu60qEQ9x5VO1EwfxYX0eJ/mtW6aoQKUSVeDgim9mlJBP906YYui');
 INSERT INTO section(warehouse, x, y) VALUES('ali ao lado', 10, 10);
 INSERT INTO product(id, section_id) VALUES('AAA', 1);
 INSERT INTO wave(ref, party, id_employee) VALUES('ECF.2019.4', 'Teste', 1);
