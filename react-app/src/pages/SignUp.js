@@ -12,6 +12,8 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const history = useHistory();
+    document.title = "SignUp | OurApp";
+
 
     if (utils.loggedIn())
         history.push("/");

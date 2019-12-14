@@ -13,6 +13,8 @@ const Orders = () => {
     const [orders, setOrders] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
+    document.title = "Orders | OurApp";
+
     
     useEffect(() => {
         fetch("/api/sales/orders", {
@@ -24,7 +26,7 @@ const Orders = () => {
         })
         .then(response => response.json())
         .then(data => {
-            if(!data.filter(order =>order.id == url_id).length > 0){
+            if(!data.filter(order =>order.id === url_id).length > 0){
                 setID(data[0]["id"]);
                 history.push("/orders/" + data[0]["id"]);
             }
@@ -40,7 +42,7 @@ const Orders = () => {
         (
             <Layout 
             list={<OrderList orders={orders} setID={setID} />} 
-            activeItem={<Client client={orders.find(order => order.id == id)} />} />)
+            activeItem={<Client client={orders.find(order => order.id === id)} />} />)
                 : (
                 <div>
                     <Toolbar />

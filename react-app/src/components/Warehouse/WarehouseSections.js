@@ -19,7 +19,7 @@ const WarehouseSections = ({ section, setID }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {section.map(section => (<WarehouseSection section={section} setID={setID} />))}
+                            {section.map(section => (<WarehouseSection key={section.id} section={section} setID={setID} />))}
                         </tbody>
                     </Table>
                 </Col>

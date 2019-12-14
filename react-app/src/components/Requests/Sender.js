@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Col, Button, Container, Row, Table } from "react-bootstrap";
+import React from "react";
+import { Col, Container, Row, Table } from "react-bootstrap";
 import senderStyles from "../../styles/sender.module.css";
 import defaultImg from "../../assets/product_imgs/default.png";
 import classNames from "classnames";

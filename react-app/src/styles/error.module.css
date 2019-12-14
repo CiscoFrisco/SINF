@@ -7,3 +7,13 @@
 .text {
     margin-top:1em;
 }
+
+.unauthorized {
+  margin-top:13%;
+  width: 20%;
+  text-align:center;
+}
+
+.text {
+  margin-top:1em;
+}

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import Employee2 from '../components/Employees/Employee2';
 import Layout from "../components/Templates/Layout";
 import Toolbar from "../components/Toolbar/Toolbar";
+import { connect } from "react-redux";
 
-const EmployeePage = () => {
+const EmployeePage = ({userID}) => {
     const [id, setID] = useState(0);
     const [employees, setEmployees] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -29,10 +30,10 @@ const EmployeePage = () => {
         (
             <div>
                 <Toolbar />
-                <Employee2 employee={employees.find(employee => employee.id == id)} />
+                <Employee2 employee={employees.find(employee => employee.id === userID)} />
             </div>
         )
     )
 }
 
-export default EmployeePage;
+export default connect(({ user }) => ({ userID: user.id }))(EmployeePage);

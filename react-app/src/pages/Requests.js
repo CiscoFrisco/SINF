@@ -12,6 +12,8 @@ const Requests = () => {
     const [requests, setRequests] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
+    document.title = "Requests | OurApp";
+
 
     useEffect(() => {
         fetch("/api/purchases/requests", {
@@ -23,7 +25,7 @@ const Requests = () => {
         })
         .then(response => response.json())
         .then(data => {
-            if(!data.filter(request => request.id == url_id).length > 0){
+            if(!data.filter(request => request.id === url_id).length > 0){
                 setID(data[0]["id"]);
                 history.push("/requests/" + data[0]["id"]);
             }
@@ -37,7 +39,7 @@ const Requests = () => {
         ( requests.length > 0 ? (
         <Layout 
         list={<RequestsList requests={requests} setID={setID}/>} 
-        activeItem={<Sender sender={requests.find(requests => requests.id == id)}/>} 
+        activeItem={<Sender sender={requests.find(requests => requests.id === id)}/>} 
         />) : (
             <div>
                 <Toolbar />

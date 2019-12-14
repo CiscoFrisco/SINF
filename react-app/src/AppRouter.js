@@ -2,8 +2,7 @@ import React from "react";
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Redirect
+    Route
 } from "react-router-dom";
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -16,20 +15,23 @@ import Orders from './pages/Orders';
 import Waves from './pages/Waves';
 import Warehouse from './pages/Warehouse';
 import Error from "./pages/Error";
+import Unauthorized from "./pages/Unauthorized";
 import PrivateRoute from "./PrivateRoute";
-
 
 const AppRouter = () => (
     <Router>
         <Switch>
-            <PrivateRoute isHome exact path="/">
-                <Home />
-            </PrivateRoute>
             <Route path="/login">
                 <Login />
             </Route>
             <Route path="/signup">
                 <SignUp />
+            </Route>
+            <Route path="/unauthorized">
+                <Unauthorized />
+            </Route>
+            <Route exact path="/">
+                <Home />
             </Route>
             <PrivateRoute adminOnly path="/employees/:url_id">
                 <Employees />

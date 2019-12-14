@@ -1,9 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import inventoryItemStyles from '../../styles/list.module.css';
-import classNames from 'classnames';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 const InventoryItem = ({ product, setID }) => {
     const history = useHistory();

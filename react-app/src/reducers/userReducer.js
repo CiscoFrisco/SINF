@@ -1,6 +1,8 @@
 import {SET_USER_ROLE} from '../actions/types';
+import {SET_USER_ID} from '../actions/types';
 
 const initialState = {
+    id: localStorage.getItem('id'),
    role: localStorage.getItem('role') 
 }
 
@@ -10,6 +12,11 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 role: action.payload
+            }
+        case SET_USER_ID:
+            return {
+                ...state,
+                id: action.payload
             }
         default:
             return state

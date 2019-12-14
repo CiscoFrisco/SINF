@@ -12,6 +12,8 @@ const Inventory = () => {
     const [stock, setStock] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
+    document.title = "Inventory | OurApp";
+
 
     useEffect(() => {
         fetch("/api/stock", {
@@ -23,7 +25,7 @@ const Inventory = () => {
         })
             .then(response => response.json())
             .then(data => {
-                if(!data.filter(product =>product.id == url_id).length > 0){
+                if(!data.filter(product =>product.id === url_id).length > 0){
                     setID(data[0]["id"]);
                     history.push("/inventory/" + data[0]["id"]);
                 }
@@ -37,7 +39,7 @@ const Inventory = () => {
         stock.length > 0 ? (
             <Layout
                 list={<InventoryList inventory={stock} setID={setID} />}
-                activeItem={<Product product={stock.find(product => product.id == id)} />}
+                activeItem={<Product product={stock.find(product => product.id === id)} />}
             />) : (
                 <div>
                     <Toolbar />

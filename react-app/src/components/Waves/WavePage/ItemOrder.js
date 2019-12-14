@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import inventoryItemStyles from "../../../styles/list.module.css";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 const ItemOrder = ({ item, setChecked}) => {
   return(

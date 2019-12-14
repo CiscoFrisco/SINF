@@ -30,6 +30,8 @@ const utils = ({
 
     logout() {
         localStorage.removeItem('id_token');
+        localStorage.removeItem('role');
+        localStorage.removeItem('id');
     }
 })
 

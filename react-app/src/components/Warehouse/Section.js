@@ -29,8 +29,8 @@ const Section = ({ section }) => {
             </thead>
             <tbody>
               {section.items.map(item => (
-                <SectionItem item={item} />
-              ))}{" "}
+                <SectionItem key={item.id} item={item} />
+              ))}
             </tbody>
           </Table>
         </Col>

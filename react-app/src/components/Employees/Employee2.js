@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {Row, Col} from 'react-bootstrap';
 import employeeStyles from '../../styles/employee.module.css';
 import WavesList from '../Waves/WavesList';

@@ -8,10 +8,12 @@ import styles from '../styles/list.module.css';
 
 const Employees = () => {
     const { url_id } = useParams();
-    const [id, setID] = useState(url_id);
+    const [id, setID] = useState(0);
     const [employees, setEmployees] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
+    document.title = "Employees | OurApp";
+
 
     useEffect(() => {
         fetch("/api/employees", {
@@ -23,7 +25,7 @@ const Employees = () => {
         })
             .then(response => response.json())
             .then(data => {
-                if(!data.filter(employee =>employee.id == url_id).length > 0){
+                if(!data.filter(employee =>employee.id === url_id).length > 0){
                     setID(data[0]["id"]);
                     history.push("/employees/" + data[0]["id"]);
                 }
@@ -39,7 +41,7 @@ const Employees = () => {
                 (
                     <Layout
                         list={<EmployeesList employees={employees} setID={setID} />}
-                        activeItem={<Employee employee={employees.find(employee => employee.id == id)} />}
+                        activeItem={<Employee employee={employees.find(employee => employee.id === id)} />}
                     />) : (
                     <div>
                         <Toolbar />
@@ -50,4 +52,4 @@ const Employees = () => {
     )
 }
 
-export default Employees;
+export default  Employees;

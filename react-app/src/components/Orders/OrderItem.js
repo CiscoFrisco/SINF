@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-import clientItemStyles from "../../styles/list.module.css";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import React from "react";
 
 const OrderItem = ({ item }) => (
   <tr >

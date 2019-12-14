@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import { Row,Col,Container,Button, Table } from "react-bootstrap/"
+import React  from "react";
+import { Row,Col,Container,Table } from "react-bootstrap/"
 import clientStyles from "../../styles/client.module.css";
 import defaultImg from "../../assets/product_imgs/default.png";
 import classNames from "classnames";
 import clientListStyles from "../../styles/list.module.css";
 import scrollStyles from "../../styles/scroll.module.css";
 import OrderItem from "./OrderItem";
-import { Link } from "react-router-dom";
 
 const Client = ({ client }) => {
   const lang_options = { weekday:'long', year:'numeric', month:'long', day:'numeric'};

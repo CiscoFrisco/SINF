@@ -12,6 +12,8 @@ const Warehouse = () => {
     const [sections, setSections] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
+    document.title = "Warehouse | OurApp";
+
 
     useEffect(() => {
         fetch("/api/warehouses", {
@@ -25,7 +27,7 @@ const Warehouse = () => {
         .then(data => {
             console.log(data);
             console.log(url_id);
-            if(!data.filter(section => section.id == url_id).length > 0){
+            if(!data.filter(section => section.id === url_id).length > 0){
                 setID(data[0]["id"]);
                 history.push("/warehouse/" + data[0]["id"]);
             }
@@ -39,7 +41,7 @@ const Warehouse = () => {
         sections.length > 0  ? (
         <Layout 
         list={<WarehouseSections section={sections} setID={setID}/>} 
-        activeItem={<Section section={sections.find(section => section.id == id)}/>} 
+        activeItem={<Section section={sections.find(section => section.id === id)}/>} 
         /> ) : (
             <div>
                 <Toolbar />

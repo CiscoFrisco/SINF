@@ -21,10 +21,10 @@ const getEmployeeController = async (req, res, next) => {
 
 const signupEmployeeController = async (req, res, next) => {
     if (!req.body.email || !req.body.password) {
-        return res.status(400).send({ 'message': 'Some values are missing' });
+        return res.status(400).send({ message: 'Some values are missing' });
     }
     if (!utils.isValidEmail(req.body.email)) {
-        return res.status(400).send({ 'message': 'Please enter a valid email address' });
+        return res.status(400).send({ message: 'Please enter a valid email address' });
     }
 
     const hashPassword = utils.hashPassword(req.body.password);
@@ -34,7 +34,7 @@ const signupEmployeeController = async (req, res, next) => {
         return res.status(201).send({ token });
     } catch (error) {
         if (error.routine === '_bt_check_unique') {
-            return res.status(400).send({ 'message': 'User with that EMAIL already exist' })
+            return res.status(400).send({ message: 'User with that EMAIL already exist' })
         }
         return res.status(400).send(error);
     }
@@ -42,23 +42,24 @@ const signupEmployeeController = async (req, res, next) => {
 
 const loginEmployeeController = async (req, res, next) => {
     if (!req.body.email || !req.body.password) {
-        return res.status(400).send({ 'message': 'Some values are missing' });
+        return res.status(400).send({ message: 'Some values are missing' });
     }
     if (!utils.isValidEmail(req.body.email)) {
-        return res.status(400).send({ 'message': 'Please enter a valid email address' });
+        return res.status(400).send({ message: 'Please enter a valid email address' });
     }
 
     try {
         const rows = await employeeModel.login(req.body.email);
         if (!rows[0]) {
-            return res.status(400).send({ 'message': 'The credentials you provided are incorrect' });
+            return res.status(400).send({ message: 'The credentials you provided are incorrect' });
         }
         if (!utils.comparePassword(rows[0].password, req.body.password)) {
-            return res.status(400).send({ 'message': 'The credentials you provided are incorrect' });
+            return res.status(400).send({ message: 'The credentials you provided are incorrect' });
         }
         const role = rows[0].ismanager;
+        const id = rows[0].id;
         const token = utils.generateToken(rows[0].id);
-        return res.status(200).send({ token, role });
+        return res.status(200).send({ token, role, id });
     } catch (error) {
         return res.status(400).send(error);
     }

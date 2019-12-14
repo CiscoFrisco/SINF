@@ -12,6 +12,8 @@ const Waves = () => {
     const [waves, setWaves] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
+    document.title = "Waves | OurApp";
+
 
     useEffect(() => {
         fetch("/api/waves", {
@@ -23,7 +25,7 @@ const Waves = () => {
         })
         .then(response => response.json())
         .then(data => {
-            if(!data.filter(wave => wave.wave_id == url_id).length > 0){
+            if(!data.filter(wave => wave.wave_id === url_id).length > 0){
                 setID(data[0]["wave_id"]);
                 history.push("/waves/" + data[0]["wave_id"]);
             }
@@ -37,7 +39,7 @@ const Waves = () => {
         waves.length > 0  ?( 
         <Layout 
         list={<WaveList wave={waves} setID={setID} />} 
-        activeItem={<Wave wave={waves.find(waves => waves.wave_id == id)} />} 
+        activeItem={<Wave wave={waves.find(waves => waves.wave_id === id)} />} 
         />) : (
             <div>
                 <Toolbar />
