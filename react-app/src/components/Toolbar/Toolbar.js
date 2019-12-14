@@ -8,6 +8,7 @@ import utils from "../utils/utils";
 import { connect } from "react-redux";
 
 const Toolbar = ({ isAdmin }) => {
+  console.log(isAdmin);
   const history = useHistory();
 
   const handleLogout = history => () => {
@@ -22,7 +23,7 @@ const Toolbar = ({ isAdmin }) => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-        {isAdmin ? (
+        {isAdmin === 'true' ? (
           <Nav className="mr-auto">
             <Nav.Link href="/employees/1">Employees</Nav.Link>
             <Nav.Link href="/inventory/1">Inventory</Nav.Link>

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import productStyles from '../../styles/inventory.module.css';
-import defaultImg from '../../assets/product_imgs/default.png';
 import classNames from 'classnames';
 import ProductLinkList from '../../components/Inventory/ProductLinkList';
 import ProductLinkListItem from '../../components/Inventory/ProductLinkListItem';
@@ -28,7 +27,7 @@ const Product = ({ product }) => {
         })
         .then(response => response.json())
         .then(data => {
-            setRequests(data.filter(request => request.productList.some((x) => x.id == product.id)).map(request => request.id));
+            setRequests(data.filter(request => request.productList.some((x) => x.id === product.id)).map(request => request.id));
             setIsLoadingOne(false);
         })
         .catch(console.log);
@@ -44,7 +43,7 @@ const Product = ({ product }) => {
         })
         .then(response => response.json())
         .then(data => {
-            setOrders(data.filter(order => order.productList.some((x) => x.id == product.id)).map(order => order.id));
+            setOrders(data.filter(order => order.productList.some((x) => x.id === product.id)).map(order => order.id));
             setIsLoadingTwo(false);
         })
         .catch(console.log);

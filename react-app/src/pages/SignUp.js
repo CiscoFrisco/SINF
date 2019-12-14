@@ -42,7 +42,7 @@ const Signup = () => {
       })
         .then(res => res.json())
         .then(data => {
-          if (data.message != undefined) {
+          if (data.message !== undefined) {
             setShow(data.message);
             setError("danger");
           } else {
@@ -59,7 +59,7 @@ const Signup = () => {
     <Row className={signupStyles.row}>
       <Col md="6">
         <img className={signupStyles.logo} src={logo} alt="logo" />
-        {show != "" && (
+        {show !== "" && (
           <Alert
             style={{ margin: "87% 0% 2% 2%" }}
             variant={error}

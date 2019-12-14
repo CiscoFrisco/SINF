@@ -33,25 +33,25 @@ const AppRouter = () => (
             <Route exact path="/">
                 <Home />
             </Route>
-            <PrivateRoute adminOnly path="/employees/:url_id">
+            <PrivateRoute adminOnly="true" path="/employees/:url_id">
                 <Employees />
             </PrivateRoute>
-            <PrivateRoute path="/employee">
+            <PrivateRoute adminOnly="false" path="/employee">
                 <EmployeePage />
             </PrivateRoute>
-            <PrivateRoute adminOnly path="/inventory/:url_id">
+            <PrivateRoute adminOnly="true" path="/inventory/:url_id">
                 <Inventory />
             </PrivateRoute>
-            <PrivateRoute adminOnly path="/warehouse/:url_id">
+            <PrivateRoute adminOnly="true" path="/warehouse/:url_id">
                 <Warehouse />
             </PrivateRoute>
-            <PrivateRoute adminOnly path="/requests/:url_id">
+            <PrivateRoute adminOnly="true" path="/requests/:url_id">
                 <Requests />
             </PrivateRoute>
-            <PrivateRoute adminOnly path="/orders/:url_id">
+            <PrivateRoute adminOnly="true" path="/orders/:url_id">
                 <Orders />
             </PrivateRoute>
-            <PrivateRoute adminOnly path="/waves/:url_id">
+            <PrivateRoute adminOnly="true" path="/waves/:url_id">
                 <Waves />
             </PrivateRoute>
             <Route>
