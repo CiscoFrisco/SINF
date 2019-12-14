@@ -4,8 +4,7 @@ import Button from 'react-bootstrap/Button'
 import signupStyles from "../../styles/signup.module.css";
 import { FaCheck, FaTimes } from 'react-icons/fa';
 import { IconContext } from "react-icons";
-const SignUpForm = ({ username, email, password, setUsername, setEmail, setPassword , onSubmit }) => {
-    const [confirmPassword, setConfirmPassword] = useState('');
+const SignUpForm = ({ username, email, password, confirmPassword, setUsername, setEmail, setPassword , setConfirmPassword, onSubmit }) => {
     return(
         <div className={signupStyles.form}>
             <h3 className={signupStyles.h3}>Sign Up</h3>
