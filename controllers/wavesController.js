@@ -17,14 +17,16 @@ const checkWave = async (req, res, next) => {
     res.status(200).send(JSON.stringify(wave));
 }
 
-const generateGoodsReceipt = (req, res, next, wave) => {
+const generateGoodsReceiptorDelivery = (req, res, next, wave) => {
+    const type = wave.includes("ECF") ? "goodsReceipt/processOrders" : "shipping/processOrders"
+
     var options = {
         headers: {
             Authorization: process.env.PRIMAVERA_TOKEN,
             "Content-Type": "application/json",
         },
         method: 'GET',
-        url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/goodsReceipt/processOrders/${pageIndex}/${pageSize}?company=${company}`,
+        url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/${type}/${pageIndex}/${pageSize}?company=${company}`,
     };
 
     request(options, (error, response, body) => {
@@ -50,7 +52,7 @@ const generateGoodsReceipt = (req, res, next, wave) => {
                 "Content-Type": "application/json",
             },
             method: 'POST',
-            url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/goodsReceipt/processOrders/${company}`,
+            url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/${type}/${company}`,
             body: requestBody,
             json: true
         }
@@ -68,11 +70,7 @@ const generateGoodsReceipt = (req, res, next, wave) => {
 const completeWave = async (req, res, next) => {
     const wave = await wavesModel.completeWave(req.body);
 
-
-    //if(wave[0].ref.includes("EFC"))
-    generateGoodsReceipt(req, res, next, wave[0].ref);
-
-    // res.status(200).send(JSON.stringify(wave));
+    generateGoodsReceiptorDelivery(req, res, next, wave[0].ref);
 }
 
 const getWaves = async (req, res, next) => {
