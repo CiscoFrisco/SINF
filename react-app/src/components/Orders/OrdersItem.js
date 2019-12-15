@@ -7,7 +7,7 @@ const OrdersItem = ({ client, setID }) => {
     const [employees, setEmployees] = useState([]);
     const [show, setShow] = useState(null);
     const history = useHistory();
-    let selectedEmployee = null;
+    const [selectedEmployee, setSelectedEmployee] = useState(null);
 
     useEffect(() => {
         fetch("/api/employees", {
@@ -20,7 +20,7 @@ const OrdersItem = ({ client, setID }) => {
             .then(response => response.json())
             .then(data => {
                 setEmployees(data);
-                selectedEmployee = data[0].email;
+                setSelectedEmployee(data[0].email);
             })
             .catch(console.log);
     }, []);
@@ -58,7 +58,7 @@ const OrdersItem = ({ client, setID }) => {
     }
 
     const handleChange = (e) => {
-        selectedEmployee = e.target.value;
+        setSelectedEmployee(e.target.value);
     }
 
     return (

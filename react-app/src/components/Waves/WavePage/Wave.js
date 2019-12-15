@@ -23,15 +23,19 @@ const Wave = ({ wave }) => {
         id: wave.wave_id,
         item_id: id,
         completed: checked
+      }),
+    }).then(response => response.json())
+      .then(data => {
+        setInventory(data);
       })
-    });
+      .catch(console.log);
   }
 
   useEffect(() => {
     let allCompleted = true;
     inventory.forEach(item => {
       if (!item.completed)
-      allCompleted = false;
+        allCompleted = false;
     })
 
     if (allCompleted)
@@ -79,21 +83,21 @@ const Wave = ({ wave }) => {
           <h4>Product List</h4>
         </Row>
         <Table className={classNames(scrollStyles.scroll)} style={{ marginTop: '5%' }}>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Product Name </th>
-                <th>Quantity</th>
-                <th>Section</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {inventory.map(item => (
-                <ItemOrder key={item.id} item={item} setChecked={setChecked}/>
-              ))}{" "}
-            </tbody>
-          </Table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Product Name </th>
+              <th>Quantity</th>
+              <th>Section</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {inventory.map(item => (
+              <ItemOrder key={item.id} item={item} setChecked={setChecked} />
+            ))}{" "}
+          </tbody>
+        </Table>
 
       </div>
     </div>
