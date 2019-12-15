@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import orderItemStyles from '../../styles/list.module.css';
-import { Row, Col, Button, Form, Modal, Container } from 'react-bootstrap';
+import { Col, Button, Form, Modal } from 'react-bootstrap';
 
 const OrdersItem = ({ client, setID }) => {
     const [employees, setEmployees] = useState([]);

@@ -10,9 +10,7 @@ export const setUserRole = (role) => dispatch => {
 }
 
 export const setUserID = (id) => dispatch => {
-    console.log(id);
     localStorage.setItem("id", id);
-    console.log("DEI set");
     dispatch({
         type: SET_USER_ID,
         payload: id

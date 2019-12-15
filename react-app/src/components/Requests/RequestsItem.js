@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import requestsItemStyles from '../../styles/list.module.css';
-import { Row, Col, Button, Form, Container } from 'react-bootstrap';
+import { Col, Button, Form } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 
 const RequestsItem = ({ sender, setID }) => {

@@ -2,7 +2,6 @@ import React from "react";
 import waveItemStyles from '../../styles/waves/waveitem.module.css';
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
-import classNames from 'classnames';
 
 const WaveItem = ({ id }) => (
     <Link to={`/waves/${id}`}>

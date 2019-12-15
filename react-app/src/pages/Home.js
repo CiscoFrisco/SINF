@@ -2,24 +2,21 @@ import React  from "react";
 import Toolbar from '../components/Toolbar/Toolbar';
 import Row from 'react-bootstrap/Row'
 import homeStyles from '../styles/home.module.css'
-import { Link, Redirect } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import classNames from 'classnames';
 import { connect } from "react-redux";
 
 
 const Home = ({isAdmin}) => {
-    
+    const history = useHistory();
     document.title = "Home | OurApp";
 
-    return ( 
-        !isAdmin ? (
-            <Redirect
-                    to={{
-                        pathname: "/employee"
-                    }}
-                />
-            ) 
-        : (
+    if(isAdmin === 'false'){
+        console.log("entrie");
+        history.push("/employee")
+    }
+
+    return (
             <div>
                 <Toolbar />
                 <Row className={homeStyles.row}>
@@ -55,7 +52,6 @@ const Home = ({isAdmin}) => {
                     </Link>
                 </Row>
             </div >
-        )
     )
 }
 

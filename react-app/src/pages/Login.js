@@ -33,7 +33,7 @@ const Login = ({ setUserRole, setUserID }) => {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.message != undefined) {
+        if (data.message !== undefined) {
           setShow(data.message);
         } else {
             utils.setToken(data.token);
@@ -49,7 +49,7 @@ const Login = ({ setUserRole, setUserID }) => {
     <Row className={loginStyles.row}>
       <Col md="6">
         <img className={loginStyles.logo} src={logo} alt="logo" />
-        {show != "" && (
+        {show !== "" && (
           <Alert style={{margin:'87% 0% 2% 2%'}} variant="danger" onClose={() => setShow("")} dismissible>
             <p>{show}</p>
           </Alert>

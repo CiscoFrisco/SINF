@@ -16,7 +16,7 @@ const PrivateRoute = ({ children, isAdmin, adminOnly, isHome, ...rest }) => {
               state: { from: location }
             }}
           />
-        ) : ((adminOnly && isAdmin) || (!adminOnly && !isAdmin)) ? (
+        ) : ((adminOnly ==="true"  && isAdmin === "true") || (adminOnly === "false" && isAdmin === "false")) ? (
           children
         ) : (
           <Redirect

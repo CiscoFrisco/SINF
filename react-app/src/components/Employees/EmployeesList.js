@@ -1,10 +1,8 @@
 import React from "react";
 import employeeListStyles from '../../styles/list.module.css';
-import scrollStyles from '../../styles/scroll.module.css';
 import {Row, Col, Container, Table} from 'react-bootstrap/';
 import EmployeeItem from './EmployeeItem';
 
-import classNames from 'classnames'
 
 const EmployeesList = ({ employees, setID }) => {
 
