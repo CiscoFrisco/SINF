@@ -10,7 +10,7 @@ const getProductSections = async () => {
 }
 
 const getSections = async () => {
-    const query = `SELECT id, warehouse
+    const query = `SELECT id, warehouse, x, y
     FROM section`;
 
     const res = await pool.query(query);

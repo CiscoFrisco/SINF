@@ -1,4 +1,25 @@
 const pool = require('../config');
+const { getSections } = require('./warehouseModel')
+
+const assignSection = async (itemID, isRequest) => {
+    const query = `SELECT section_id
+    FROM product
+    WHERE id = $1`;
+
+    const values = [
+        itemID
+    ];
+
+    const { rows } = await pool.query(query, values);
+
+    if(rows.length > 0)
+        return rows[0].section_id;
+
+    if(!isRequest)
+        return null;
+
+    //Assign section
+}
 
 const createWave = async (wave) => {   
     const waveQuery = `INSERT INTO
@@ -25,12 +46,13 @@ const createWave = async (wave) => {
 
     for (let i = 0; i < wave.waveItems.length; i++) {
         const item = wave.waveItems[i];
+        const section = await assignSection(item.id, wave.ref.includes("ECF"));
         values = [
             item.id,
             item.name,
             item.quantity,
             waveId,
-            item.section
+            section
         ];
 
         const { rows } = await pool.query(waveItemsQuery, values);
@@ -43,7 +65,9 @@ const createWave = async (wave) => {
     };
 }
 
-const getSortedProductList = async (waveID, lastProduct) => {
+const distance = (l1, l2) => Math.sqrt(Math.pow(l2[0] - l1[0],2) + Math.pow(l2[1] - l1[1],2));
+
+const getSortedProductList = async (waveID, currentSection) => {
     const query = `SELECT *
     FROM waveItem
     WHERE wave_id = $1
@@ -62,10 +86,49 @@ const getSortedProductList = async (waveID, lastProduct) => {
             id: row.id,
             name: row.prodname,
             quantity: row.quantity,
-            section: row.section,
+            section: row.section_id,
             completed: row.completed
         });
     });
+
+    const sections = await getSections();
+    let currentLocation = [0, 0];
+    sections.forEach((section) => {
+        if(section.id === currentSection)
+            currentLocation = [
+                section.x,
+                section.y
+            ];
+    });
+
+    productList.forEach((product) => {
+        let productLocation = [];
+
+        sections.forEach((section) => {
+            if(section.id === product.section)
+                productLocation = [
+                    section.x,
+                    section.y
+                ];
+        });
+
+        product.distance = distance(currentLocation,productLocation);
+    });
+
+    productList.sort((a, b) => {
+        if(a.completed && !b.completed)
+            return 1;
+        
+        if(!a.completed && b.completed)
+            return -1;
+
+        if(a.completed && b.completed)
+            return 0;
+
+        return a.distance > b.distance;
+    });
+
+    console.log(productList);
 
     return productList;
 }
@@ -85,7 +148,7 @@ const checkWave = async (wave) => {
 
     await pool.query(query, values);
 
-    return await getSortedProductList(wave.id, wave.item_id);
+    return await getSortedProductList(wave.id, wave.section_id);
 }
 
 const completeWave = async (wave) => {
@@ -122,7 +185,7 @@ const getWaves = async () => {
                     id: row.id,
                     name: row.prodname,
                     quantity: row.quantity,
-                    section: row.section,
+                    section: row.section_id,
                     completed: row.completed
                 });
             }
@@ -138,7 +201,7 @@ const getWaves = async () => {
                     id: row.id,
                     name: row.prodname,
                     quantity: row.quantity,
-                    section: row.section,
+                    section: row.section_id,
                     completed: row.completed
                 }]
             })

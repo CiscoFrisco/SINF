@@ -13,6 +13,13 @@ const Wave = ({ wave }) => {
   const setChecked = (id, checked) => {
     setInventory(inventory.map(item => item.id === id ? { ...item, completed: !item.completed } : item))
 
+    let section_id;
+
+    inventory.forEach((item) => {
+        if(item.id === id)
+          section_id = item.section;
+    })
+
     fetch('/api/waves/check', {
       method: 'POST',
       headers: {
@@ -22,7 +29,8 @@ const Wave = ({ wave }) => {
       body: JSON.stringify({
         id: wave.wave_id,
         item_id: id,
-        completed: checked
+        completed: checked,
+        section_id: section_id
       }),
     }).then(response => response.json())
       .then(data => {
