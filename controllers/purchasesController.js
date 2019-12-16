@@ -161,14 +161,13 @@ const getItems = (req, res, next) => {
 }
 
 const postOrder = (req, res, next) => {
-    console.log(req.body);
     var options = {
         headers: {
             Authorization: process.env.PRIMAVERA_TOKEN,
             "Content-Type": "application/json",
         },
         method: 'POST',
-        body: req.body,
+        json: true,
         url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/purchases/orders
         `,
     };
