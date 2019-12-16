@@ -6,5 +6,6 @@ router.get('/requests', purchasesController.getRequests);
 router.get('/delivered', purchasesController.getDelivered);
 router.get('/suppliers', purchasesController.getSuppliers);
 router.get('/items', purchasesController.getItems);
+router.post('/orders', purchasesController.postOrder);
 
 module.exports = router;

@@ -160,4 +160,27 @@ const getItems = (req, res, next) => {
     });
 }
 
-module.exports = { getRequests, getDelivered, getSuppliers, getItems }
+const postOrder = (req, res, next) => {
+    console.log(req.body);
+    var options = {
+        headers: {
+            Authorization: process.env.PRIMAVERA_TOKEN,
+            "Content-Type": "application/json",
+        },
+        method: 'POST',
+        body: req.body,
+        url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/purchases/orders
+        `,
+    };
+
+    request(options, (error, response, body) => {
+        console.log(response.statusCode);
+        if(error) {
+            res.status(response.statusCode).send(error);
+        }
+
+        res.status(response.statusCode).send(response);
+    });
+}
+
+module.exports = { getRequests, getDelivered, getSuppliers, getItems, postOrder }
