@@ -155,7 +155,7 @@ const getItems = (req, res, next) => {
 
         let items = [];
 
-        JSON.parse(body).forEach((element) => items.push(element.description));
+        JSON.parse(body).forEach((element) => items.push(element));
         res.status(response.statusCode).send(JSON.stringify([...new Set(items)]));
     });
 }
