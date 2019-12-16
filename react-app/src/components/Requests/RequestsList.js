@@ -94,8 +94,8 @@ const RequestsList = ({ requests, setID }) => {
     const params = {
       documentType: "ECF",
       company: "SLGBA",
-      documentDate: new Date().toISOString(),
-      postingDate: new Date().toISOString(),
+      documentDate: new Date(date).toISOString(),
+      postingDate: new Date(date).toISOString(),
       sellerSupplierParty: "0001", //HardCoded - change to sender.id or something
       sellerSupplierPartyName: sender,
       accountingParty: "0001", //HardCoded - not sure if needs change

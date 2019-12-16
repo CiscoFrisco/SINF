@@ -1,11 +1,8 @@
 To Do:
  
 - Create request (redirect para a pagina do request, resolver erro em alguns items e a data - verificar com o Bruno)
-- Pagina inventory, requests e orders atualizarem - Francisco
-- Erro na ordem dos checks das waves - Francisco
 
 - Adicionar Username às merdas
-- Alinhar create request os campos de preenchimento - Francisco
 
 - Retirar cenas desnecessárias (imagens ou outras cenas que tenham ficado para trás sem querer) - doing
 - Corrigir erros - doing
@@ -31,6 +28,10 @@ Done:
 - Adicionar scrolls e tamanho a todas as tabelas relevantes - João
 - Formatar melhor a pagina de employee
 - Create request (mandar à base de dados) - Luís/Bruno/João
+- Alinhar create request os campos de preenchimento - Francisco
+- Erro na ordem dos checks das waves - Bruno
+- Pagina inventory, requests e orders atualizarem - Francisco
+
 
 
 
