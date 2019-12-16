@@ -13,8 +13,7 @@ const Wave = ({ wave, isAdmin }) => {
 
   const setChecked = (id, checked) => {
     wave.productList = wave.productList.map(item => item.id === id ? { ...item, completed: !item.completed } : item)
-    setReload(!reload);
-
+    
     let section_id;
 
     wave.productList.forEach((item) => {
@@ -36,8 +35,8 @@ const Wave = ({ wave, isAdmin }) => {
       }),
     }).then(response => response.json())
       .then(data => {
-        setReload(!reload);
         wave.productList = data;
+        setReload(!reload);
       })
       .catch(console.log);
   }
