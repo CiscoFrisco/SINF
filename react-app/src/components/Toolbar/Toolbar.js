@@ -23,7 +23,7 @@ const Toolbar = ({ isAdmin }) => {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-        {isAdmin === 'true' ? (
+        {isAdmin === "true" ? (
           <Nav className="mr-auto">
             <Nav.Link href="/employees/1">Employees</Nav.Link>
             <Nav.Link href="/inventory/1">Inventory</Nav.Link>
@@ -35,7 +35,7 @@ const Toolbar = ({ isAdmin }) => {
         ) : (
           <Nav className="mr-auto">
             <Nav.Link href="/employee">Employee</Nav.Link>
-            <Nav.Link href="/wave">Waves</Nav.Link>
+            <Nav.Link href="/wave/1">Waves</Nav.Link>
           </Nav>
         )}
         <Nav>

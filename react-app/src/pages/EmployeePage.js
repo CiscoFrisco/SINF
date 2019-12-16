@@ -29,7 +29,7 @@ const EmployeePage = ({userID}) => {
         (
             <div>
                 <Toolbar />
-                <Employee2 employee={employees.find(employee => employee.id == userID)} />
+                <Employee2 employee={employees.find(employee => employee.id === userID)} />
             </div>
         )
     )

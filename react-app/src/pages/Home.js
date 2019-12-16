@@ -8,11 +8,12 @@ import { connect } from "react-redux";
 
 
 const Home = ({isAdmin}) => {
+    console.log(isAdmin);
     const history = useHistory();
     document.title = "Home | OurApp";
 
-    if(isAdmin === 'false'){
-        console.log("entrie");
+    if(isAdmin ==="false"){
+        console.log("entrei");
         history.push("/employee")
     }
 
