@@ -12,8 +12,8 @@ const Employee = ({ employee }) => {
             </Row>
             <Row className={classNames(employeeStyles.separator, employeeStyles.infoTitles2)}>
                 <h4>Assigned Waves</h4>
-                <WavesList waves={employee.waves} />
             </Row>
+            <WavesList waves={employee.waves} />
         </div >
     )
 }

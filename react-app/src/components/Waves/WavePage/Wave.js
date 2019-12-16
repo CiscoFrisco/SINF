@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import wavesStyles from "../../../styles/wavesPage.module.css";
 import ItemOrder from "./ItemOrder";
 import scrollStyles from "../../../styles/scroll.module.css";
+import listStyles from "../../../styles/list.module.css";
 import classNames from "classnames";
 import { Row, Col, Button, Table } from "react-bootstrap";
 import {connect} from "react-redux";
@@ -12,8 +13,7 @@ const Wave = ({ wave, isAdmin }) => {
 
   const setChecked = (id, checked) => {
     wave.productList = wave.productList.map(item => item.id === id ? { ...item, completed: !item.completed } : item)
-    setReload(!reload);
-
+    
     let section_id;
 
     wave.productList.forEach((item) => {
@@ -35,8 +35,8 @@ const Wave = ({ wave, isAdmin }) => {
       }),
     }).then(response => response.json())
       .then(data => {
-        setReload(!reload);
         wave.productList = data;
+        setReload(!reload);
       })
       .catch(console.log);
   }
@@ -89,22 +89,24 @@ const Wave = ({ wave, isAdmin }) => {
         <Row className={classNames(wavesStyles.title, wavesStyles.padding_top)}>
           <h4>Product List</h4>
         </Row>
-        <Table className={classNames(scrollStyles.scroll)} style={{ marginTop: '5%' }}>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Product Name </th>
-              <th>Quantity</th>
-              <th>Section</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {wave.productList.map(item => (
-              <ItemOrder key={item.id} item={item} setChecked={setChecked} />
-            ))}
-          </tbody>
-        </Table>
+        <div className={classNames(scrollStyles.scroll, listStyles.scrollList3)}>
+          <Table className={classNames(scrollStyles.scroll)} style={{ marginTop: '5%' }}>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Product Name </th>
+                <th>Quantity</th>
+                <th>Section</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {wave.productList.map(item => (
+                <ItemOrder key={item.id} item={item} setChecked={setChecked} />
+              ))}
+            </tbody>
+          </Table>
+        </div>
 
       </div>
     </div>
