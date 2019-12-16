@@ -8,7 +8,6 @@ import utils from "../utils/utils";
 import { connect } from "react-redux";
 
 const Toolbar = ({ isAdmin }) => {
-  console.log(isAdmin);
   const history = useHistory();
 
   const handleLogout = history => () => {

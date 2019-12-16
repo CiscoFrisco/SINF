@@ -8,7 +8,6 @@ const WaveItem = ({ wave, isAdmin }) => {
     const path = isAdmin === "false" ? ("/wave/" + wave.wave_id) : ("/waves/" + wave.wave_id);
     
     const numberRemaining = () =>{
-        console.log(wave.productList);
         wave.productList.forEach((item) => {
             if(item.completed === false)
             {
