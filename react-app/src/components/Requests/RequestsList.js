@@ -76,18 +76,14 @@ const RequestsList = ({ requests, setID }) => {
     }
 
     const sendRequest = async () => {
-        console.log(new Date(date).toISOString());
-        console.log(sender);
-
+        console.log(productsAdded);
         const params = {
             documentType: "ECF",
             company: "SLGBA",
-            serie: "2019",
-            seriesNumber: 21, //HardCoded - change
-            documentDate: new Date(date).toISOString(),
-            postingDate: new Date(date).toISOString(),
+            documentDate: new Date().toISOString(),
+            postingDate: new Date().toISOString(),
             sellerSupplierParty: "0001", //HardCoded - change to sender.id or something
-            sellerSupplierPartyName: sender,
+            sellerSupplierPartyName: sender, 
             accountingParty: "0001", //HardCoded - not sure if needs change
             exchangeRate: 1.0,
             discount: 0.0,
@@ -99,7 +95,6 @@ const RequestsList = ({ requests, setID }) => {
             documentLines: [{
                 description: "Abecedário",
                 quantity: 26,
-                unitPrice: 26,
                 deliveryDate: new Date(date).toISOString(),
                 unit: "UN",
                 itemTaxSchema: "IVA-TN",
