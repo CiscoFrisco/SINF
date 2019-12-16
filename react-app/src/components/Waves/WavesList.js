@@ -1,21 +1,23 @@
 import React from "react";
-import wavesListStyles from '../../styles/waves/waveslist.module.css';
+import listStyles from '../../styles/list.module.css';
 import scrollStyles from '../../styles/scroll.module.css'
 import WaveItem from '../Waves/WaveItem';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import Table from 'react-bootstrap/Table';
 
 const WavesList = ({ waves }) => (
-    <Table hover>
-        <thead>
-            <td>ID</td>
-            <td>Type</td>
-            <td>Nº Items Remaining</td>
-        </thead>
-        <tbody>
-            {waves.map(wave => (<WaveItem  key={wave} wave={wave} />))}
-        </tbody>
-    </Table>
+    <div className={classnames(scrollStyles.scroll, listStyles.scrollList2)}>
+        <Table hover>
+            <thead>
+                <td>ID</td>
+                <td>Type</td>
+                <td>Nº Items Remaining</td>
+            </thead>
+            <tbody>
+                {waves.map(wave => (<WaveItem  key={wave} wave={wave} />))}
+            </tbody>
+        </Table>
+    </div>
 )
 
 export default WavesList;

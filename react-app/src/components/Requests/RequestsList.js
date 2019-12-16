@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import requestsListStyles from '../../styles/list.module.css';
+import scrollStyle from '../../styles/scroll.module.css';
 import { Row, Col, Button, Modal, Table, Container, Form } from 'react-bootstrap';
 import RequestsItem from './RequestsItem';
 import { FaPlusCircle, FaTrash } from 'react-icons/fa';
+import classnames from 'classnames';
 
 const RequestsList = ({ requests, setID }) => {
     const [show, setShow] = useState(false);
@@ -130,18 +132,20 @@ const RequestsList = ({ requests, setID }) => {
                                 <Button variant="dark" onClick={() => setShow(true)}>Create</Button>
                             </Col>
                         </Row>
-                        <Table style={{ marginTop: '5%' }} hover>
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Sender</th>
-                                    <th>Wave</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {requests.map(sender => (<RequestsItem key={sender.id} sender={sender} setID={setID} />))}
-                            </tbody>
-                        </Table>
+                        <div className={classnames(scrollStyle.scroll, requestsListStyles.scrollList)} style={{ marginTop: '5%' }}>
+                            <Table hover>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Sender</th>
+                                        <th>Wave</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {requests.map(sender => (<RequestsItem key={sender.id} sender={sender} setID={setID} />))}
+                                </tbody>
+                            </Table>
+                        </div>
                     </Col>
                 </Container>
 

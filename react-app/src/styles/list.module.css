@@ -121,3 +121,11 @@
     border: 1px solid #ccc;
     text-align: center;
 }
+
+.scrollList {
+    height: 70vh;
+}
+
+.scrollList2 {
+    height: 60vh;
+}
