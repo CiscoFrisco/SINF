@@ -1,5 +1,7 @@
 import React from "react";
 import sectionsListStyles from '../../styles/list.module.css';
+import scrollStyle from '../../styles/scroll.module.css';
+import classnames from 'classnames';
 import {Row, Col, Container, Table} from 'react-bootstrap';
 import WarehouseSection from './WarehouseSection';
 
@@ -11,17 +13,19 @@ const WarehouseSections = ({ section, setID }) => {
                     <Row className={sectionsListStyles.title}>
                         <h3>Sections</h3>
                     </Row>
-                    <Table style={{ marginTop: '5%' }} hover>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {section.map(section => (<WarehouseSection key={section.id} section={section} setID={setID} />))}
-                        </tbody>
-                    </Table>
+                    <div className={classnames(scrollStyle.scroll, sectionsListStyles.scrollList)} style={{ marginTop: '5%' }}>
+                        <Table hover>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {section.map(section => (<WarehouseSection key={section.id} section={section} setID={setID} />))}
+                            </tbody>
+                        </Table>
+                    </div>
                 </Col>
             </Container>
         </div>

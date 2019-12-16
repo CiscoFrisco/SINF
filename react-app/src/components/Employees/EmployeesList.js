@@ -1,5 +1,7 @@
 import React from "react";
 import employeeListStyles from '../../styles/list.module.css';
+import scrollStyle from '../../styles/scroll.module.css';
+import classnames from 'classnames';
 import {Row, Col, Container, Table} from 'react-bootstrap/';
 import EmployeeItem from './EmployeeItem';
 
@@ -13,18 +15,20 @@ const EmployeesList = ({ employees, setID }) => {
                     <Row className={employeeListStyles.title}>
                         <h3>Employees</h3>
                     </Row>
-                    <Table style={{marginTop: '5%'}} hover>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Email </th>
-                                <th>Role</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {employees.map(employee => (<EmployeeItem key={employee.id} employee={employee} setID={setID} />))}
-                        </tbody>
-                    </Table>
+                    <div className={classnames(scrollStyle.scroll, employeeListStyles.scrollList)} style={{ marginTop: '5%' }}>
+                        <Table hover>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Email </th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {employees.map(employee => (<EmployeeItem key={employee.id} employee={employee} setID={setID} />))}
+                            </tbody>
+                        </Table>
+                    </div>
                 </Col>
             </Container>
         </div>

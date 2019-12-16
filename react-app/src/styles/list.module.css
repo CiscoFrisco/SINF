@@ -126,3 +126,12 @@ input[type="date"]::-webkit-inner-spin-button{
     display: none;
     -webkit-appearance: none;
 }
+
+.scrollList {
+    height: 70vh;
+}
+
+.scrollList2 {
+    height: 60vh;
+}
+
