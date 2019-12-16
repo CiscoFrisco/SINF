@@ -2,7 +2,7 @@ const utils = require('../utils');
 const pool = require('../config');
 
 const getEmployees = async () => {
-    const query = `SELECT id, email
+    const query = `SELECT id, username, email
       FROM employee
       WHERE isManager = FALSE`;
 
