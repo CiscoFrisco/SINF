@@ -118,35 +118,36 @@ const RequestsList = ({ requests, setID }) => {
     });
   };
 
-  return (
-    (isLoadingSuppliers || isLoadingItems) ? <div>Loading...</div> : (
-        <div>
-            <Container className={requestsListStyles.container}>
-                <Col >
-                    <Row className={requestsListStyles.title}>
-                        <Col md="10">
-                            <h3>Requests</h3>
-                        </Col>
-                        <Col md={{ span: 2 }}>
-                            <Button variant="dark" onClick={() => setShow(true)}>Create</Button>
-                        </Col>
-                    </Row>
-                    <div className={classnames(scrollStyle.scroll, requestsListStyles.scrollList)} style={{ marginTop: '5%' }}>
-                        <Table hover>
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Sender</th>
-                                    <th>Wave</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {requests.map(sender => (<RequestsItem key={sender.id} sender={sender} setID={setID} />))}
-                            </tbody>
-                        </Table>
-                    </div>
+  return isLoadingSuppliers || isLoadingItems ? (
+    <div>Loading...</div>
+  ) : (
+    <div>
+      <Container className={requestsListStyles.container}>
+        <Col >
+            <Row className={requestsListStyles.title}>
+              <Col md="10">
+                    <h3>Requests</h3>
                 </Col>
-            </Container>
+                <Col md={{ span: 2 }}>
+                    <Button variant="dark" onClick={() => setShow(true)}>Create</Button>
+                </Col>
+            </Row>
+            <div className={classnames(scrollStyle.scroll, requestsListStyles.scrollList)} style={{ marginTop: '5%' }}>
+                <Table hover>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Sender</th>
+                            <th>Wave</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {requests.map(sender => (<RequestsItem key={sender.id} sender={sender} setID={setID} />))}
+                    </tbody>
+                </Table>
+            </div>
+        </Col>
+    </Container>
 
       <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
