@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS section;
 
 CREATE TABLE IF NOT EXISTS employee (
   id SERIAL PRIMARY KEY,
+  username VARCHAR(255),
   isManager BOOLEAN DEFAULT FALSE, 
   email VARCHAR(255) UNIQUE,
   password VARCHAR(255)
@@ -41,9 +42,9 @@ CREATE TABLE IF NOT EXISTS waveItem (
   PRIMARY KEY(id, wave_id)
 );
 
-INSERT INTO employee(isManager, email, password) VALUES(false,'email@email.email', '$2a$08$PaAprgLos9T90uGnSHa8GuqjKBanidqgddCQ0tuplPt1gh5d0GZtW');
-INSERT INTO employee(isManager, email, password) VALUES(true, 'a@a.a', '$2a$08$PaAprgLos9T90uGnSHa8GuqjKBanidqgddCQ0tuplPt1gh5d0GZtW');
-INSERT INTO employee(isManager, email, password) VALUES(true, 'ola@ola.ola', '$2y$08$kWu60qEQ9x5VO1EwfxYX0eJ/mtW6aoQKUSVeDgim9mlJBP906YYui');
+INSERT INTO employee(username, isManager, email, password) VALUES('email', false,'email@email.email', '$2a$08$PaAprgLos9T90uGnSHa8GuqjKBanidqgddCQ0tuplPt1gh5d0GZtW');
+INSERT INTO employee(username, isManager, email, password) VALUES('a', true, 'a@a.a', '$2a$08$PaAprgLos9T90uGnSHa8GuqjKBanidqgddCQ0tuplPt1gh5d0GZtW');
+INSERT INTO employee(username, isManager, email, password) VALUES('ola', true, 'ola@ola.ola', '$2y$08$kWu60qEQ9x5VO1EwfxYX0eJ/mtW6aoQKUSVeDgim9mlJBP906YYui');
 INSERT INTO section(warehouse, x, y) VALUES('ali ao lado', 10, 10);
 INSERT INTO section(warehouse, x, y) VALUES('la longe', 100, 100);
 INSERT INTO section(warehouse, x, y) VALUES('la perto de longe', 99, 99);
