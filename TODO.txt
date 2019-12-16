@@ -10,6 +10,7 @@
  - Retirar cenas desnecessárias (imagens ou outras cenas que tenham ficado para trás sem querer) - doing
  - Username na base de dados - Bruno
  - Corrigir erros - doing
+ - Adicionar scrolls e tamanho a todas as tabelas relevantes
  - Popular a base de dados
 
 Done:
