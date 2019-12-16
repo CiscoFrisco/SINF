@@ -61,7 +61,7 @@ const Signup = () => {
         <img className={signupStyles.logo} src={logo} alt="logo" />
         {show !== "" && (
           <Alert
-            style={{ margin: "87% 0% 2% 2%" }}
+            style={{ margin: "2% 0% 2% 2%" }}
             variant={error}
             onClose={() => setShow("")}
             dismissible
