@@ -1,21 +1,22 @@
  To Do:
  
  - Create request (mandar à base de dados) - Luís
- - Automatizar create request para inventory low e mostrar aviso que inventory está low
+ - Mstrar aviso que inventory está low (principalmente se for < do que orders)
  - Alocar produtos a secções - Bruno
- - Bug das waves (primeira??)
- - Create wave (retirar o botao de criar wave depois de a ter criado) - Francisco
  - Create request (adicionar item à lista de requests)
+ - Fazer sections na pagina inventory
+ - Apagar waves ja completas
  - Formatar melhor a pagina de employee
- - Retirar cenas desnecessárias (imagens ou outras cenas que tenham ficado para trás sem querer) - doing
- - Corrigir erros - doing
+
  - Adicionar scrolls e tamanho a todas as tabelas relevantes
- - Popular a base de dados
  - Corrigir botão paginas signup e login
  - Alinhar botao create wave
  - Criar link signup no login
  - Alinhar create request os campos de preenchimento
- - Fazer sections na pagina inventory
+
+- Retirar cenas desnecessárias (imagens ou outras cenas que tenham ficado para trás sem querer) - doing
+- Corrigir erros - doing
+- Popular a base de dados
 
 Done:
 
@@ -25,3 +26,5 @@ Done:
 - Wave info na employee page (para além do link, adicionar client/sender) - João
 - Corrigir os roles - Francisco/Joao
 - Username na base de dados - Bruno
+- Bug das waves (primeira??) - Bruno
+- Create wave (redirect ao criar wave) - Francisco

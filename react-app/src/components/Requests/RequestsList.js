@@ -76,23 +76,26 @@ const RequestsList = ({ requests, setID }) => {
     }
 
     const sendRequest = async () => {
+        console.log(new Date(date).toISOString());
+        console.log(sender);
+
         const params = {
             documentType: "VEI",
             company: "SLGBA",
             serie: "SYS",
             seriesNumber: 3,
-            documentDate: Date.now().toString(),
-            postingDate: Date.now().toString(),
+            documentDate: new Date(date).toISOString(),
+            postingDate: new Date(date).toISOString(),
             sellerSupplierParty: sender,
             sellerSupplierPartyName: sender,
             accountingParty: sender,
             exchangeRate: 1.0,
             discount: 0.0,
-            loadingCountry: "",
-            unloadingCountry: "",
-            currency: "",
-            paymentMethod: "",
-            paymentTerm: ""
+            loadingCountry: "PT",
+            unloadingCountry: "PT",
+            currency: "EUR",
+            paymentMethod: "NUM",
+            paymentTerm: "NUM"
         }
 
         fetch('/api/purchases/orders', {
@@ -140,14 +143,14 @@ const RequestsList = ({ requests, setID }) => {
                     <Modal.Body>
                         <Row style={{ marginLeft: "1%" }}>
                             <p style={{ marginRight: "2%" }}>Select Date</p>
-                            <input id="date" type="date" defaultValue={date}></input>
+                            <input id="date" type="date" defaultValue={date} onChange={event => setDate(event.target.value)}></input>
                         </Row>
                         <Row>
                             <Form.Group as={Col} controlId="formGridState" style={{ padding: "7%" }}>
                                 <Form.Label>Sender</Form.Label>
-                                <Form.Control as="select" value={sender} onChange={event => setSender(event.target.value)}>
-                                    <option disabled>Choose...</option>
-                                    {suppliers.map(supplier => (<option key={supplier} id={supplier}>{supplier}</option>))}
+                                <Form.Control as="select" onChange={event => setSender(event.target.value)}>
+                                    <option disabled selected>Choose...</option>
+                                    {suppliers.map(supplier => (<option key={supplier} id={supplier}>{supplier} </option>))}
                                 </Form.Control>
                             </Form.Group>
                         </Row>
