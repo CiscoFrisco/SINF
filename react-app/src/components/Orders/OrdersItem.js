@@ -28,9 +28,9 @@ const OrdersItem = ({ client, setID }) => {
         const currDate = new Date();
         const orderDate = new Date(client.date);
 
-        return currDate.getDate() == orderDate.getDate() &&
-               currDate.getMonth() == orderDate.getMonth() &&
-               currDate.getFullYear() == orderDate.getFullYear();
+        return currDate.getDate() === orderDate.getDate() &&
+               currDate.getMonth() === orderDate.getMonth() &&
+               currDate.getFullYear() === orderDate.getFullYear();
     }
 
     const createWave = () => {
@@ -78,7 +78,7 @@ const OrdersItem = ({ client, setID }) => {
                             <Form.Label>Assign Employee</Form.Label>
                             <Form.Control as="select" onChange={handleChange}>
                                 <option disabled>Choose...</option>
-                                {employees.map(employee => (<option id={employee.id}>{employee.email}</option>))}
+                                {employees.map(employee => (<option key={employee.id} id={employee.id}>{employee.email}</option>))}
                             </Form.Control>
                         </Form.Group>
                     </Modal.Body>

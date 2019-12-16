@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import { Link, useHistory } from "react-router-dom";
 
 const ProductLinkListItem = ({ item, type }) => {
-    console.log(item);
   const path = "/" + type + "/";
   const history = useHistory();
 

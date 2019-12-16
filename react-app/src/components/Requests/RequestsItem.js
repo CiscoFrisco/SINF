@@ -30,9 +30,9 @@ const RequestsItem = ({ sender, setID }) => {
         const currDate = new Date();
         const orderDate = new Date(sender.date);
 
-        return currDate.getDate() == orderDate.getDate() &&
-               currDate.getMonth() == orderDate.getMonth() &&
-               currDate.getFullYear() == orderDate.getFullYear();
+        return currDate.getDate() === orderDate.getDate() &&
+               currDate.getMonth() === orderDate.getMonth() &&
+               currDate.getFullYear() === orderDate.getFullYear();
     }
 
     const createWave = () => {

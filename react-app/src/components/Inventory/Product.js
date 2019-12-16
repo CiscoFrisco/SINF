@@ -26,7 +26,6 @@ const Product = ({ product }) => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setRequests(
           data.filter(request =>
             request.productList.some(x => x.id === product.id)
@@ -47,7 +46,6 @@ const Product = ({ product }) => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setOrders(
           data.filter(order => order.productList.some(x => x.id === product.id))
         );
@@ -84,20 +82,19 @@ const Product = ({ product }) => {
             )}
           >
             {sections.map(section => (
-              <ProductLinkListItem item={section} type="warehouse" />
+              <ProductLinkListItem key={section} item={section} type="warehouse" />
             ))}
           </Row>
         </Col>
       </Row>
       {requests.length > 0 && (
         <Row className={productStyles.separator}>
-          <Col classNames={productStyles.infoTitles2}>
+          <Col className={productStyles.infoTitles2}>
             <h4 className={productStyles.h4}>Requests</h4>
             <ProductLinkList list={requests} type="requests" />
           </Col>
         </Row>
       )}
-
       {orders.length > 0 && (
         <Row>
           <Col classNames={productStyles.infoTitles2}>

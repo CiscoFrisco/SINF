@@ -72,18 +72,11 @@ const Wave = ({ wave }) => {
           <h3>Wave - {wave.wave_id}</h3>
         </Row>
         <Row className={classNames(wavesStyles.separator, wavesStyles.center)}>
-          <Col className={wavesStyles.nopadding} md="2">
-            <img
-              className={wavesStyles.userImg}
-              src={defaultImg}
-              alt="product"
-            />
-          </Col>
-          <Col md="6">
+          <Col className={wavesStyles.nopadding}  md="5">
             <h4 className={wavesStyles.infoTitles}>Employee Assigned</h4>
-            <p>{wave.emp_name}</p>
+            <p>{wave.type}</p>
           </Col>
-          <Col>
+          <Col md={{span:4 , offset:3}}>
             <Button variant="dark" disabled={disabled} onClick={() => completeWave()}> Complete</Button>
           </Col>
         </Row>
