@@ -4,8 +4,9 @@ import ItemOrder from "./ItemOrder";
 import scrollStyles from "../../../styles/scroll.module.css";
 import classNames from "classnames";
 import { Row, Col, Button, Table } from "react-bootstrap";
+import {connect} from "react-redux";
 
-const Wave = ({ wave }) => {
+const Wave = ({ wave, isAdmin }) => {
   const [disabled, setDisabled] = useState(true);
   const [reload, setReload] = useState(false);
 
@@ -63,6 +64,10 @@ const Wave = ({ wave }) => {
       body: JSON.stringify({
         id: wave.wave_id,
       })
+    }).then(res => res.json())
+    .then(data => {
+      const redirect = isAdmin === "true" ? ("/waves/1") : ("/wave/1");
+      window.location.href= redirect;
     });
   }
 
@@ -106,4 +111,4 @@ const Wave = ({ wave }) => {
   );
 };
 
-export default Wave;
+export default connect(({ user }) => ({ isAdmin: user.role}))(Wave);
