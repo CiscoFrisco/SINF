@@ -19,20 +19,22 @@ const Section = ({ section }) => {
           <Row className={sectionListStyles.title}>
             <h4>Product List</h4>
           </Row>
-          <Table className={classNames(scrollStyles.scroll)} style={{ marginTop: '5%' }} hover>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Product Name</th>
-                <th>Quantity</th>
-              </tr>
-            </thead>
-            <tbody>
-              {section.items.map(item => (
-                <SectionItem key={item.id} item={item} />
-              ))}
-            </tbody>
-          </Table>
+          <div className={classNames(scrollStyles.scroll, sectionListStyles.scrollList60)} style={{ marginTop: "5%" }}>
+            <Table className={classNames(scrollStyles.scroll)} hover>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Product Name</th>
+                  <th>Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                {section.items.map(item => (
+                  <SectionItem key={item.id} item={item} />
+                ))}
+              </tbody>
+            </Table>
+          </div>
         </Col>
       </Container>
     </div>

@@ -1,22 +1,27 @@
 import React from "react";
 import ProductLinkListItem from "../Inventory/ProductLinkListItem";
+import listStyles from '../../styles/list.module.css';
+import scrollStyles from '../../styles/scroll.module.css';
+import classnames from 'classnames';
 import Table from "react-bootstrap/Table";
 
 const ProductLinkList = ({ list, type }) => {
   return (
-    <Table style={{ marginTop: "5%" }} hover>
-      <thead>
-        <tr>
-          <th>Wave ID</th>
-          {type === "requests" ? <th> Sender</th> : <th> Client</th>}
-        </tr>
-      </thead>
-      <tbody>
-        {list.map(item => (
-          <ProductLinkListItem key={item.id} item={item} type={type} />
-        ))}
-      </tbody>
-    </Table>
+    <div className={classnames(scrollStyles.scroll, listStyles.scrollList20)}>
+      <Table hover>
+        <thead>
+          <tr>
+            <th>Wave ID</th>
+            {type === "requests" ? <th> Sender</th> : <th> Client</th>}
+          </tr>
+        </thead>
+        <tbody>
+          {list.map(item => (
+            <ProductLinkListItem key={item.id} item={item} type={type} />
+          ))}
+        </tbody>
+      </Table>
+    </div>
   );
 };
 

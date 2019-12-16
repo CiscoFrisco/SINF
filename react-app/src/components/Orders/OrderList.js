@@ -13,7 +13,7 @@ const OrderList = ({ orders, setID }) => {
                     <Row className={orderListStyles.title}>
                         <h3>Orders</h3>
                     </Row>
-                    <div className={classnames(scrollStyle.scroll, orderListStyles.scrollList)} style={{ marginTop: '5%' }}>
+                    <div className={classnames(scrollStyle.scroll, orderListStyles.scrollList70)} style={{ marginTop: '5%' }}>
                         <Table hover>
                             <thead>
                                 <tr>

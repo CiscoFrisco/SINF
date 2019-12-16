@@ -89,7 +89,7 @@ const Wave = ({ wave, isAdmin }) => {
         <Row className={classNames(wavesStyles.title, wavesStyles.padding_top)}>
           <h4>Product List</h4>
         </Row>
-        <div className={classNames(scrollStyles.scroll, listStyles.scrollList3)}>
+        <div className={classNames(scrollStyles.scroll, listStyles.scrollList40)}>
           <Table className={classNames(scrollStyles.scroll)} style={{ marginTop: '5%' }}>
             <thead>
               <tr>

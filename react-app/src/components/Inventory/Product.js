@@ -29,7 +29,7 @@ const Product = ({ product,requests, orders }) => {
       </Row>
       {requests.length > 0 && (
         <Row className={productStyles.separator}>
-          <Col className={productStyles.infoTitles2}>
+          <Col className={classNames(productStyles.infoTitles2,productStyles.requestsMargin)}>
             <h4 className={productStyles.h4}>Requests</h4>
             <ProductLinkList list={requests} type="requests" />
           </Col>
