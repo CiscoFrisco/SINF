@@ -8,7 +8,7 @@ import styles from '../styles/list.module.css';
 
 const Employees = () => {
     const { url_id } = useParams();
-    const [id, setID] = useState(0);
+    const [id, setID] = useState(parseInt(url_id));
     const [employees, setEmployees] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
@@ -25,7 +25,7 @@ const Employees = () => {
         })
             .then(response => response.json())
             .then(data => {
-                if(!data.filter(employee =>employee.id === url_id).length > 0){
+                if(!data.filter(employee => employee.id === parseInt(url_id)).length > 0){
                     setID(data[0]["id"]);
                     history.push("/employees/" + data[0]["id"]);
                 }

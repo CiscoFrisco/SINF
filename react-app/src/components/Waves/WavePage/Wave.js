@@ -4,9 +4,9 @@ import ItemOrder from "./ItemOrder";
 import scrollStyles from "../../../styles/scroll.module.css";
 import classNames from "classnames";
 import { Row, Col, Button, Table } from "react-bootstrap";
-import defaultImg from "../../../assets/profile_pics/default.png";
 
 const Wave = ({ wave }) => {
+  console.log(wave.productList);
   const [disabled, setDisabled] = useState(true);
   const [inventory, setInventory] = useState(wave.productList);
 
@@ -34,6 +34,7 @@ const Wave = ({ wave }) => {
       }),
     }).then(response => response.json())
       .then(data => {
+        console.log(data);
         setInventory(data);
       })
       .catch(console.log);
@@ -50,7 +51,7 @@ const Wave = ({ wave }) => {
       setDisabled(false);
     else
       setDisabled(true);
-  }, inventory)
+  }, [inventory])
 
   const completeWave = () => {
     fetch('/api/waves/completed', {

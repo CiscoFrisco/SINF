@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 
 const Waves = ({isAdmin, userID}) => {
     const {url_id} = useParams();
-    const [id, setID] = useState(url_id);
+    const [id, setID] = useState(parseInt(url_id));
     const [waves, setWaves] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const history = useHistory();
@@ -25,18 +25,16 @@ const Waves = ({isAdmin, userID}) => {
         })
         .then(response => response.json())
         .then(data => {
+            const data_filtered = isAdmin === "true" ? data : (data.filter(wave => wave.id_employee === userID))
             
-            const data_filtered = isAdmin ? data : (data.filter(wave => wave.id_employee === userID))
-            
-            if(!data_filtered.filter(wave => wave.wave_id === url_id).length > 0){
+            if(!data_filtered.filter(wave => wave.wave_id === parseInt(url_id)).length > 0){
                 setID(data_filtered[0]["wave_id"]);
                 if(isAdmin === "true"){
-                    console.log("admin");
                     history.push("/waves/" + data[0]["wave_id"]);
                 }
-                else
+                else{
                     history.push("/wave/" + data[0]["wave_id"]);
-                    console.log("nao admin");
+                }
             }
 
             setWaves(data_filtered);

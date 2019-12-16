@@ -4,7 +4,6 @@ import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 const PrivateRoute = ({ children, isAdmin, adminOnly, isHome, ...rest }) => {
-  console.log(isAdmin + "|" + adminOnly);
     return (
     <Route
       {...rest}

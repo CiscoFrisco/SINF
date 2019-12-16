@@ -75,7 +75,7 @@ const completeWave = async (req, res, next) => {
 
 const getWaves = async (req, res, next) => {
     const waves = await wavesModel.getWaves();
-
+    console.log(waves);
     res.status(200).send(JSON.stringify(waves));
 }
 

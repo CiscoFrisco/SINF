@@ -52,6 +52,8 @@ INSERT INTO product(id, section_id) VALUES('AAA', 1);
 INSERT INTO product(id, section_id) VALUES('MAD', 2);
 INSERT INTO product(id, section_id) VALUES('CAD', 3);
 INSERT INTO wave(ref, party, id_employee) VALUES('ECF.2019.4', 'Teste', 1);
+INSERT INTO wave(ref, party, id_employee) VALUES('ECF.2019.5', 'Teste', 2);
 INSERT INTO waveItem(id, prodName, quantity, wave_id, section_id) VALUES('AAA', 'aaa', 5, 1, 1);
 INSERT INTO waveItem(id, prodName, quantity, wave_id, section_id) VALUES('MAD', 'Madeira', 7, 1, 2);
 INSERT INTO waveItem(id, prodName, quantity, wave_id, section_id) VALUES('CAD', 'Cadeiras', 13, 1, 3);
+INSERT INTO waveItem(id, prodName, quantity, wave_id, section_id) VALUES('CAD', 'Cadeiras', 13, 2, 3);
