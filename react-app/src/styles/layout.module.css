@@ -1,5 +1,5 @@
 .colContainer {
-    height:90.89vh;
+    height:90.4vh;
     background-color: white;
     padding:0% !important;
 }
@@ -10,5 +10,5 @@
 }
 
 .infoContainer {
-    box-shadow: 0px 0px 5px 0px #000000;
+    box-shadow: -5px 0px 5px -5px #000000;
 }
