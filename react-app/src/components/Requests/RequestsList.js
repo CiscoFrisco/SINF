@@ -120,7 +120,9 @@ const RequestsList = ({ requests, setID }) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(params)
-    });
+    })
+    .then(response=>response.json())
+    .then(data => {window.location.href ="/requests/1"});
   };
 
   const changeSender = (event) => {
