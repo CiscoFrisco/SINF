@@ -48,6 +48,7 @@ INSERT INTO employee(username, isManager, email, password) VALUES('ola', true, '
 INSERT INTO section(warehouse, x, y) VALUES('ali ao lado', 10, 10);
 INSERT INTO section(warehouse, x, y) VALUES('la longe', 100, 100);
 INSERT INTO section(warehouse, x, y) VALUES('la perto de longe', 99, 99);
+INSERT INTO section(warehouse, x, y) VALUES('ainda mais longe', 1000, 1000);
 INSERT INTO product(id, section_id) VALUES('AAA', 1);
 INSERT INTO product(id, section_id) VALUES('MAD', 2);
 INSERT INTO product(id, section_id) VALUES('CAD', 3);
