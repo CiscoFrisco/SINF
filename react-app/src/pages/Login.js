@@ -39,7 +39,7 @@ const Login = ({ setUserRole, setUserID }) => {
             utils.setToken(data.token);
             setUserID(data.id);
             setUserRole(data.role);
-            history.push("/");
+            window.location.href="/";
         }
       })
       .catch(console.log);
@@ -50,7 +50,7 @@ const Login = ({ setUserRole, setUserID }) => {
       <Col md="6">
         <img className={loginStyles.logo} src={logo} alt="logo" />
         {show !== "" && (
-          <Alert style={{margin:'87% 0% 2% 2%'}} variant="danger" onClose={() => setShow("")} dismissible>
+          <Alert style={{margin:'2% 0% 2% 2%'}} variant="danger" onClose={() => setShow("")} dismissible>
             <p>{show}</p>
           </Alert>
         )}
