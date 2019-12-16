@@ -15,7 +15,7 @@ const Product = ({ product }) => {
     const [requests, setRequests] = useState([]);
     const [orders, setOrders] = useState([]);
 
-    const locations = [1, 5, 17, 8,1,1,1,1,1];
+    const locations = [1, 5, 17, 8];
 
     useEffect(() => {
         fetch("/api/purchases/requests", {
@@ -54,7 +54,7 @@ const Product = ({ product }) => {
             <Row className={classNames(productStyles.separator, productStyles.inline)}>
                 <h3>{product.id} - {product.name}</h3>
             </Row>
-            <Row className={productStyles.center, productStyles.separator}>
+            <Row className={classNames(productStyles.center, productStyles.separator)}>
                 <Col md="4">
                     <h4 className={productStyles.infoTitles} >Stock Available</h4>
                     <p>{product.quantity}</p>
@@ -62,16 +62,16 @@ const Product = ({ product }) => {
                 <Col md={{span:5 , offset:2}}>
                     <h4 className={productStyles.infoTitles}>Warehouse Location</h4>
                     <Row className={classNames(scrollStyles.scrolly, listStyles.scrolly10, listStyles.margin)}>
-                        {locations.map(location => (<ProductLinkListItem id={location} type="location"/>))}
+                        {locations.map(location => (<ProductLinkListItem key={location} id={location} type="location"/>))}
                     </Row>
                 </Col>
             </Row>
             <Row className={productStyles.separator}>
-                <Col classNames={productStyles.infoTitles2} md="6">
+                <Col className={productStyles.infoTitles2} md="6">
                     <h4 className={productStyles.h4}>Requests</h4>
                     <ProductLinkList list={requests} type='requests' />
                 </Col>
-                <Col classNames={productStyles.infoTitles2} md="6">
+                <Col className={productStyles.infoTitles2} md="6">
                     <h4 className={productStyles.h4}>Orders</h4>
                     <ProductLinkList list={orders} type='orders' />
                 </Col>

@@ -78,7 +78,7 @@ const OrdersItem = ({ client, setID }) => {
                             <Form.Label>Assign Employee</Form.Label>
                             <Form.Control as="select" onChange={handleChange}>
                                 <option disabled>Choose...</option>
-                                {employees.map(employee => (<option id={employee.id}>{employee.email}</option>))}
+                                {employees.map(employee => (<option key={employee.id} id={employee.id}>{employee.email}</option>))}
                             </Form.Control>
                         </Form.Group>
                     </Modal.Body>

@@ -22,14 +22,8 @@ const Sender = ({ sender }) => {
       <Row
         className={senderStyles.center}
       >
-        <Col className={senderStyles.nopadding} md="4">
-          <img
-            className={senderStyles.userImg}
-            src={defaultImg}
-            alt="product"
-          />
-        </Col>
-        <Col md="8">
+      <Container>
+        <Col>
           <Row className={senderStyles.separator}>
             <Col>
               <h4 className={senderStyles.infoTitles}>Sender</h4>
@@ -43,6 +37,7 @@ const Sender = ({ sender }) => {
             </Col>
           </Row>
         </Col>
+        </Container>
       </Row>
       <Container className={senderListStyles.container}>
         <Col>

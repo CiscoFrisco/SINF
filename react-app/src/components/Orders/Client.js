@@ -21,27 +21,18 @@ const Client = ({ client }) => {
       <Row
         className={clientStyles.center}
       >
-        <Col className={clientStyles.nopadding} md="4">
-          <img
-            className={clientStyles.userImg}
-            src={defaultImg}
-            alt="product"
-          />
-        </Col>
-        <Col md="8">
-          <Row className={clientStyles.separator}>
+          <Col md="6" className={clientStyles.separator}>
             <Col>
               <h4 className={clientStyles.infoTitles}>Client</h4>
               <p>{client.name}</p>
             </Col>
-          </Row>
-          <Row className={clientStyles.separator}>
+          </Col>
+          <Col md="6" className={clientStyles.separator}>
             <Col>
               <h4 className={clientStyles.infoTitles}>Date</h4>
               <p>{date.toLocaleDateString("en-US", lang_options)}</p>
             </Col>
-          </Row>
-        </Col>
+          </Col>
       </Row>
       <Container className={clientListStyles.container}>
         <Col>
@@ -75,7 +66,7 @@ const Client = ({ client }) => {
             <tbody>
               {client.productList.map(item => (
                 <OrderItem key={item.id} item={item} />
-              ))}{" "}
+              ))}
             </tbody>
           </Table>
         </Col>

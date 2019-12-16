@@ -131,9 +131,9 @@ const RequestsList = ({ requests, setID }) => {
                                 </thead>
                                 <tbody>
                                     {productsAdded.map(item => (
-                                    <tr>                                     
-                                        <td id={item.id}>{item.product}</td>
-                                        <td id={item.id}>{item.quantity}</td>
+                                    <tr key={item.id} id={item.id}>                                     
+                                        <td>{item.product}</td>
+                                        <td>{item.quantity}</td>
                                         <td> <Button variant="dark" onClick={()=>removeProduct(item.id)}><FaTrash/></Button></td>
                                     </tr>
                                     ))}

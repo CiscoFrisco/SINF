@@ -20,7 +20,7 @@ const OrderList = ({ orders, setID }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {orders.map(client => (<OrdersItem client={client} setID={setID} />))}
+                            {orders.map(client => (<OrdersItem key={client.id}client={client} setID={setID} />))}
                         </tbody>
                     </Table>
                 </Col>
