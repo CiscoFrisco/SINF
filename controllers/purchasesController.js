@@ -168,6 +168,7 @@ const postOrder = (req, res, next) => {
         },
         method: 'POST',
         json: true,
+        body: req.body,
         url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/purchases/orders
         `,
     };
