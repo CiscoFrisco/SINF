@@ -167,7 +167,6 @@ const getSortedProductList = async (waveID, currentSection) => {
         return a.distance > b.distance;
     });
 
-    console.log(productList);
 
     return productList;
 }

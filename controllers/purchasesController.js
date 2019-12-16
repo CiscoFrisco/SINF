@@ -177,7 +177,6 @@ const postOrder = (req, res, next) => {
     };
 
     request(options, (error, response, body) => {
-        console.log(response.statusCode);
         if(error) {
             res.status(response.statusCode).send(error);
         }

@@ -60,7 +60,6 @@ const RequestsList = ({ requests, setID }) => {
     try {
       setId(id + 1);
     } finally {
-      console.log(quantity);
       if (quantity > 0 && product !== "") {
         const newProduct = { id: id, product: product, quantity: quantity };
         const util = productsAdded;

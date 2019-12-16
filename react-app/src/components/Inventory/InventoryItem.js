@@ -11,7 +11,6 @@ const InventoryItem = ({ product, setID }) => {
             <td>{product.id}</td>
             <td>{product.name}</td>
             <td>{product.quantity}</td>
-            {console.log(product.danger)}
             {product.danger == "true" ? (<td>
                 <div className={styles.tooltip}>
                     <img className={styles.warningimg} src={warning} alt="warning" />
