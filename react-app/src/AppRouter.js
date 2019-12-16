@@ -39,7 +39,7 @@ const AppRouter = () => (
             <PrivateRoute adminOnly="false" path="/employee">
                 <EmployeePage />
             </PrivateRoute>
-            <PrivateRoute adminOnly="both" path="/wave">
+            <PrivateRoute adminOnly="false" path="/wave/:url_id">
                 <Waves />
             </PrivateRoute>
             <PrivateRoute adminOnly="true" path="/inventory/:url_id">

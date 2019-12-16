@@ -25,12 +25,12 @@ const OrdersItem = ({ client, setID }) => {
     }, []);
 
     const isToday = () => {
-        return true;/*const currDate = new Date();
+        const currDate = new Date();
         const orderDate = new Date(client.date);
 
         return currDate.getDate() == orderDate.getDate() &&
                currDate.getMonth() == orderDate.getMonth() &&
-               currDate.getFullYear() == orderDate.getFullYear();*/
+               currDate.getFullYear() == orderDate.getFullYear();
     }
 
     const createWave = () => {

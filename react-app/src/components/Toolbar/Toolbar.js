@@ -35,7 +35,7 @@ const Toolbar = ({ isAdmin }) => {
         ) : (
           <Nav className="mr-auto">
             <Nav.Link href="/employee">Employee</Nav.Link>
-            <Nav.Link href="/wave">Waves</Nav.Link>
+            <Nav.Link href="/wave/1">Waves</Nav.Link>
           </Nav>
         )}
         <Nav>

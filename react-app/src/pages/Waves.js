@@ -30,7 +30,13 @@ const Waves = ({isAdmin, userID}) => {
             
             if(!data_filtered.filter(wave => wave.wave_id === url_id).length > 0){
                 setID(data_filtered[0]["wave_id"]);
-                history.push("/waves/" + data[0]["wave_id"]);
+                if(isAdmin == "true"){
+                    console.log("admin");
+                    history.push("/waves/" + data[0]["wave_id"]);
+                }
+                else
+                    history.push("/wave/" + data[0]["wave_id"]);
+                    console.log("nao admin");
             }
 
             setWaves(data_filtered);

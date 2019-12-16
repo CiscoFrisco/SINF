@@ -103,7 +103,7 @@ const Wave = ({ wave }) => {
           <tbody>
             {inventory.map(item => (
               <ItemOrder key={item.id} item={item} setChecked={setChecked} />
-            ))}{" "}
+            ))}
           </tbody>
         </Table>
 
