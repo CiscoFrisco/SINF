@@ -14,7 +14,7 @@ const WaveList = ({ wave, setID }) => {
                     <Row className={wavesListStyles.title}>
                         <h3>Waves</h3>
                     </Row>
-                    <div className={classnames(scrollStyle.scroll, wavesListStyles.scrollList)} style={{ marginTop: '5%' }}>
+                    <div className={classnames(scrollStyle.scroll, wavesListStyles.scrollList70)} style={{ marginTop: '5%' }}>
                         <Table hover>
                             <thead>
                                 <tr>

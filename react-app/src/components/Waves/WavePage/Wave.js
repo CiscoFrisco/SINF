@@ -80,7 +80,7 @@ const Wave = ({ wave, isAdmin }) => {
         <Row className={classNames(wavesStyles.separator, wavesStyles.center)}>
           <Col className={wavesStyles.nopadding}  md="5">
             <h4 className={wavesStyles.infoTitles}>Employee Assigned</h4>
-            <p>{wave.type}</p>
+            <p>{wave.employee_name}</p>
           </Col>
           <Col md={{span:4 , offset:3}}>
             <Button variant="dark" disabled={disabled} onClick={() => completeWave()}> Complete</Button>
@@ -89,7 +89,7 @@ const Wave = ({ wave, isAdmin }) => {
         <Row className={classNames(wavesStyles.title, wavesStyles.padding_top)}>
           <h4>Product List</h4>
         </Row>
-        <div className={classNames(scrollStyles.scroll, listStyles.scrollList3)}>
+        <div className={classNames(scrollStyles.scroll, listStyles.scrollList40)}>
           <Table className={classNames(scrollStyles.scroll)} style={{ marginTop: '5%' }}>
             <thead>
               <tr>

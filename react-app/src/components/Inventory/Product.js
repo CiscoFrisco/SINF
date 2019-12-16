@@ -1,65 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {Row, Col} from "react-bootstrap";
 import productStyles from "../../styles/inventory.module.css";
 import classNames from "classnames";
 import ProductLinkList from "../../components/Inventory/ProductLinkList";
 import ProductLinkListItem from "../../components/Inventory/ProductLinkListItem";
 
-const Product = ({ product }) => {
-  console.log("DEI RELoAD");
-  
-  const [isLoadingOne, setIsLoadingOne] = useState(true);
-  const [isLoadingTwo, setIsLoadingTwo] = useState(true);
-  const [requests, setRequests] = useState([]);
-  const [orders, setOrders] = useState([]);
-
-  useEffect(() => {
-    console.log("USE REQUESTS");
-    
-    fetch("/api/purchases/requests", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
-    })
-      .then(response => response.json())
-      .then(data => {
-        setRequests(
-          data.filter(request =>
-            request.productList.some(x => x.id === product.id)
-          )
-        );
-        setIsLoadingOne(false);
-      })
-      .catch(console.log);
-  }, []);
-
-  useEffect(() => {
-    console.log("USE ORDERS");
-
-    fetch("/api/sales/orders", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
-    })
-      .then(response => response.json())
-      .then(data => {
-        setOrders(
-          data.filter(order => order.productList.some(x => x.id === product.id))
-        );
-        setIsLoadingTwo(false);
-      })
-      .catch(console.log);
-  }, []);
-
-  return isLoadingOne || isLoadingTwo ? (
-    <div>
-      <p>Loading...</p>
-    </div>
-  ) : (
+const Product = ({ product,requests, orders }) => { 
+  return (
     <div className={productStyles.productInfoContainer}>
       <Row
         className={classNames(productStyles.separator, productStyles.inline)}
@@ -82,7 +29,7 @@ const Product = ({ product }) => {
       </Row>
       {requests.length > 0 && (
         <Row className={productStyles.separator}>
-          <Col className={productStyles.infoTitles2}>
+          <Col className={classNames(productStyles.infoTitles2,productStyles.requestsMargin)}>
             <h4 className={productStyles.h4}>Requests</h4>
             <ProductLinkList list={requests} type="requests" />
           </Col>

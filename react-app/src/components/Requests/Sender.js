@@ -22,42 +22,40 @@ const Sender = ({ sender }) => {
       <Row
         className={senderStyles.center}
       >
-      <Container>
-        <Col>
-          <Row className={senderStyles.separator}>
+          <Col md="6" className={senderStyles.separator}>
             <Col>
               <h4 className={senderStyles.infoTitles}>Sender</h4>
               <p>{sender.name}</p>
             </Col>
-          </Row>
-          <Row className={senderStyles.separator}>
+          </Col>
+          <Col md="6" className={senderStyles.separator}>
             <Col>
               <h4 className={senderStyles.infoTitles}>Date</h4>
               <p>{date.toLocaleDateString("en-US", lang_options)}</p>
             </Col>
-          </Row>
-        </Col>
-        </Container>
+          </Col>
       </Row>
       <Container className={senderListStyles.container}>
         <Col>
           <Row className={senderListStyles.title}>
             <h4>Product List</h4>
           </Row>
-          <Table className={classNames(scrollStyles.scroll)} style={{ marginTop: '5%' }} hover>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Product Name </th>
-                <th>Quantity</th>
-              </tr>
-            </thead>
-            <tbody>
-              {requestItems.map(item => (
-                <RequestItem key={item.id} item={item} />
-              ))}
-            </tbody>
-          </Table>
+          <div className={classNames(scrollStyles.scroll, senderListStyles.scrollList45)} style={{ marginTop: "5%" }}>
+            <Table hover>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Product Name </th>
+                  <th>Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                {requestItems.map(item => (
+                  <RequestItem key={item.id} item={item} />
+                ))}
+              </tbody>
+            </Table>
+          </div>
         </Col>
       </Container>
     </div>

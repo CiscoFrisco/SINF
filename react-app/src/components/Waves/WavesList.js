@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import Table from 'react-bootstrap/Table';
 
 const WavesList = ({ waves }) => (
-    <div className={classnames(scrollStyles.scroll, listStyles.scrollList2)}>
+    <div className={classnames(scrollStyles.scroll, listStyles.scrollList60)}>
         <Table hover>
             <thead>
                 <td>ID</td>

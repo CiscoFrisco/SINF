@@ -147,7 +147,7 @@ const RequestsList = ({ requests, setID }) => {
                     <Button variant="dark" onClick={() => setShow(true)}>Create</Button>
                 </Col>
             </Row>
-            <div className={classnames(scrollStyle.scroll, requestsListStyles.scrollList)} style={{ marginTop: '5%' }}>
+            <div className={classnames(scrollStyle.scroll, requestsListStyles.scrollList70)} style={{ marginTop: '5%' }}>
                 <Table hover>
                     <thead>
                         <tr>

@@ -15,13 +15,13 @@ const EmployeesList = ({ employees, setID }) => {
                     <Row className={employeeListStyles.title}>
                         <h3>Employees</h3>
                     </Row>
-                    <div className={classnames(scrollStyle.scroll, employeeListStyles.scrollList)} style={{ marginTop: '5%' }}>
+                    <div className={classnames(scrollStyle.scroll, employeeListStyles.scrollList70)} style={{ marginTop: '5%' }}>
                         <Table hover>
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Email </th>
-                                    <th>Role</th>
+                                    <th>Name</th>
                                 </tr>
                             </thead>
                             <tbody>
