@@ -1,4 +1,3 @@
- - Corrigir os roles - Francisco
  - Create request (mandar à base de dados) - Luís
  - Automatizar create request para inventory low e mostrar aviso que inventory está low
  - Alocar produtos a secções - Bruno
@@ -17,3 +16,4 @@ Done:
 - Mudar requests e orders para o botao de criar waves so funcionar nas de hoje
 - Inventory - requests e orders serem tabelas - Francisco
  - Wave info na employee page (para além do link, adicionar client/sender) - João
+  - Corrigir os roles - Francisco/Joao
