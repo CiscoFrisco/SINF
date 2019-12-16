@@ -67,8 +67,8 @@ const RequestsItem = ({ sender, setID }) => {
 
     return (
         <tr onClick={() => { setID(sender.id); history.push("/requests/" + sender.id) }}>
-            <td>{sender.id}</td>
-            <td>{sender.name}</td>
+            <td style={{paddingTop:"1.2em"}}>{sender.id}</td>
+            <td style={{paddingTop:"1.2em"}}>{sender.name}</td>
             {(!sender.wave && isToday()) ? (<td>
                 <Button variant="dark" onClick={() => setShow(sender.id)}> Create Wave</Button>
             </td>) : (<td></td>)}

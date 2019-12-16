@@ -66,8 +66,8 @@ const OrdersItem = ({ client, setID }) => {
     return (
 
             <tr onClick={() => { setID(client.id); history.push("/orders/" + client.id)}}>
-                <td>{client.id}</td>
-                <td>{client.name}</td>
+                <td style={{marginTop:"1.2em"}}>{client.id}</td>
+                <td style={{marginTop:"1.2em"}}>{client.name}</td>
                 <td>
                     {!client.wave && isToday() && (
                     <Button variant="dark" onClick={() => setShow(client.id)}> Create Wave</Button>

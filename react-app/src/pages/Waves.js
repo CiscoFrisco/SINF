@@ -25,8 +25,9 @@ const Waves = ({isAdmin, userID}) => {
         })
         .then(response => response.json())
         .then(data => {
-            const data_filtered = isAdmin === "true" ? data : (data.filter(wave => wave.id_employee === userID))
-            
+            console.log(data);
+            const data_filtered = isAdmin === "true" ? data : (data.filter(wave => wave.id_employee === parseInt(userID)));
+            console.log(data_filtered);
             if(!data_filtered.filter(wave => wave.wave_id === parseInt(url_id)).length > 0){
                 setID(data_filtered[0]["wave_id"]);
                 if(isAdmin === "true"){
