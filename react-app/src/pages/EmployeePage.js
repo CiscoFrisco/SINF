@@ -5,7 +5,6 @@ import Toolbar from "../components/Toolbar/Toolbar";
 import { connect } from "react-redux";
 
 const EmployeePage = ({userID}) => {
-    console.log(userID);
     const [employees, setEmployees] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -29,7 +28,7 @@ const EmployeePage = ({userID}) => {
         (
             <div>
                 <Toolbar />
-                <Employee2 employee={employees.find(employee => employee.id === userID)} />
+                <Employee2 employee={employees.find(employee => employee.id == userID)} />
             </div>
         )
     )
