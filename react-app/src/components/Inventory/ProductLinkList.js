@@ -7,7 +7,7 @@ import Table from "react-bootstrap/Table";
 
 const ProductLinkList = ({ list, type }) => {
   return (
-    <div className={classnames(scrollStyles.scroll, listStyles.scrollList20)} style={{ marginTop: "1%" }}>
+    <div className={classnames(scrollStyles.scroll, listStyles.scrollList20)}>
       <Table hover>
         <thead>
           <tr>

@@ -15,7 +15,11 @@
 }
 
 .separator{
-    padding-top: 5%;
+    padding-top: 3%;
+}
+
+.requestsMargin {
+    margin-bottom: 1.5em; 
 }
 
 .infoTitles{
