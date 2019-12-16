@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 const WaveItem = ({ wave, isAdmin }) => {
     const history= useHistory();
     let itemsUtil=0;
-    const path = isAdmin==="false" ? ("/wave/" + wave.wave_id) : ("/waves/" + wave.wave_id);
+    const path = isAdmin === "false" ? ("/wave/" + wave.wave_id) : ("/waves/" + wave.wave_id);
+    
     const numberRemaining = () =>{
         console.log(wave.productList);
         wave.productList.forEach((item) => {
