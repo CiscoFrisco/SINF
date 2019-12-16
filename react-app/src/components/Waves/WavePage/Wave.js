@@ -4,18 +4,19 @@ import ItemOrder from "./ItemOrder";
 import scrollStyles from "../../../styles/scroll.module.css";
 import classNames from "classnames";
 import { Row, Col, Button, Table } from "react-bootstrap";
+import {connect} from "react-redux";
 
-const Wave = ({ wave }) => {
-  console.log(wave.productList);
+const Wave = ({ wave, isAdmin }) => {
   const [disabled, setDisabled] = useState(true);
-  const [inventory, setInventory] = useState(wave.productList);
+  const [reload, setReload] = useState(false);
 
   const setChecked = (id, checked) => {
-    setInventory(inventory.map(item => item.id === id ? { ...item, completed: !item.completed } : item))
+    wave.productList = wave.productList.map(item => item.id === id ? { ...item, completed: !item.completed } : item)
+    setReload(!reload);
 
     let section_id;
 
-    inventory.forEach((item) => {
+    wave.productList.forEach((item) => {
         if(item.id === id)
           section_id = item.section;
     })
@@ -34,15 +35,15 @@ const Wave = ({ wave }) => {
       }),
     }).then(response => response.json())
       .then(data => {
-        console.log(data);
-        setInventory(data);
+        setReload(!reload);
+        wave.productList = data;
       })
       .catch(console.log);
   }
 
   useEffect(() => {
     let allCompleted = true;
-    inventory.forEach(item => {
+    wave.productList.forEach(item => {
       if (!item.completed)
         allCompleted = false;
     })
@@ -51,7 +52,7 @@ const Wave = ({ wave }) => {
       setDisabled(false);
     else
       setDisabled(true);
-  }, [inventory])
+  }, wave.productList)
 
   const completeWave = () => {
     fetch('/api/waves/completed', {
@@ -63,6 +64,10 @@ const Wave = ({ wave }) => {
       body: JSON.stringify({
         id: wave.wave_id,
       })
+    }).then(res => res.json())
+    .then(data => {
+      const redirect = isAdmin === "true" ? ("/waves/1") : ("/wave/1");
+      window.location.href= redirect;
     });
   }
 
@@ -95,7 +100,7 @@ const Wave = ({ wave }) => {
             </tr>
           </thead>
           <tbody>
-            {inventory.map(item => (
+            {wave.productList.map(item => (
               <ItemOrder key={item.id} item={item} setChecked={setChecked} />
             ))}
           </tbody>
@@ -106,4 +111,4 @@ const Wave = ({ wave }) => {
   );
 };
 
-export default Wave;
+export default connect(({ user }) => ({ isAdmin: user.role}))(Wave);

@@ -53,6 +53,9 @@ const OrdersItem = ({ client, setID }) => {
                 id_employee: id_employee,
                 waveItems: client.productList
             })
+        }).then(response => response.json())
+        .then(data => {
+            history.push("/waves/" + data.wave[0]["id"])
         });
     }
 

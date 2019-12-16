@@ -10,7 +10,7 @@ const ProductLinkListItem = ({ item, type }) => {
   if (type === "warehouse") {
     return (
       <Link to={`${path + item}`}>
-          <Button variant="dark" className={linkListItemStyles.location}>
+          <Button style={{marginLeft:"45%"}} variant="dark" className={linkListItemStyles.location}>
             <div className={linkListItemStyles.itemText}>{item}</div>
           </Button>
       </Link>

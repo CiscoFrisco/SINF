@@ -25,6 +25,7 @@ const Inventory = () => {
         })
             .then(response => response.json())
             .then(data => {
+                console.log(data);
                 if(!data.filter(product =>product.id === url_id).length > 0){
                     setID(data[0]["id"]);
                     history.push("/inventory/" + data[0]["id"]);

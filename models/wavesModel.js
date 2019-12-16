@@ -2,26 +2,65 @@ const pool = require('../config');
 const { getSections } = require('./warehouseModel')
 
 const assignSection = async (itemID, isRequest) => {
-    const query = `SELECT section_id
+    let query = `SELECT section_id
     FROM product
     WHERE id = $1`;
 
-    const values = [
+    let values = [
         itemID
     ];
 
     const { rows } = await pool.query(query, values);
 
-    if(rows.length > 0)
+    if (rows.length > 0)
         return rows[0].section_id;
 
-    if(!isRequest)
+    if (!isRequest)
         return null;
 
-    //Assign section
+    query = `SELECT product.section_id, COUNT(*) as count
+    FROM product, section
+    WHERE product.section_id = section.id
+    GROUP BY product.section_id`;
+
+    const sectionCount = await pool.query(query);
+    const sections = await getSections();
+
+    sections.forEach((section) => {
+        let found = false;
+
+        sectionCount.rows.forEach((sc) => {
+            if (section.id == sc.section_id) {
+                found = true;
+                section.itemCount = parseInt(sc.count);
+            }
+        });
+
+        if (!found)
+            section.itemCount = 0;
+    })
+
+    sections.sort((a, b) => {
+        return a.itemCount > b.itemCount;
+    });
+
+    const newSection = sections[0].id;
+
+    query = `INSERT INTO
+    product(id, section_id)
+    VALUES($1, $2)`;
+
+    values = [
+        itemID,
+        newSection
+    ]
+
+    await pool.query(query, values);
+
+    return newSection;
 }
 
-const createWave = async (wave) => {   
+const createWave = async (wave) => {
     const waveQuery = `INSERT INTO
     wave(ref, party, id_employee)
     VALUES($1, $2, $3)
@@ -65,7 +104,7 @@ const createWave = async (wave) => {
     };
 }
 
-const distance = (l1, l2) => Math.sqrt(Math.pow(l2[0] - l1[0],2) + Math.pow(l2[1] - l1[1],2));
+const distance = (l1, l2) => Math.sqrt(Math.pow(l2[0] - l1[0], 2) + Math.pow(l2[1] - l1[1], 2));
 
 const getSortedProductList = async (waveID, currentSection) => {
     const query = `SELECT *
@@ -94,7 +133,7 @@ const getSortedProductList = async (waveID, currentSection) => {
     const sections = await getSections();
     let currentLocation = [0, 0];
     sections.forEach((section) => {
-        if(section.id === currentSection)
+        if (section.id === currentSection)
             currentLocation = [
                 section.x,
                 section.y
@@ -105,24 +144,24 @@ const getSortedProductList = async (waveID, currentSection) => {
         let productLocation = [];
 
         sections.forEach((section) => {
-            if(section.id === product.section)
+            if (section.id === product.section)
                 productLocation = [
                     section.x,
                     section.y
                 ];
         });
 
-        product.distance = distance(currentLocation,productLocation);
+        product.distance = distance(currentLocation, productLocation);
     });
 
     productList.sort((a, b) => {
-        if(a.completed && !b.completed)
+        if (a.completed && !b.completed)
             return 1;
-        
-        if(!a.completed && b.completed)
+
+        if (!a.completed && b.completed)
             return -1;
 
-        if(a.completed && b.completed)
+        if (a.completed && b.completed)
             return 0;
 
         return a.distance > b.distance;
@@ -179,7 +218,7 @@ const getWaves = async () => {
         let found = false;
 
         waves.forEach((wave) => {
-            if(wave.wave_id === row.wave_id) {
+            if (wave.wave_id === row.wave_id) {
                 found = true;
                 wave.productList.push({
                     id: row.id,
@@ -191,7 +230,7 @@ const getWaves = async () => {
             }
         })
 
-        if(!found)
+        if (!found)
             waves.push({
                 wave_id: row.wave_id,
                 id_employee: row.id_employee,

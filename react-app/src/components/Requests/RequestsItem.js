@@ -55,6 +55,9 @@ const RequestsItem = ({ sender, setID }) => {
                 id_employee: id_employee,
                 waveItems: sender.productList
             })
+        }).then(response => response.json())
+        .then(data => {
+            history.push("/waves/" + data.wave[0]["id"])
         });
     }
 
