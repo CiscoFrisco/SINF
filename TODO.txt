@@ -1,8 +1,6 @@
 To Do:
  
 - Create request (redirect para a pagina do request, resolver erro em alguns items e a data - verificar com o Bruno)
-- Pagina inventory, requests e orders atualizarem - Francisco
-- Erro na ordem dos checks das waves - Bruno
 
 - Adicionar Username às merdas
 
@@ -31,6 +29,8 @@ Done:
 - Formatar melhor a pagina de employee
 - Create request (mandar à base de dados) - Luís/Bruno/João
 - Alinhar create request os campos de preenchimento - Francisco
+- Erro na ordem dos checks das waves - Bruno
+- Pagina inventory, requests e orders atualizarem - Francisco
 
 
 

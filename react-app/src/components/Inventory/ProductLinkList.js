@@ -3,9 +3,6 @@ import ProductLinkListItem from "../Inventory/ProductLinkListItem";
 import Table from "react-bootstrap/Table";
 
 const ProductLinkList = ({ list, type }) => {
-  console.log(type);
-  console.log(list);
-
   return (
     <Table style={{ marginTop: "5%" }} hover>
       <thead>
