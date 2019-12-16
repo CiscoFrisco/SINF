@@ -80,22 +80,32 @@ const RequestsList = ({ requests, setID }) => {
         console.log(sender);
 
         const params = {
-            documentType: "VEI",
+            documentType: "ECF",
             company: "SLGBA",
-            serie: "SYS",
-            seriesNumber: 3,
+            serie: "2019",
+            seriesNumber: 21, //HardCoded - change
             documentDate: new Date(date).toISOString(),
             postingDate: new Date(date).toISOString(),
-            sellerSupplierParty: sender,
+            sellerSupplierParty: "0001", //HardCoded - change to sender.id or something
             sellerSupplierPartyName: sender,
-            accountingParty: sender,
+            accountingParty: "0001", //HardCoded - not sure if needs change
             exchangeRate: 1.0,
             discount: 0.0,
             loadingCountry: "PT",
             unloadingCountry: "PT",
             currency: "EUR",
             paymentMethod: "NUM",
-            paymentTerm: "NUM"
+            paymentTerm: "01",
+            documentLines: [{
+                description: "Abecedário",
+                quantity: 26,
+                unitPrice: 26,
+                deliveryDate: new Date(date).toISOString(),
+                unit: "UN",
+                itemTaxSchema: "IVA-TN",
+                purchasesItem: "ABC",
+                documentLineStatus: 1
+            }]
         }
 
         fetch('/api/purchases/orders', {
