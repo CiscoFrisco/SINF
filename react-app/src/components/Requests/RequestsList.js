@@ -14,6 +14,7 @@ const RequestsList = ({ requests, setID }) => {
   const [isLoadingSuppliers, setIsLoadingSuppliers] = useState(true);
   const [isLoadingItems, setIsLoadingItems] = useState(true);
   const [sender, setSender] = useState("");
+  const [senderID, setSenderID] = useState("");
   const [product, setProduct] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [id, setId] = useState(0);
@@ -36,7 +37,7 @@ const RequestsList = ({ requests, setID }) => {
   }, []);
 
   useEffect(() => {
-    fetch("/api/purchases/items", {
+    fetch("/api/stock/", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -45,6 +46,10 @@ const RequestsList = ({ requests, setID }) => {
     })
       .then(response => response.json())
       .then(data => {
+        data.forEach((element, index) => {
+          element.index = index;
+        })
+        setProduct(data[0].name);
         setItems(data);
         setIsLoadingItems(false);
       })
@@ -55,6 +60,7 @@ const RequestsList = ({ requests, setID }) => {
     try {
       setId(id + 1);
     } finally {
+      console.log(quantity);
       if (quantity > 0 && product !== "") {
         const newProduct = { id: id, product: product, quantity: quantity };
         const util = productsAdded;
@@ -78,7 +84,7 @@ const RequestsList = ({ requests, setID }) => {
     const documentLines = [];
     productsAdded.forEach(product => {
       const purchasesItem = items.find(
-        item => item.description === product.product
+        item => item.name === product.product
       );
       documentLines.push({
         description: product.product,
@@ -86,7 +92,7 @@ const RequestsList = ({ requests, setID }) => {
         deliveryDate: new Date(date).toISOString(),
         unit: "UN",
         itemTaxSchema: "IVA-TN",
-        purchasesItem: purchasesItem.itemKey,
+        purchasesItem: purchasesItem.id,
         documentLineStatus: 1
       });
     });
@@ -96,9 +102,8 @@ const RequestsList = ({ requests, setID }) => {
       company: "SLGBA",
       documentDate: new Date(date).toISOString(),
       postingDate: new Date(date).toISOString(),
-      sellerSupplierParty: "0001", //HardCoded - change to sender.id or something
+      sellerSupplierParty: senderID,
       sellerSupplierPartyName: sender,
-      accountingParty: "0001", //HardCoded - not sure if needs change
       exchangeRate: 1.0,
       discount: 0.0,
       loadingCountry: "PT",
@@ -117,6 +122,16 @@ const RequestsList = ({ requests, setID }) => {
       body: JSON.stringify(params)
     });
   };
+
+  const changeSender = (event) => {
+    setSender(event.target.value);
+
+    suppliers.forEach((supplier) => {
+      if(supplier.name === event.target.value) {
+        setSenderID(supplier.id);
+      }
+    });
+  }
 
   return isLoadingSuppliers || isLoadingItems ? (
     <div>Loading...</div>
@@ -173,14 +188,14 @@ const RequestsList = ({ requests, setID }) => {
                 <Form.Label>Sender</Form.Label>
                 <Form.Control
                   as="select"
-                  onChange={event => setSender(event.target.value)}
+                  onChange={changeSender}
                 >
                   <option disabled selected>
                     Choose...
                   </option>
                   {suppliers.map(supplier => (
-                    <option key={supplier} id={supplier}>
-                      {supplier}{" "}
+                    <option key={supplier.id} id={supplier.id}>
+                      {supplier.name}
                     </option>
                   ))}
                 </Form.Control>
@@ -224,8 +239,8 @@ const RequestsList = ({ requests, setID }) => {
                           Choose...
                         </option>
                         {items.map(item => (
-                          <option key={item} id={item}>
-                            {item.description}
+                          <option key={item.index} id={item.index}>
+                            {item.name}
                           </option>
                         ))}
                       </Form.Control>

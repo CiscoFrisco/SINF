@@ -121,7 +121,7 @@ const getSuppliers = (req, res, next) => {
             "Content-Type": "application/json",
         },
         method: 'GET',
-        url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/purchases/orders
+        url: `https://${process.env.PRIMAVERA_URL}/api/${process.env.PRIMAVERA_TENANT}/${process.env.PRIMAVERA_ORGANIZATION}/purchasesCore/supplierParties/
         `,
     };
 
@@ -132,7 +132,10 @@ const getSuppliers = (req, res, next) => {
 
         let suppliers = [];
 
-        JSON.parse(body).forEach((element) => suppliers.push(element.sellerSupplierPartyName));
+        JSON.parse(body).forEach((element) => suppliers.push({
+            id: element.partyKey,
+            name: element.name
+        }));
         res.status(response.statusCode).send(JSON.stringify([...new Set(suppliers)]));
     });
 }
