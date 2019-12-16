@@ -3,10 +3,9 @@ To Do:
 - Create request (mandar à base de dados) - Luís/Bruno
 - Create request (adicionar item à lista de requests)
 - Pagina inventory, requests e orders atualizarem - Francisco
+- Erro na ordem dos checks das waves - Francisco
 
-- Formatar melhor a pagina de employee
-- Adicionar scrolls e tamanho a todas as tabelas relevantes - João
-- Alinhar botao create wave - Francisco
+- Adicionar Username às merdas
 - Alinhar create request os campos de preenchimento
 
 - Retirar cenas desnecessárias (imagens ou outras cenas que tenham ficado para trás sem querer) - doing
@@ -29,5 +28,9 @@ Done:
 - Corrigir botão paginas signup e login - Francisco
 - Criar link signup no login - Francisco
 - Mostrar aviso que inventory está low (principalmente se for < do que orders) - Luís
+- Alinhar botao create wave - Francisco
+- Adicionar scrolls e tamanho a todas as tabelas relevantes - João
+- Formatar melhor a pagina de employee
+
 
 
