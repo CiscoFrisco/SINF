@@ -12,7 +12,7 @@ const getEmployeeController = async (req, res, next) => {
 
         waves.forEach((wave) => {
             if(wave.id_employee === employee.id)
-                employee.waves.push(wave.wave_id);
+                employee.waves.push(wave);
         })
     });
 
