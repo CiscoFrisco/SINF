@@ -156,9 +156,9 @@ const RequestsList = ({ requests, setID }) => {
         <Modal.Body>
           <Row style={{ marginLeft: "1%" }}>
             <Col>
-              <p >Select Date</p>
+              <p style={{ marginBottom: "5%"}}>Select Date</p>
               <input
-                style={{ width: "70%", height:"50%", borderRadius:"2px" }}
+                style={{width: "100%", height:"40%", borderRadius:"4px", border:"1px solid grey" }}
                 id="date"
                 type="date"
                 defaultValue={date}
@@ -203,12 +203,11 @@ const RequestsList = ({ requests, setID }) => {
                     <td>{item.product}</td>
                     <td>{item.quantity}</td>
                     <td>
-                      {" "}
-                      <Button
+                      <Button style={{ borderRadius:"5%"}}
                         variant="dark"
                         onClick={() => removeProduct(item.id)}
                       >
-                        <FaTrash />
+                        <FaTrash style={{ marginBottom:"25%"}}/>
                       </Button>
                     </td>
                   </tr>
@@ -232,9 +231,10 @@ const RequestsList = ({ requests, setID }) => {
                       </Form.Control>
                     </Form.Group>
                   </td>
-                  <td>
+                  <td style={{ paddingTop:"3.5%"}}>
                     <input
                       className={requestsListStyles.inputQt}
+                      style={{width: "50%", height:"70%", borderRadius:"3px", border:"1px solid grey" }}
                       type="text"
                       id="quantity"
                       type="number"
@@ -244,8 +244,8 @@ const RequestsList = ({ requests, setID }) => {
                     />
                   </td>
                   <td>
-                    <Button variant="dark" onClick={addProduct}>
-                      <FaPlusCircle />
+                    <Button style={{ borderRadius:"5%"}} variant="dark" onClick={addProduct}>
+                      <FaPlusCircle style={{ marginBottom:"25%"}}/>
                     </Button>
                   </td>
                 </tr>
