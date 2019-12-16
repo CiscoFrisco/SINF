@@ -84,7 +84,7 @@ const getDelivered = (req, res, next) => {
                 const delivery = {
                     id: element.naturalKey,
                     name: element.logisticsPartyName,
-                    date: element.loadingDateTime,
+                    date: element.postingDate,
                     productList: [],
                 };
 
