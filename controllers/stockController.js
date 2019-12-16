@@ -1,4 +1,5 @@
 const request = require("request");
+const { getProductSections } = require("../models/warehouseModel");
 
 let pageIndex = 1;
 const pageSize = 1000;
@@ -50,7 +51,10 @@ const getDelivery = (req, res, next) => {
     });
 }
 
-const getStock = (req, res, next) => {
+const getStock = async (req, res, next) => {
+    const productSections = await getProductSections();
+    console.log(productSections);
+    console.log(productSections.find(section => section.id === 'AAA'));
     var options = {
         headers: {
             Authorization: process.env.PRIMAVERA_TOKEN,
@@ -71,7 +75,10 @@ const getStock = (req, res, next) => {
             stock.push({
                 id: element.itemKey,
                 name: element.description,
-                quantity: element.materialsItemWarehouses[0].stockBalance, 
+                quantity: element.materialsItemWarehouses[0].stockBalance,
+                section: productSections.find(section => section.id === element.itemKey) ? 
+                productSections.find(section => section.id === element.itemKey).section_id :
+                null
             });
         });
         

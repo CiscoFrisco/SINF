@@ -14,8 +14,6 @@ const Product = ({ product }) => {
   const [requests, setRequests] = useState([]);
   const [orders, setOrders] = useState([]);
 
-  const sections = [1, 5, 17, 8];
-
   useEffect(() => {
     fetch("/api/purchases/requests", {
       method: "GET",
@@ -26,6 +24,7 @@ const Product = ({ product }) => {
     })
       .then(response => response.json())
       .then(data => {
+        console.log(data)
         setRequests(
           data.filter(request =>
             request.productList.some(x => x.id === product.id)
@@ -70,21 +69,13 @@ const Product = ({ product }) => {
       <Row className={(productStyles.center, productStyles.separator)}>
         <Col md="4">
           <h4 className={productStyles.infoTitles}>Stock Available</h4>
-          <p>{product.quantity}</p>
+          <p style={{marginLeft:"45%"}}>{product.quantity}</p>
         </Col>
         <Col md={{ span: 5, offset: 2 }}>
           <h4 className={productStyles.infoTitles}>Warehouse Section</h4>
-          <Row
-            className={classNames(
-              scrollStyles.scrolly,
-              listStyles.scrolly10,
-              listStyles.margin
-            )}
-          >
-            {sections.map(section => (
-              <ProductLinkListItem key={section} item={section} type="warehouse" />
-            ))}
-          </Row>
+          {product.section != null ? 
+          (<ProductLinkListItem key={product.section} item={product.section} type="warehouse" />) 
+          :(<p style={{marginLeft:"45%"}}>N/A</p>)}
         </Col>
       </Row>
       {requests.length > 0 && (
