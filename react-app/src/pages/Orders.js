@@ -26,6 +26,7 @@ const Orders = () => {
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             if(!data.filter(order =>order.id === url_id).length > 0){
                 setID(data[0]["id"]);
                 history.push("/orders/" + data[0]["id"]);

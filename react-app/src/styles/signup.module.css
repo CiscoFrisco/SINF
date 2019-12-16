@@ -4,7 +4,7 @@
     left:30%;
     top:27%;
     width: 40%;
-    height:47%;
+    height:55%;
     padding:3%;
     border-radius: 0.15em;
     border: white solid 1px;
@@ -25,7 +25,14 @@
 
 .submit {
   float: right;
-  margin-top: -1.5em;
+}
+
+.login{
+  margin-left:5%;
+  margin-top:0.4em;
+  margin-right:16%;
+  color:white;
+  text-decoration: underline;
 }
 
 .logo {

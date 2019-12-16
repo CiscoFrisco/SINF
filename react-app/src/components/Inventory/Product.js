@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import {Row, Col} from "react-bootstrap";
 import productStyles from "../../styles/inventory.module.css";
 import classNames from "classnames";
 import ProductLinkList from "../../components/Inventory/ProductLinkList";
 import ProductLinkListItem from "../../components/Inventory/ProductLinkListItem";
-import listStyles from "../../styles/list.module.css";
-import scrollStyles from "../../styles/scroll.module.css";
 
 const Product = ({ product }) => {
+  console.log("DEI RELoAD");
+  
   const [isLoadingOne, setIsLoadingOne] = useState(true);
   const [isLoadingTwo, setIsLoadingTwo] = useState(true);
   const [requests, setRequests] = useState([]);
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
+    console.log("USE REQUESTS");
+    
     fetch("/api/purchases/requests", {
       method: "GET",
       headers: {
@@ -24,7 +25,6 @@ const Product = ({ product }) => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         setRequests(
           data.filter(request =>
             request.productList.some(x => x.id === product.id)
@@ -36,6 +36,8 @@ const Product = ({ product }) => {
   }, []);
 
   useEffect(() => {
+    console.log("USE ORDERS");
+
     fetch("/api/sales/orders", {
       method: "GET",
       headers: {
@@ -88,7 +90,7 @@ const Product = ({ product }) => {
       )}
       {orders.length > 0 && (
         <Row>
-          <Col classNames={productStyles.infoTitles2}>
+          <Col className={productStyles.infoTitles2}>
             <h4 className={productStyles.h4}>Orders</h4>
             <ProductLinkList list={orders} type="orders" />
           </Col>
