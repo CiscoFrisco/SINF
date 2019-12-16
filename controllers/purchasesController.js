@@ -41,7 +41,7 @@ const getRequests = async (req, res, next) => {
                     const order = {
                         id: element.naturalKey,
                         name: element.sellerSupplierPartyName,
-                        date: element.unloadingDateTime,
+                        date: element.postingDate,
                         wave: found,
                         productList: [],
                     };
@@ -93,7 +93,7 @@ const getDelivered = (req, res, next) => {
                     const order = {
                         id: element.naturalKey,
                         name: element.sellerSupplierPartyName,
-                        date: element.unloadingDateTime,
+                        date: element.postingDate,
                         productList: [],
                     };
 
