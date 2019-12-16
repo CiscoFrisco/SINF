@@ -11,7 +11,7 @@ const Employee2 = ({ employee }) => {
         <div className={employeeStyles.employeeInfoContainer}>
             <Col md={{ span: 10, offset: 1 }}>
                 <Row className={classNames(employeeStyles.separator, employeeStyles.inline)}>
-                    <h3>{employee.id} - {employee.email}</h3>
+                    <h3>{employee.id} / {employee.email} / {employee.username}</h3>
                 </Row>
                 <Row className={classNames(employeeStyles.separator, employeeStyles.infoTitles2)}>
                     <h4>Assigned Waves</h4>

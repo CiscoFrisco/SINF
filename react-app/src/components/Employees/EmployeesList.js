@@ -21,7 +21,7 @@ const EmployeesList = ({ employees, setID }) => {
                                 <tr>
                                     <th>ID</th>
                                     <th>Email </th>
-                                    <th>Role</th>
+                                    <th>Name</th>
                                 </tr>
                             </thead>
                             <tbody>

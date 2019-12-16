@@ -8,7 +8,7 @@ const Employee = ({ employee }) => {
     return (
         <div className={employeeStyles.employeeInfoContainer}>
             <Row className={classNames(employeeStyles.separator, employeeStyles.inline)}>
-                <h3>{employee.id} - {employee.email}</h3>
+                <h3>{employee.id} / {employee.email} / {employee.username}</h3>
             </Row>
             <Row className={classNames(employeeStyles.separator, employeeStyles.infoTitles2)}>
                 <h4>Assigned Waves</h4>

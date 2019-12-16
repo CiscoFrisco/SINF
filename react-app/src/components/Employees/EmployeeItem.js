@@ -9,7 +9,7 @@ const EmployeeItem = ({ employee, setID }) => {
         <tr onClick={() => {setID(employee.id); history.push("/employees/" + employee.id)}}>
             <td>{employee.id}</td>
             <td>{employee.email}</td>
-            <td>404 Not Found</td>
+            <td>{employee.username}</td>
         </tr>
     );
 };

@@ -2,8 +2,6 @@ To Do:
  
 - Create request (redirect para a pagina do request, resolver erro em alguns items e a data - verificar com o Bruno)
 
-- Adicionar Username às merdas
-
 - Retirar cenas desnecessárias (imagens ou outras cenas que tenham ficado para trás sem querer) - doing
 - Corrigir erros - doing
 - Popular a base de dados
@@ -31,6 +29,8 @@ Done:
 - Alinhar create request os campos de preenchimento - Francisco
 - Erro na ordem dos checks das waves - Bruno
 - Pagina inventory, requests e orders atualizarem - Francisco
+- Adicionar Username às merdas
+
 
 
 

@@ -80,7 +80,7 @@ const Wave = ({ wave, isAdmin }) => {
         <Row className={classNames(wavesStyles.separator, wavesStyles.center)}>
           <Col className={wavesStyles.nopadding}  md="5">
             <h4 className={wavesStyles.infoTitles}>Employee Assigned</h4>
-            <p>{wave.type}</p>
+            <p>{wave.employee_name}</p>
           </Col>
           <Col md={{span:4 , offset:3}}>
             <Button variant="dark" disabled={disabled} onClick={() => completeWave()}> Complete</Button>
