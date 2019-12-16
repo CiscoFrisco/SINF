@@ -1,0 +1,19 @@
+ - Corrigir os roles - Francisco
+ - Wave info na employee page (para além do link, adicionar client/sender) - João
+ - Create request (mandar à base de dados) - Luís
+ - Automatizar create request para inventory low e mostrar aviso que inventory está low
+ - Alocar produtos a secções - Bruno
+ - Bug das waves (primeira??)
+ - Create wave (retirar o botao de criar wave depois de a ter criado)
+ - Create request (adicionar item à lista de requests)
+ - Formatar melhor a pagina de employee
+ - Retirar cenas desnecessárias (imagens ou outras cenas que tenham ficado para trás sem querer) - doing
+ - Username na base de dados - Bruno
+ - Corrigir erros - doing
+ - Popular a base de dados
+
+Done:
+
+- Wave page (dependendo do role mostra só de um employee ou todos) - Francisco
+- Mudar requests e orders para o botao de criar waves so funcionar nas de hoje
+- Inventory - requests e orders serem tabelas - Francisco
