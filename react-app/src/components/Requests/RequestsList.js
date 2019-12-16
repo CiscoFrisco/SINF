@@ -66,7 +66,6 @@ const RequestsList = ({ requests, setID }) => {
     }
 
     const removeProduct = (productToRemoveId) => {
-        console.log(productsAdded);
         var index = productsAdded.findIndex((product)=> product.id === productToRemoveId)
         if (index !== -1)
         {
@@ -76,7 +75,20 @@ const RequestsList = ({ requests, setID }) => {
     }
 
     const sendRequest = async () => {
-        console.log(productsAdded);
+        const documentLines = [];
+        productsAdded.forEach((product) => {
+            const purchasesItem = items.find((item)=> item.description === product.product);
+            documentLines.push({
+                description: product.product,
+                quantity:  parseInt(product.quantity),
+                deliveryDate: new Date(date).toISOString(),
+                unit: "UN",
+                itemTaxSchema: "IVA-TN",
+                purchasesItem: purchasesItem.itemKey,
+                documentLineStatus: 1
+            })
+        });
+
         const params = {
             documentType: "ECF",
             company: "SLGBA",
@@ -92,16 +104,8 @@ const RequestsList = ({ requests, setID }) => {
             currency: "EUR",
             paymentMethod: "NUM",
             paymentTerm: "01",
-            documentLines: [{
-                description: "Abecedário",
-                quantity: 26,
-                deliveryDate: new Date(date).toISOString(),
-                unit: "UN",
-                itemTaxSchema: "IVA-TN",
-                purchasesItem: "ABC",
-                documentLineStatus: 1
-            }]
-        }
+            documentLines: documentLines
+        };
 
         fetch('/api/purchases/orders', {
             method: 'POST',
@@ -180,8 +184,8 @@ const RequestsList = ({ requests, setID }) => {
                                         <td>
                                             <Form.Group controlId="formGridState">
                                                 <Form.Control as="select" value={product} onChange={event => setProduct(event.target.value)}>
-                                                    <option disabled>Choose...</option>
-                                                    {items.map(item => (<option key={item} id={item}>{item}</option>))}
+                                                    <option disabled selected>Choose...</option>
+                                                    {items.map(item => (<option key={item} id={item}>{item.description}</option>))}
                                                 </Form.Control>
                                             </Form.Group>
                                         </td>
