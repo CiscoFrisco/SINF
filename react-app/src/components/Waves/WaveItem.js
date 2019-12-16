@@ -1,14 +1,29 @@
 import React from "react";
-import waveItemStyles from '../../styles/waves/waveitem.module.css';
-import Button from 'react-bootstrap/Button';
-import { Link } from "react-router-dom";
+import {useHistory} from "react-router-dom";
+import { connect } from "react-redux";
 
-const WaveItem = ({ id }) => (
-    <Link to={`/waves/${id}`}>
-        <Button className={waveItemStyles.wave} variant="dark">{id}</Button>
-    </Link >
-)
+const WaveItem = ({ wave, isAdmin }) => {
+    const history= useHistory();
+    let itemsUtil=0;
+    const path = isAdmin==="false" ? ("/wave/" + wave.wave_id) : ("/waves/" + wave.wave_id);
+    const numberRemaining = () =>{
+        console.log(wave.productList);
+        wave.productList.forEach((item) => {
+            if(item.completed === false)
+            {
+                itemsUtil+=1;
+            }
+        })
+    }
+    numberRemaining();
+    return (
+    <tr onClick={()=>history.push(path)}>
+    
+        <td>{wave.wave_id}</td>
+        <td>{wave.type}</td>
+        <td>{itemsUtil}</td>
+    </tr>
+    );
+};
 
-
-export default WaveItem;
-
+export default connect(({ user }) => ({ isAdmin: user.role}))(WaveItem);
