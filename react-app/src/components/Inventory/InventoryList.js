@@ -13,7 +13,7 @@ const InventoryList = ({ inventory, setID }) => {
                     <Row className={inventoryListStyles.title}>
                         <h3>Inventory</h3>
                     </Row>
-                    <div className={classnames(scrollStyle.scroll, inventoryListStyles.scrollList)} style={{ marginTop: '5%' }}>
+                    <div className={classnames(scrollStyle.scroll, inventoryListStyles.scrollList70)} style={{ marginTop: '5%' }}>
                         <Table hover>
                             <thead>
                                 <tr>

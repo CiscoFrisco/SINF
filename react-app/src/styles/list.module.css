@@ -127,15 +127,26 @@ input[type="date"]::-webkit-inner-spin-button{
     -webkit-appearance: none;
 }
 
-.scrollList {
+.scrollList70 {
     height: 70vh;
 }
 
-.scrollList2 {
+.scrollList60 {
     height: 60vh;
-    background-color: aqua;
 }
 
-.scrollList3 {
+.scrollList45 {
+    height: 45vh;
+}
+
+.scrollList40 {
     height: 40vh;
+}
+
+.scrollList30 {
+    height: 30vh;
+}
+
+.scrollList20 {
+    height: 20vh;
 }
