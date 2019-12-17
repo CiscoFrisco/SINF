@@ -53,6 +53,12 @@ INSERT INTO section(warehouse, x, y) VALUES('Section B', 100, 100);
 INSERT INTO section(warehouse, x, y) VALUES('Section C', 99, 99);
 INSERT INTO section(warehouse, x, y) VALUES('Section D', 1000, 1000);
 
-INSERT INTO product(id, section_id) VALUES('AAA', 1);
-INSERT INTO product(id, section_id) VALUES('MAD', 2);
-INSERT INTO product(id, section_id) VALUES('CAD', 3);
+INSERT INTO product(id, section_id) VALUES('KKT', 1);
+INSERT INTO product(id, section_id) VALUES('FRN', 2);
+INSERT INTO product(id, section_id) VALUES('TWX', 3);
+INSERT INTO product(id, section_id) VALUES('DRM', 1);
+INSERT INTO product(id, section_id) VALUES('MRS', 1);
+INSERT INTO product(id, section_id) VALUES('LIO', 1);
+INSERT INTO product(id, section_id) VALUES('BNT', 2);
+INSERT INTO product(id, section_id) VALUES('AER', 1);
+INSERT INTO product(id, section_id) VALUES('SNK', 3);
