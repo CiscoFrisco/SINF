@@ -20,6 +20,9 @@ const RequestsList = ({ requests, setID }) => {
   const [id, setId] = useState(0);
   const [productsAdded, setProductsAdded] = useState([]);
 
+  const banListItems = [ "Mesa", "Abecedário", "aaaa", "Madeira", "Cadeira" ];
+  const banListSup = [ "Autoridade Tributária e Aduaneira", "Segurança Social" ];
+
   useEffect(() => {
     fetch("/api/purchases/suppliers", {
       method: "GET",
@@ -194,7 +197,9 @@ const RequestsList = ({ requests, setID }) => {
                   <option disabled>
                     Choose...
                   </option>
-                  {suppliers.map(supplier => (
+                  {suppliers
+                  .filter(x => !banListSup.some(y => y == x.name))
+                  .map(supplier => (
                     <option key={supplier.id} id={supplier.id}>
                       {supplier.name}
                     </option>
@@ -239,7 +244,9 @@ const RequestsList = ({ requests, setID }) => {
                         <option disabled>
                           Choose...
                         </option>
-                        {items.map(item => (
+                        {items
+                        .filter(x => !banListItems.some(y => y == x.name))
+                        .map(item => (
                           <option key={item.index} id={item.index}>
                             {item.name}
                           </option>

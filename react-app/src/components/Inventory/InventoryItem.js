@@ -5,8 +5,10 @@ import styles from '../../styles/inventory.module.css';
 
 const InventoryItem = ({ product, setID }) => {
     const history = useHistory();
+    const banList = [ "MESA", "ABC", "AAA", "MAD", "CAD" ];
 
     return (
+        banList.some(x => x == product.id) ? null :
         <tr onClick={() => { setID(product.id); history.push("/inventory/" + product.id) }}>
             <td>{product.id}</td>
             <td>{product.name}</td>
