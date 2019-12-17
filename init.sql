@@ -42,19 +42,17 @@ CREATE TABLE IF NOT EXISTS waveItem (
   PRIMARY KEY(id, wave_id)
 );
 
-INSERT INTO employee(username, isManager, email, password) VALUES('email', false,'email@email.email', '$2a$08$PaAprgLos9T90uGnSHa8GuqjKBanidqgddCQ0tuplPt1gh5d0GZtW');
-INSERT INTO employee(username, isManager, email, password) VALUES('a', true, 'a@a.a', '$2a$08$PaAprgLos9T90uGnSHa8GuqjKBanidqgddCQ0tuplPt1gh5d0GZtW');
-INSERT INTO employee(username, isManager, email, password) VALUES('ola', true, 'ola@ola.ola', '$2y$08$kWu60qEQ9x5VO1EwfxYX0eJ/mtW6aoQKUSVeDgim9mlJBP906YYui');
-INSERT INTO section(warehouse, x, y) VALUES('ali ao lado', 10, 10);
-INSERT INTO section(warehouse, x, y) VALUES('la longe', 100, 100);
-INSERT INTO section(warehouse, x, y) VALUES('la perto de longe', 99, 99);
-INSERT INTO section(warehouse, x, y) VALUES('ainda mais longe', 1000, 1000);
+INSERT INTO employee(username, isManager, email, password) VALUES('Bruno Sousa', false,'brunosousa@slgba.com', '$2y$08$9ZzIAg9Jx7JqJ7zkwS0CcudQkfy5nbgxIPSrlREQdlV6oo.9vi30e'); --pass: bruno
+INSERT INTO employee(username, isManager, email, password) VALUES('Francisco Filipe', false,'fransiscofilipe@slgba.com', '$2y$08$XAriZDL8DpfnTcETSVdFvOZ3/HHbyzqmtfw5/arGXTDJmZM7tzIoe'); --pass: chico
+INSERT INTO employee(username, isManager, email, password) VALUES('Joao Goncalves', false,'joaogoncalves@slgba.com', '$$2y$08$PIZap1C.D.C4YRmFLz3SyuaX4M38A3fAyyM8qZeU88Rnrf4SsX.H.'); --pass: joao
+INSERT INTO employee(username, isManager, email, password) VALUES('Luis Silva', false,'luissilva@slgba.com', '$2y$08$8sHf8UryWgotwygopit4wuDijK7rpymDDDGHD08dEPOI.LlFOieD6'); --pass: luis
+INSERT INTO employee(username, isManager, email, password) VALUES('Manager', true, 'manager@slgba.com', '$2y$08$poNf1pHEgzjaKMUU3cp56.vX3aXfHULFNiScZMI/gqrir30eSRTVS'); --pass: manager
+
+INSERT INTO section(warehouse, x, y) VALUES('Section A', 10, 10);
+INSERT INTO section(warehouse, x, y) VALUES('Section B', 100, 100);
+INSERT INTO section(warehouse, x, y) VALUES('Section C', 99, 99);
+INSERT INTO section(warehouse, x, y) VALUES('Section D', 1000, 1000);
+
 INSERT INTO product(id, section_id) VALUES('AAA', 1);
 INSERT INTO product(id, section_id) VALUES('MAD', 2);
 INSERT INTO product(id, section_id) VALUES('CAD', 3);
-INSERT INTO wave(ref, party, id_employee) VALUES('ECF.2019.4', 'Teste', 1);
-INSERT INTO wave(ref, party, id_employee) VALUES('ECF.2019.5', 'Teste', 2);
-INSERT INTO waveItem(id, prodName, quantity, wave_id, section_id) VALUES('AAA', 'aaa', 5, 1, 1);
-INSERT INTO waveItem(id, prodName, quantity, wave_id, section_id) VALUES('MAD', 'Madeira', 7, 1, 2);
-INSERT INTO waveItem(id, prodName, quantity, wave_id, section_id) VALUES('CAD', 'Cadeiras', 13, 1, 3);
-INSERT INTO waveItem(id, prodName, quantity, wave_id, section_id) VALUES('CAD', 'Cadeiras', 13, 2, 3);
