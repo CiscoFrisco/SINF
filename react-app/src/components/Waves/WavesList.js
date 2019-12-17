@@ -9,9 +9,11 @@ const WavesList = ({ waves }) => (
     <div className={classnames(scrollStyles.scroll, listStyles.scrollList60)}>
         <Table hover>
             <thead>
-                <td>ID</td>
-                <td>Type</td>
-                <td>Nº Items Remaining</td>
+                <tr>
+                    <td>ID</td>
+                    <td>Type</td>
+                    <td>Nº Items Remaining</td>
+                </tr>
             </thead>
             <tbody>
                 {waves.map(wave => (<WaveItem  key={wave} wave={wave} />))}

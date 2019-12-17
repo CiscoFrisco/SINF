@@ -44,7 +44,7 @@ const Waves = ({isAdmin, userID}) => {
 
 
 
-    return (isLoading ? <Layout></Layout> :
+    return (console.log() && isLoading ? <Layout></Layout> :
         waves.length > 0  ?( 
         <Layout 
         list={<WaveList wave={waves} setID={setID} />} 

@@ -191,7 +191,7 @@ const RequestsList = ({ requests, setID }) => {
                   as="select"
                   onChange={changeSender}
                 >
-                  <option disabled selected>
+                  <option disabled>
                     Choose...
                   </option>
                   {suppliers.map(supplier => (
@@ -236,7 +236,7 @@ const RequestsList = ({ requests, setID }) => {
                         value={product}
                         onChange={event => setProduct(event.target.value)}
                       >
-                        <option disabled selected>
+                        <option disabled>
                           Choose...
                         </option>
                         {items.map(item => (

@@ -52,7 +52,7 @@ const Wave = ({ wave, isAdmin }) => {
       setDisabled(false);
     else
       setDisabled(true);
-  }, wave.productList)
+  }, [wave.productList])
 
   const completeWave = () => {
     fetch('/api/waves/completed', {

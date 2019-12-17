@@ -11,7 +11,7 @@ const InventoryItem = ({ product, setID }) => {
             <td>{product.id}</td>
             <td>{product.name}</td>
             <td>{product.quantity}</td>
-            {product.danger == "true" ? (<td>
+            {product.danger === "true" ? (<td>
                 <div className={styles.tooltip}>
                     <img className={styles.warningimg} src={warning} alt="warning" />
                     <span className={styles.tooltiptext}>Warning: Not enought stock to fullfil orders</span>

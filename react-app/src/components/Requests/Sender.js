@@ -1,7 +1,6 @@
 import React from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
 import senderStyles from "../../styles/sender.module.css";
-import defaultImg from "../../assets/product_imgs/default.png";
 import classNames from "classnames";
 import RequestItem from "./RequestItem";
 import senderListStyles from "../../styles/list.module.css";
