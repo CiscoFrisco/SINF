@@ -53,8 +53,6 @@ const getDelivery = (req, res, next) => {
 
 const getStock = async (req, res, next) => {
     const productSections = await getProductSections();
-    console.log(productSections);
-    console.log(productSections.find(section => section.id === 'AAA'));
     var options = {
         method: 'GET',
         url: `${req.protocol}://${req.get('host')}/api/purchases/requests`,
@@ -107,8 +105,6 @@ const getStock = async (req, res, next) => {
                         });
                     });
 
-                    console.log(element.description + " " + balance);
-
                     stock.push({
                         id: element.itemKey,
                         name: element.description,
@@ -120,7 +116,6 @@ const getStock = async (req, res, next) => {
                     });
                 });
 
-                console.log(stock);
                 res.status(response.statusCode).send(JSON.stringify(stock));
 
             });

@@ -19,7 +19,6 @@ const getEmployeebyID = async (id_employee) => {
   const values = [id_employee];
 
   const res = await pool.query(employee, values);
-  console.log(res.rows);
 
   return res.rows[0];
 };

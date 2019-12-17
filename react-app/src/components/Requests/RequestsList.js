@@ -60,7 +60,6 @@ const RequestsList = ({ requests, setID }) => {
     try {
       setId(id + 1);
     } finally {
-      console.log(quantity);
       if (quantity > 0 && product !== "") {
         const newProduct = { id: id, product: product, quantity: quantity };
         const util = productsAdded;
@@ -120,7 +119,9 @@ const RequestsList = ({ requests, setID }) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(params)
-    });
+    })
+    .then(response=>response.json())
+    .then(data => {window.location.href ="/requests/1"});
   };
 
   const changeSender = (event) => {
